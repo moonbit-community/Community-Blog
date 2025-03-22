@@ -1,0 +1,14 @@
+{
+  "name": "community-blog",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite ./publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moonbit-community/community-blog.git"
+  },
+  "devDependencies": {
+    "vite": "^6.2.2"
+  }
+}

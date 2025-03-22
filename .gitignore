@@ -1,3 +1,5 @@
 .cache
-.DS_Store
 publish
+.DS_Store
+node_modules
+pnpm-lock.yaml
