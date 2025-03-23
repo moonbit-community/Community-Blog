@@ -33,12 +33,12 @@ jobs:
         run: cargo install --git https://github.com/kokic/kodama.git
 
       - name: Build site with kodama
-        run: kodama compile
+        run: kodama compile -r trees
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./publish
+          path: ./trees/publish
 
   deploy:
     needs: build-and-deploy

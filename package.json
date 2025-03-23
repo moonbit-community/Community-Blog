@@ -2,7 +2,7 @@
   "name": "community-blog",
   "version": "1.0.0",
   "scripts": {
-    "dev": "vite ./publish"
+    "dev": "vite ./trees/publish"
   },
   "repository": {
     "type": "git",
