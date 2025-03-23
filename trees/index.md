@@ -1,17 +1,11 @@
-# MoonBit Community
+---
+title: MoonBit Community
+---
 
 MoonBit community weekly, blog, and knowledge base.
 
-[Contribution Guide](contribution.md#:embed)
-
-## Weekly
-
-[Weekly](weekly/index.md)
-
-## Community Blog
-
-[Blog](blog/index.md)
-
-## MoonBit Knowledge Base
-
-[Knowledge Base](knowledge/index.md)
+[+](overview.md#:embed)
+[+](contribution.md#:embed)
+[+-](weekly/index.md#:embed)
+[+-](blog/index.md#:embed)
+[+-](knowledge/index.md#:embed)

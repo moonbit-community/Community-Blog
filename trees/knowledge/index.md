@@ -1,1 +1,4 @@
-# Knowledge Base
+---
+title: Knowledge Base
+collect: true
+---
