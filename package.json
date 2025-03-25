@@ -1,5 +1,6 @@
 {
   "name": "community-blog",
+  "type": "module",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite ./trees/publish"

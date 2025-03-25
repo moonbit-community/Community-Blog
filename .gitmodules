@@ -1,0 +1,3 @@
+[submodule "tmlang"]
+	path = tmlang
+	url = git@github.com:moonbitlang/moonbit-tmLanguage.git
