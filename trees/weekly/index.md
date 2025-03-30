@@ -1,4 +1,4 @@
---- 
+---
 title: Weekly
 collect: true
 ---
