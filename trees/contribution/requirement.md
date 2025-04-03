@@ -15,7 +15,7 @@ title: Requirements
 另外，对于发出的 PR，我们希望 PR 标题可以符合 [约定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/) 的要求，并且可以标注贡献的部分，比如：
 
 ```
-feat[Weekly]: add a new community information
-fix[Knowledge Base]: fix typo
-refactor[-]: refactor doc structure
+feat: add a new community information for weekly
+fix: fix typo for knowledge base
+refactor: refactor the doc structure
 ```
