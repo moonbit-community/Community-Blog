@@ -7,4 +7,4 @@ collect: true
 
 [+-](knowledge/glossary.md#:embed)
 
-[+-](knowledge/QA.md#:embed)
+[+-](knowledge/faq.md#:embed)
