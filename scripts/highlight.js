@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { createHighlighter } from "shiki";
+import { createHighlighter, codeToHtml } from "shiki";
 
 const moonbitLang = JSON.parse(
   fs.readFileSync("tmlang/grammars/moonbit.tmLanguage.json", "utf8")
@@ -80,21 +80,34 @@ function highlightMoonbitCode(code) {
   });
 }
 
-function processHtmlFile(filePath) {
+async function processHtmlFile(filePath) {
   let content = fs.readFileSync(filePath, "utf8");
   const codeBlockRegex =
-    /<pre><code class="language-moonbit">([\s\S]*?)<\/code><\/pre>/g;
+    /<pre><code class="language-([\w-]+)">([\s\S]*?)<\/code><\/pre>/g;
   if (content.match(codeBlockRegex)) {
     content += "<link rel='stylesheet' href='/shiki.css'>";
-    content = content.replace(codeBlockRegex, (match, codeContent) => {
+    
+    const matches = Array.from(content.matchAll(codeBlockRegex));
+    for (const match of matches) {
+      const [fullMatch, language, codeContent] = match;
       try {
-        const highlighted = highlightMoonbitCode(codeContent);
-        return `<div>${highlighted}</div>`;
+        let highlighted;
+        if (language === "moonbit" || language === "mbt") {
+          highlighted = highlightMoonbitCode(codeContent);
+        } else {
+          highlighted = await codeToHtml(codeContent, {
+            lang: language,
+            themes: {
+              light: "light-plus",
+              dark: "dark-plus",
+            },
+          });
+        }
+        content = content.replace(fullMatch, `<div>${highlighted}</div>`);
       } catch (error) {
         console.error(`Highlight error: ${error.message}`);
-        return match;
       }
-    });
+    }
   }
   fs.writeFileSync(filePath, content, "utf8");
   console.log(`Highlighted: ${filePath}`);
@@ -102,20 +115,15 @@ function processHtmlFile(filePath) {
 
 async function main() {
   const targetDir = "trees/publish";
-  console.log('Target directory:', targetDir);
+  console.log("Target directory:", targetDir);
   try {
     const htmlFiles = findHtmlFiles(targetDir);
-    for (const file of htmlFiles) {
-      processHtmlFile(file);
-    }
+    await Promise.all(htmlFiles.map(file => processHtmlFile(file)));
   } catch (error) {
     console.error(`Highlight error: ${error.message}`);
-    console.error('Error stack:', error.stack);
+    console.error("Error stack:", error.stack);
   }
-  fs.copyFileSync(
-    "styles/shiki.css", 
-    "trees/publish/shiki.css"
-  );
+  fs.copyFileSync("styles/shiki.css", "trees/publish/shiki.css");
 }
 
 main();
