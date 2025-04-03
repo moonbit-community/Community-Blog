@@ -10,10 +10,10 @@ Powered by [Kodama](https://github.com/kokic/kodama).
 
 [+](contribution/index.md#:embed)
 
-[+-](team/team.md#:embed)
-
-[+-](weekly/index.md#:embed)
+[+](weekly/index.md#:embed)
 
 [+-](blog/index.md#:embed)
 
 [+-](knowledge/index.md#:embed)
+
+[+-](team/team.md#:embed)

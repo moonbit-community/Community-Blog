@@ -1,8 +1,5 @@
 ---
 title: Weekly
-collect: true
 ---
 
-- Post1
-
-- Post2
+[+](weekly/weekly1.md#:embed)
