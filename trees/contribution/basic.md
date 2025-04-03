@@ -14,6 +14,7 @@ Community-Blog 基于 [Kodama](https://github.com/kokic/kodama) 框架编写，�
 cargo install --git https://github.com/kokic/kodama.git
 git clone git@github.com:moonbit-community/community-blog.git
 cd community-blog
+git submodule update --init --recursive
 npm i
 npm run dev
 ```

@@ -1,7 +1,7 @@
-name: Deploy to GitHub Pages
+name: Build Check
 
 on:
-  push:
+  pull_request:
     branches:
       - main
   workflow_dispatch:
@@ -45,20 +45,3 @@ jobs:
 
       - name: Highlight code
         run: node scripts/highlight.js
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./trees/publish
-
-  deploy:
-    needs: build-and-deploy
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
