@@ -10,7 +10,7 @@ title: (未发布)Weekly1 社区周报 2025/3/24 ~ 2025/4/6
 
 - Meetup
 
-    3 月 30 日， MoonBit 举办了 2025 年首期技术以[AI时代下的基础软件](https://mp.weixin.qq.com/s/vDvsqxNAUzkijsPg26RIHA)为主题的 Meetup，吸引了 40 余位场开发者和近 300 名线上观众参与。
+    3 月 30 日，MoonBit 举办了 2025 年首期技术以[AI 时代下的基础软件](https://mp.weixin.qq.com/s/vDvsqxNAUzkijsPg26RIHA)为主题的 Meetup，吸引了 40 余位场开发者和近 300 名线上观众参与。
     
     活动中，四位 MoonBit 核心工程师带来了精彩技术分享：
     - 李子烨深入解析了 MoonBit 的 LLVM 后端实现原理；
