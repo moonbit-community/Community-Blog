@@ -26,6 +26,7 @@ title: (未发布)Weekly1 社区周报 2025/3/24 ~ 2025/4/6
 - OJ 竞赛 (TBD)
 
 - Mooncakes 开源
+
   由 MoonBit 官方的 [Yoorkin](https://github.com/Yoorkin) 领头，[Lampese](https://github.com/Lampese) 参与建设新版 mooncakes.io 网站已经[开源在 moonbitlang 组织内](https://github.com/moonbitlang/mooncakes.io)。该网站采用纯 MoonBit 基于 [rabbit-tea](https://github.com/Yoorkin/rabbit-tea) 框架与 [Tailwind CSS](https://tailwindcss.com) 构建，是采用 MoonBit 开发多网页应用的一个优秀示例。而且官方的 mooncakes.io 已经更换了这一版的实现。
 
 本周社区动态：
