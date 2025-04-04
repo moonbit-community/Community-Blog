@@ -32,6 +32,8 @@ title: (未发布)Weekly1 社区周报 2025/3/24 ~ 2025/4/6
 
 - 本周由 [illusory0x0 猗露](https://github.com/illusory0x0) 维护的 [fuzz-match](https://github.com/moonbit-community/fuzzy_match) 库基本完工，现在已经成为了可靠性极高的字符串模糊匹配库，并已经被最新开源的 [mooncakes.io](https://github.com/moonbitlang/mooncakes.io) 采用作为搜索框的解决方案。
 
+- 本周，**MoonBit 作为首个中国开发者平台**，受邀在巴塞罗那举办的 [WASM I/O 大会](https://wasm.io) 上进行技术分享，展示了其在 WASM 领域的创新成果。活动中，**MoonBit 负责人张宏波** 发表了主题演讲 [《MoonBit & WebAssembly》](https://2025.wasm.io/sessions/moonbit-and-webassembly-unlocking-the-true-efficiency-of-wasm)。社区对 MoonBit 的表现给予了高度评价：**Kotlin/Wasm 作者 Zalim** 在社交媒体上表示：“MoonBit 在 WebAssembly 平台实现了精彩的成果”，对 MoonBit 在 WASM 方向的技术成果给予认可。**ZivergeTech & Golem Cloud 公司 CEO John A De Goes** 也表示：“与张宏波在 WASM I/O 见面后，我对 MoonBit 未来更加充满期待！”
+
 本周社区新增优质包：
 
 - Luna Flow 组织推出了一个数据可视化库（该项目主负责人为 [yokiautummoon 结城秋月](https://github.com/yokiautummoon)），专注于提供简洁、高效的图表绘制功能库 Luna-Plot，现在已经有效果非常好的 demo。目前开源在 [MoonBit-Community](https://github.com/moonbit-community/luna-plot) 组织内。
