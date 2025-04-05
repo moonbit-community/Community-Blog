@@ -98,7 +98,7 @@ title: (未发布)Weekly1 社区周报 2025/3/24 ~ 2025/4/6
 
 - [ShellWen 颉文](https://github.com/ShellWen) 编写了一个 dotenv 文件的解析器 [dotenv-mbt](https://github.com/moonbit-community/dotenv-mbt)。该库用于解析 .env 文件，文档十分齐全，代码质量非常高，并且已经通过了 PLCT 实验室的最终产出验收。
 
-- [ShellWen 颉文](https://github.com/ShellWen) 还编写了一个 URL Router 库 [sw-router](https://github.com/moonbit-community/sw-router)，用于解决 URL 的路由问题。该库的文档和代码质量都不错，目前已经通过 PLCT 实验室第一阶段产出验收。
+- [ShellWen 颉文](https://github.com/ShellWen) 还编写了一个 URL Router 库 [sw-router](https://github.com/moonbit-community/sw-router)，用于解决 URL 的路由问题。该库的文档和代码质量都不错，并且已经通过了 PLCT 实验室的最终产出验收。
 
 - [Seedking](https://github.com/Seedking) 编写了一个语义化版本号解析器 [SemVer](https://github.com/Seedking/SemVer)，用于语义化解析和比较版本号，为后面编写一些处理版本号相关的程序创造了可能。目前已经通过 PLCT 实验室的最终产出验收。
 
