@@ -1,12 +1,3 @@
-.shiki,
-.shiki span {
-  color: var(--shiki-light, #000000) !important;
-  background-color: var(--shiki-light-bg, #ffffff) !important;
-  font-style: var(--shiki-light-font-style, normal) !important;
-  font-weight: var(--shiki-light-font-weight, normal) !important;
-  text-decoration: var(--shiki-light-text-decoration, none) !important;
-}
-
 @media (prefers-color-scheme: dark) {
   .shiki,
   .shiki span {
