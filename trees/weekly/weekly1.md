@@ -109,6 +109,6 @@ title: (未发布)Weekly1 社区周报 2025/3/24 ~ 2025/4/6
 本周社区项目维护动态（只会写相对重要的内容）：
 
 - Luna-Flow
-  - [luna-utils](https://github.com/Luna-Flow/luna-utils) 提供了对数组元素和数组元素映射后一致性检查的支持。（详见same(), same_to(), map_same(), map_same_to()）
+  - [luna-utils](https://github.com/Luna-Flow/luna-utils) 提供了对数组元素和数组元素映射后一致性检查的支持。（详见 same(), same_to(), map_same(), map_same_to()）
   - [luna-poly](https://github.com/Luna-Flow/luna-poly) 优化了稀疏多项式的实现，并支持了向稀疏多项式中代入表达式，加入了更多的测试。
   - [linear-algebra](https://github.com/Luna-Flow/linear-algebra) 增加了对高斯消元的支持。
