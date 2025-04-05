@@ -49,6 +49,17 @@ title: (未发布)Weekly1 社区周报 2025/3/24 ~ 2025/4/6
     MoonBit OJ 编程竞技赛不仅展示了开发者们的技术实力，也激发了他们对国产基础软件的热情。MoonBit 将继续为开发者们提供高质量的交流和竞技平台，推动技术生态的持续发展。
     我们期待在下一次的社区活动中，看到更多开发者的精彩表现，共同见证 MoonBit 生态的不断进步和发展。
 
+- 最佳硬科技前沿创新奖
+  
+  3 月 29 日，第十二届开源操作系统年度技术大会（[OS2ATC](https://mp.weixin.qq.com/s/jo3EnoUAXkvkU6XKG1IFwA)）在北京航空航天大学成功举办。OS2ATC 汇聚了来自清华大学、北京大学、蚂蚁集团、腾讯云、国家智能网联汽车创新中心、中移物联等一线高校、企业和科研机构的顶尖专家学者和行业领军人物。
+
+  MoonBit 以硬核技术突破重塑编程语言生态：
+  - Wasm 原生加速编译链与 LLVM 后端架构，代码执行效率提升数倍，赋能云计算、边缘计算及AI场景；
+  - 深度支持 RISC-V 指令集；
+  - 产学研贯通，落地北京大学等课程体系；
+  
+  通过技术实践验证了硬科技“从学术走到产业”的标杆价值，为云原生与智能计算时代打造核心基石，荣获最佳硬科技前沿创新奖！
+
 - Mooncakes 开源
 
   由 MoonBit 官方的 [Yoorkin](https://github.com/Yoorkin) 领头，[Lampese 东灯](https://github.com/Lampese) 参与建设新版 mooncakes.io 网站已经[开源在 moonbitlang 组织内](https://github.com/moonbitlang/mooncakes.io)。该网站采用纯 MoonBit 基于 [rabbit-tea](https://github.com/Yoorkin/rabbit-tea) 框架与 [Tailwind CSS](https://tailwindcss.com) 构建，是采用 MoonBit 开发多网页应用的一个优秀示例。而且官方的 mooncakes.io 已经更换了这一版的实现。
