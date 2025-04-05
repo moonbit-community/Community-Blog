@@ -2,7 +2,7 @@
 title: 本周社区新增优质包
 ---
 
-- [Luna Flow](https://github.com/luna-flow) 组织推出了一个数据可视化库（该项目主负责人为 [yokiautummoon 结城秋月](https://github.com/yokiautummoon)），专注于提供简洁、高效的图表绘制功能库 Luna-Plot，现在已经有效果非常好的 demo。目前开源在 [MoonBit-Community](https://github.com/moonbit-community/luna-plot) 组织内。除此之外，Luna-Flow 也在着眼多条工作线，最近的两周中又新建了 [calculus-symbolic](https://github.com/Luna-Flow/calculus-symbolic) 与 [quaternion](https://github.com/luna-flow/quaternion) 两个项目，分别着眼于表达式为分和四元数计算。
+- [Luna Flow](https://github.com/luna-flow) 组织推出了一个数据可视化库（该项目主负责人为 [yokiautummoon 结城秋月](https://github.com/yokiautummoon)），专注于提供简洁、高效的图表绘制功能库 Luna-Plot，现在已经有效果非常好的 demo。目前开源在 [MoonBit-Community](https://github.com/moonbit-community/luna-plot) 组织内。除此之外，Luna-Flow 也在着眼多条工作线，最近的两周中又新建了 [calculus-symbolic](https://github.com/Luna-Flow/calculus-symbolic) 与 [quaternion](https://github.com/luna-flow/quaternion) 两个项目，分别着眼于表达式微分和四元数计算。
 
 - [ShellWen 颉文](https://github.com/ShellWen) 编写了一个 dotenv 文件的解析器 [dotenv-mbt](https://github.com/moonbit-community/dotenv-mbt)。该库用于解析 .env 文件，文档十分齐全，代码质量非常高，并且已经通过了 PLCT 实验室的最终产出验收。
 

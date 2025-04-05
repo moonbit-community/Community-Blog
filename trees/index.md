@@ -16,4 +16,4 @@ Powered by [Kodama](https://github.com/kokic/kodama).
 
 [+-](knowledge/index.md#:embed)
 
-[+-](team/team.md#:embed)
+[+](team/index.md#:embed)
