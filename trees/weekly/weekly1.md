@@ -108,4 +108,4 @@ title: (未发布)Weekly1 社区周报 2025/3/24 ~ 2025/4/6
 
 本周社区项目维护动态（只会写相对重要的内容）：
 
-- Luna-Flow (TBD)
+- Luna-Flow 的 [luna-poly](https://github.com/Luna-Flow/luna-poly) 支持了向稀疏多项式中代入表达式。 [linear-algebra](https://github.com/Luna-Flow/linear-algebra) 增加了对高斯消元的支持。
