@@ -32,6 +32,10 @@ title: (未发布)Weekly1 社区周报 2025/3/24 ~ 2025/4/6
 
   值得注意的是这次的新版 mooncakes.io 采用了来自社区的两个仓库 [fuzz-match](https://github.com/moonbit-community/fuzzy_match) 与 [lazy](https://github.com/CAIMEOX/lazy/blob/main/src/lazy.mbt)，分别用于搜索和惰性求值。
 
+- WASM I/O 2025
+  
+  本周，MoonBit 亮相巴塞罗那 [WASM I/O 大会](https://wasm.io)，并进行技术分享。本次为中国开发者平台首次登上这一国际技术峰会，展示了本土开源力量在 WASM 生态的创新成果。活动中，MoonBit 负责人张宏波 发表了主题演讲 [《MoonBit & WebAssembly》](https://2025.wasm.io/sessions/moonbit-and-webassembly-unlocking-the-true-efficiency-of-wasm)。社区对 MoonBit 的表现给予了高度评价：Kotlin/Wasm 作者 Zalim 在社交媒体上表示：“MoonBit 在 WebAssembly 平台实现了精彩的成果”，对 MoonBit 在 WASM 方向的技术成果给予认可。ZivergeTech & Golem Cloud 公司 CEO John A De Goes 也表示：“与张宏波在 WASM I/O 见面后，我对 MoonBit 未来更加充满期待！”
+
 本周社区新增优质项目：
 
 - 由 [Lampese 东灯](https://github.com/Lampese) 主导中科院软件所 PLCT 实验室 J139 小队基于 [Kodama](https://github.com/kokic/kodama) 搭建的 Community-Blog 本周正式开源并接受社区贡献，用于表达社区声音和促进社区发展。现在已经可以在 https://moonbit.community 访问。
@@ -53,8 +57,6 @@ title: (未发布)Weekly1 社区周报 2025/3/24 ~ 2025/4/6
 - [Hyrious](https://github.com/hyrious) 为 [Sublime](https://www.sublimetext.com) 编辑器开发了 MoonBit 的高亮和 LSP 支持，[现已在 Github 开源](https://github.com/hyrious/moonbit-syntax-highlight/)。
 
 - [quirk-lab](https://github.com/quirk-lab) 为 MoonBit 编写了 [Zed 插件支持](https://github.com/quirk-lab/zed-moonbit)。
-
-- 本周，MoonBit 作为首个中国开发者平台，受邀在巴塞罗那举办的 [WASM I/O 大会](https://wasm.io) 上进行技术分享，展示了其在 WASM 领域的创新成果。活动中，MoonBit 负责人张宏波 发表了主题演讲 [《MoonBit & WebAssembly》](https://2025.wasm.io/sessions/moonbit-and-webassembly-unlocking-the-true-efficiency-of-wasm)。社区对 MoonBit 的表现给予了高度评价：Kotlin/Wasm 作者 Zalim 在社交媒体上表示：“MoonBit 在 WebAssembly 平台实现了精彩的成果”，对 MoonBit 在 WASM 方向的技术成果给予认可。ZivergeTech & Golem Cloud 公司 CEO John A De Goes 也表示：“与张宏波在 WASM I/O 见面后，我对 MoonBit 未来更加充满期待！”
 
 本周社区新增优质包：
 
