@@ -10,7 +10,7 @@ title: 本周社区新增优质项目
 
 - MoonBit 官方同学 [tonyfettes](https://github.com/tonyfettes) 制作了 MoonBit 的 Linter 工具 [moon-lint](https://github.com/tonyfettes/moon-lint)，在 3 月 30 日的 Meetup 中也有对应介绍。该工具基于 tree-sitter，目前可以完成一些非静态语义分析的 lint 工作。
 
-- MoonBit 官方同学 [myfreess](https://github.com/myfreess) 编写了一个针对 MoonBit 代码的 diff 工具 mbtdiff(https://github.com/myfreess/mbtdiff)。该 diff 工具基于 MoonBit Native 后端编写，可以在命令行使用。将来可能为 LLM for MoonBitCode 的效果带来提升。
+- MoonBit 官方同学 [myfreess](https://github.com/myfreess) 编写了一个针对 MoonBit 代码的 diff 工具 [mbtdiff](https://github.com/myfreess/mbtdiff)。该 diff 工具基于 MoonBit Native 后端编写，可以在命令行使用。将来可能为 LLM for MoonBitCode 的效果带来提升。
 
 - [Ranhao Kang](https://github.com/RanhaoKang) 编写了一个项目 [moonbit-unity](https://github.com/RanhaoKang/moonbit-unity)，尝试在 [Unity](https://unity.com) 游戏框架中采用 MoonBit 编程。编译流程为 MoonBit -> JS backend -> PuerTS -> Unity。这个项目是 MoonBit 横向探索的一个有意思的项目。
 
