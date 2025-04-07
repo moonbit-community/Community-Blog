@@ -36,5 +36,5 @@ $$ \text{CPS} \to \text{Defunctionalization} \to \text{Inlining} \to \text{Tail 
 「去函数化」的确是精妙的程序转换技术，
 若读者在看完本文仍意犹未尽，
 希望能够深入了解其背后的理论基础，
-推荐阅读 John Reynolds 关于去函数化的的经典文章， 
+推荐阅读 John Reynolds 关于去函数化的经典文章， 
 以及 Olivier Danvy 很多相关的研究工作。
