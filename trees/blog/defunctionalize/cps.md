@@ -29,7 +29,7 @@ fn pre_order_cps[T : Show](self : Tree[T], f : (T) -> Unit) -> Unit {
 }
 ```
 
-通过严格的CPS变换，程序的控制流获得了显式的过程化表征。
+通过严格的 CPS 变换，程序的控制流获得了显式的过程化表征。
 基于此，我们可进一步实施**延续的去函数化**，即将高阶函数表示转化为数据结构表示。
 观察到延续包含两种形态：递归处理函数 `go(tree, cont)` 与恒等函数 `fn { x => x }`，我们将其编码为代数数据类型：
 
@@ -59,7 +59,7 @@ fn pre_order_cps_defunct[T : Show](self : Tree[T], f : (T) -> Unit) -> Unit {
 ```
 
 为实现彻底的命令式转换，我们先将尾递归形式改写为显式循环结构。
-通过MoonBit的loop语法，控制流的跳转关系得到直观呈现：
+通过 MoonBit 的 loop 语法，控制流的跳转关系得到直观呈现：
 
 ```moonbit
 fn pre_order_cps_defunct_loop[T : Show](
