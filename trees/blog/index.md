@@ -3,6 +3,6 @@ title: Blog
 collect: true
 ---
 
-- Post1
+[+-](blog/iterator/preorder-traversal.md#:embed)
 
-- Post2
+[+-](blog/iterator/external.md#:embed)
