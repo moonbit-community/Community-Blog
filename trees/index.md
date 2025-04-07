@@ -1,10 +1,8 @@
 ---
 title: 🐰 MoonBit Community
+description: MoonBit community weekly, blog, and knowledge base
+tool: Powered by [Kodama](https://github.com/kokic/kodama)
 ---
-
-MoonBit community weekly, blog, and knowledge base.
-
-Powered by [Kodama](https://github.com/kokic/kodama).
 
 [+](overview/index.md#:embed)
 
