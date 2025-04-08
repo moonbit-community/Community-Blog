@@ -2,6 +2,8 @@
 title: MoonBit 实现内部迭代器
 collect: true
 author: [illusory0x0](https://github.com/illusory0x0)
+taxon: Blog
+date: 2025-04-08
 ---
 
 本文实现的内部迭代器参考 [OCaml iter](https://github.com/c-cube/iter)。
