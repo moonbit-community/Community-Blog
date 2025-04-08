@@ -7,4 +7,6 @@ collect: true
 
 [+-](blog/iterator/external.md#:embed)
 
+[+-](blog/iterator/internal.md#:embed)
+
 [+-](blog/defunctionalize/index.md#:embed)
