@@ -2,6 +2,8 @@
 title: Derive Iteration from Recursion
 collect: true
 author: [CAIMEOX](https://github.com/CAIMEOX)
+taxon: Blog
+date: 2025-04-07
 ---
 
 <!-- Overview -->

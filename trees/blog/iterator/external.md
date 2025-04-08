@@ -2,6 +2,8 @@
 title: MoonBit 实现外部迭代器
 collect: true
 author: [illusory0x0](https://github.com/illusory0x0)
+taxon: Blog
+date: 2025-04-07
 ---
 
 目前 MoonBit 社区有两个外部迭代器的实现，
