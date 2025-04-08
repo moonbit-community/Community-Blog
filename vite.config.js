@@ -17,13 +17,11 @@ const plugin = {
 
     build();
 
-    chokidar.watch(["trees"], { ignoreInitial: true }).on("all", (_, path) => {
-      if (
-        !(path.startsWith("trees/trees") || path.startsWith("trees/publish"))
-      ) {
+    chokidar
+      .watch(["trees"], { ignored: /^trees\/(trees|publish)/ })
+      .on("all", (_, path) => {
         build();
-      }
-    });
+      });
   },
 };
 
