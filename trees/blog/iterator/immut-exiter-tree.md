@@ -1,5 +1,6 @@
 ---
 title: 实现树的不可变外部迭代器
+collect: true
 ---
 
 

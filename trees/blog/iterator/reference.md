@@ -1,5 +1,6 @@
 ---
 title: 参考资料
+collect: true
 ---
 
 

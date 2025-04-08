@@ -1,5 +1,6 @@
 ---
 title: 正文
+collect: true
 ---
 
 这里使用不可变单向链表作为栈，每次返回一个 `ImmutExIter[A]` 需要保存整个迭代上下文，

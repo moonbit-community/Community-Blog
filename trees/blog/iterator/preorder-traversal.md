@@ -1,5 +1,7 @@
 ---
 title: MoonBit 实现树的先序遍历
+collect: true
+author: [illusory0x0](https://github.com/illusory0x0)
 ---
 
 

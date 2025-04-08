@@ -1,5 +1,6 @@
 ---
 title: 不可变外部迭代器
+collect: true
 ---
 
 
