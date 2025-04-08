@@ -18,3 +18,8 @@ git submodule update --init --recursive
 npm i
 npm run dev
 ```
+
+
+[+](/contribution/install-typo-checker.md#:embed)
+
+Before pull request, we recommend  run  `typos` and `autocorrect --fix` commands.
