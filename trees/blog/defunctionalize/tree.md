@@ -8,7 +8,7 @@ collect: true
 
 ```moonbit
 enum Tree[T] {
-  Leaf
+  Leaf(T)
   Node(T, Tree[T], Tree[T])
 }
 ```
