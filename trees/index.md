@@ -4,14 +4,14 @@ description: MoonBit community weekly, blog, and knowledge base
 tool: Powered by [Kodama](https://github.com/kokic/kodama)
 ---
 
-[+](overview/index.md#:embed)
+[+](/overview/index.md#:embed)
 
-[+](contribution/index.md#:embed)
+[+](/contribution/index.md#:embed)
 
-[+](weekly/index.md#:embed)
+[+](/weekly/index.md#:embed)
 
-[+-](blog/index.md#:embed)
+[+-](/blog/index.md#:embed)
 
-[+-](knowledge/index.md#:embed)
+[+-](/knowledge/index.md#:embed)
 
-[+](team/index.md#:embed)
+[+](/team/index.md#:embed)
