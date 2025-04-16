@@ -6,8 +6,8 @@ MoonBit Community Blog 是由 Lampese 发起并负责、由 PLCT J139 小队主�
 
 我们非常需要社区成员的帮助来维护和完善 Community-Blog，具体贡献方式和标准可见 [Contribution Guide](contribution.md) 。
 
-[+](overview/bodys.md#:embed)
+[+](/overview/bodys.md#:embed)
 
-[+](overview/roadmap.md#:embed)
+[+](/overview/roadmap.md#:embed)
 
-[+](overview/copyright.md#:embed)
+[+](/overview/copyright.md#:embed)
