@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
+    "watch": "node watch.js",
     "highlight": "node scripts/highlight.js"
   },
   "repository": {
