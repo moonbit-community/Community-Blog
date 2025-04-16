@@ -3,7 +3,7 @@ title: Knowledge Base
 collect: true
 ---
 
-[+-](knowledge/packages.md#:embed)
+[+-](knowledge/packages/index.md#:embed)
 
 [+-](knowledge/glossary.md#:embed)
 
