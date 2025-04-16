@@ -10,6 +10,7 @@ title: Requirements
 - 代码内容（尤其是 MoonBit 代码）请确保格式化良好。
 - **不**使用 markdown / typst 自带的标题来分级，文章分节应当划分到不同的文件，并使用 kodama 的嵌入功能包含到主文件中。
 - 嵌入文件均采用绝对路径，以 `trees` 文件夹为根目录。例如本文件的路径是 `/contribution/requirement.md`。
+- kodama 内部的引用统一使用绝对路径，用 VsCode 打开 `community-blog/trees` 目录，可以使用跳转和补全功能。
 
 另外，对于发出的 PR，我们希望 PR 标题可以符合 [约定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/) 的要求，并且可以标注贡献的部分，比如：
 
