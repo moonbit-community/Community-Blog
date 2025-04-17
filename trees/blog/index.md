@@ -10,3 +10,5 @@ collect: true
 [+-](/blog/iterator/internal.md#:embed)
 
 [+-](/blog/defunctionalize/index.md#:embed)
+
+[+-](/blog/lunaflow/index.md#:embed)
