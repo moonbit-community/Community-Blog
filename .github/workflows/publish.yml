@@ -37,8 +37,10 @@ jobs:
       - name: Set up Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
 
-      - name: Install kodama
-        run: cargo install --git https://github.com/kokic/kodama.git
+      - name: Install kodama and typst
+        run: 
+          cargo install --git https://github.com/kokic/kodama.git
+          cargo install --locked typst-cli
 
       - name: Build site with kodama
         run: kodama compile -r trees
