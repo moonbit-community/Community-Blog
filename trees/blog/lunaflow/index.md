@@ -22,5 +22,6 @@ LunaFlow 是一个基于 MoonBit 的科学计算框架，
 
 [+](/blog/lunaflow/layers.md#:embed)
 [+](/blog/lunaflow/generic.md#:embed)
+[+](/blog/lunaflow/testing.md#:embed)
 [+](/blog/lunaflow/instances.md#:embed)
 [+](/blog/lunaflow/future.md#:embed)
