@@ -32,7 +32,9 @@ jobs:
           node-version: 20
 
       - name: Install moonbit toolchain
-        run: curl -fsSL https://cli.moonbitlang.cn/install/unix.sh | bash
+        run: |
+          curl -fsSL https://cli.moonbitlang.cn/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: npm install
