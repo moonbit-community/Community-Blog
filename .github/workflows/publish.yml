@@ -33,7 +33,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        
+
       - name: Install kodama and typst
         run: |
           wget https://github.com/Lampese/kodama-streaming-release/releases/latest/download/kodama
@@ -42,6 +42,11 @@ jobs:
           wget https://github.com/typst/typst/releases/latest/download/typst-x86_64-unknown-linux-musl.tar.xz
           tar -xf typst-x86_64-unknown-linux-musl.tar.xz
           sudo mv typst-x86_64-unknown-linux-musl/typst /usr/local/bin/
+
+      - name: Check moonbit code
+        run: |
+          cd code/moonbit
+          moonbit check
 
       - name: Compile
         run: node compile.js
