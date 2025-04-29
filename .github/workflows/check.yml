@@ -49,7 +49,7 @@ jobs:
       - name: Check moonbit code
         run: |
           cd code/moonbit
-          moonbit check
+          moon check
 
       - name: Compile
         run: node compile.js

@@ -31,6 +31,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install moonbit toolchain
+        run: curl -fsSL https://cli.moonbitlang.cn/install/unix.sh | bash
+
       - name: Install dependencies
         run: npm install
 
@@ -46,7 +49,7 @@ jobs:
       - name: Check moonbit code
         run: |
           cd code/moonbit
-          moonbit check
+          moon check
 
       - name: Compile
         run: node compile.js
