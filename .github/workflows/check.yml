@@ -37,11 +37,10 @@ jobs:
       - name: Set up Rust
         uses: actions-rust-lang/setup-rust-toolchain@v1
 
-      - name: Cache Rust dependencies
-        uses: Swatinem/rust-cache@v2
-
       - name: Install kodama
-        run: cargo install --git https://github.com/kokic/kodama.git
+        run: |
+          cargo install --git https://github.com/kokic/kodama.git
+          cargo install --locked typst-cli
 
       - name: Compile
         run: node compile.js
