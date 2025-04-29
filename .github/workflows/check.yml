@@ -40,8 +40,5 @@ jobs:
       - name: Install kodama
         run: cargo install --git https://github.com/kokic/kodama.git
 
-      - name: Build site with kodama
-        run: kodama compile -r trees
-
-      - name: Highlight code
-        run: node scripts/highlight.js
+      - name: Compile
+        run: node compile.js

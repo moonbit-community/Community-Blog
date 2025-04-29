@@ -113,8 +113,8 @@ async function processHtmlFile(filePath) {
   console.log(`Highlighted: ${filePath}`);
 }
 
-async function main() {
-  const targetDir = "trees/publish";
+async function main(dirname) {
+  const targetDir = `${dirname}/publish`;
   console.log("Target directory:", targetDir);
   try {
     const htmlFiles = findHtmlFiles(targetDir);
@@ -123,7 +123,7 @@ async function main() {
     console.error(`Highlight error: ${error.message}`);
     console.error("Error stack:", error.stack);
   }
-  fs.copyFileSync("styles/shiki.css", "trees/publish/shiki.css");
+  fs.copyFileSync("styles/shiki.css", `${dirname}/publish/shiki.css`);
 }
 
-main();
+export default main;
