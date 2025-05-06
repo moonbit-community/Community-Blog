@@ -5,26 +5,24 @@ collect: true
 
 这里使用不可变单向链表作为栈，每次返回一个 `ImmutExIter[A]` 需要保存整个迭代上下文，
 
-* 可变外部迭代器并不会保存，只能运行一次
+- 可变外部迭代器并不会保存，只能运行一次
 
-* 不可变外部迭代器可以运行多次，但是需要额外保存迭代上下文
+- 不可变外部迭代器可以运行多次，但是需要额外保存迭代上下文
 
-
-```moonbit 
+```moonbit
 typealias Stack[A] = @immut/list.T[A]
-
 
 fn ImmutExIter::from_tree[A](root : Tree[A]) -> ImmutExIter[A] {
 
   fn aux(stack : Stack[_]) -> (A,ImmutExIter[A])? {
     match stack {
-      Nil => None 
-      Cons(root,rest_stack) => { // pop root from stack 
+      Nil => None
+      Cons(root,rest_stack) => { // pop root from stack
         match root {
-          Nil => None 
+          Nil => None
           Node(x,left,right) => {
             let stack = Stack::Cons(left,Stack::Cons(right,rest_stack))
-            // push right into stack 
+            // push right into stack
             // push left into stack
             Some((x,fn () { aux(stack)}))
           }
@@ -39,8 +37,8 @@ fn ImmutExIter::from_tree[A](root : Tree[A]) -> ImmutExIter[A] {
 ```
 
 这里测试一下，不可变外部迭代器和 preorder 的一致性
-```moonbit 
 
+```moonbit
 test "ImmutExIter::from_tree" {
   let t2 = Tree::from_n(15)
   let iter = ImmutExIter::from_tree(t2)
@@ -61,10 +59,10 @@ test "ImmutExIter::from_tree" {
 
 接下来我们来实现 `zipWith`，这里和普通的`List[A]` 的 `zipWith` 别无二致
 
-```moonbit 
+```moonbit
 fn ImmutExIter::zipWith[A,B,C](self : ImmutExIter[A], other : ImmutExIter[B], f : (A,B) -> C) -> ImmutExIter[C] {
-  let xs = self 
-  let ys = other 
+  let xs = self
+  let ys = other
 
   match (xs.uncons(),ys.uncons()) {
     (Some((x,xs)),Some((y,ys))) => {

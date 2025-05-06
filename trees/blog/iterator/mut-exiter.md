@@ -5,7 +5,7 @@ collect: true
 
 可变外部迭代器，可以不断获取下一个元素的值，内部有一个可变的状态。
 
-```moonbit 
+```moonbit
 priv type ExIter[A] () -> A?
 
 fn ExIter::next[A](self : ExIter[A]) -> A? {
@@ -13,7 +13,7 @@ fn ExIter::next[A](self : ExIter[A]) -> A? {
 }
 ```
 
-```moonbit 
+```moonbit
 fn ExIter::from_array[A](xs : Array[A]) -> ExIter[A] {
   let mut i = 0 // i 是内部可变状态
   fn() {
@@ -50,8 +50,7 @@ test {
 
 [- 读者可以再一次看外部迭代器的性质](/blog/iterator/internal-vs-external.md#:embed)
 
-
-```moonbit 
+```moonbit
 fn ExIter::from_tree[A](root : Tree[A]) -> ExIter[A] {
   let stack = Array::new(capacity=4096) // stack 是内部可变状态
   stack.push(root)
@@ -73,22 +72,20 @@ fn ExIter::from_tree[A](root : Tree[A]) -> ExIter[A] {
 }
 ```
 
-
 我们可以实现 `zipWith` 来同时迭代两个迭代器，
 但是和不可变迭代器比，`ExIter`只能迭代一次，迭代后就使用完所有的元素。
 这个和文件流的概念很相似。
 
-
-```moonbit 
+```moonbit
 fn ExIter::zipWith[A,B,C](self : ExIter[A], other : ExIter[B], f : (A,B) -> C) -> ExIter[C] {
-  let xs = self 
-  let ys = other 
+  let xs = self
+  let ys = other
   fn () {
     match (xs.next(),ys.next() ) {
       (Some(x),Some(y)) => {
         Some(f(x,y))
       }
-      (_,_) => None 
+      (_,_) => None
     }
   }
 }
