@@ -12,3 +12,5 @@ collect: true
 [+-](/blog/defunctionalize/index.md#:embed)
 
 [+-](/blog/lunaflow/index.md#:embed)
+
+[+-](/blog/fenwick/index.md#:embed)
