@@ -1,6 +1,7 @@
 ---
 title: Implementing Fenwick trees with bit tricks in Java
 collect: true
+taxon: code
 ---
 
 ```java

@@ -1,4 +1,3 @@
-
 ///|
 typealias List[T] = @immut/list.T[T]
 
@@ -45,6 +44,7 @@ pub fn SegTree::set(self : SegTree, i : Index, v : Int) -> SegTree {
 }
 // section end seg_tree
 
+// section start interleave
 ///|
 pub fn interleave[T](sel : List[T], other : List[T]) -> List[T] {
   match (sel, other) {
@@ -63,36 +63,43 @@ fn b(i : Int) -> List[Int] {
       |> interleave(b(n - 1))
   }
 }
+// section end interleave
 
+// section start b4
 ///|
-test {
+test "b(4)" {
   inspect!(
     b(4),
     content="@list.of([32, 16, 34, 8, 36, 18, 38, 4, 40, 20, 42, 10, 44, 22, 46, 2])",
   )
-  inspect!(1 << 10, content="1024")
+}
+// section end b4
+
+// section start shift
+///|
+pub fn shift(n : Int, se : Bits) -> Bits {
+  while_(even, shr, se.set(n))
 }
 
 ///|
-pub fn shift(self : Bits, n : Int) -> Bits {
-  while_(even, shr, self.set(n))
+pub fn f2b(n : Int, se : Bits) -> Bits {
+  shift(n + 1, se) |> dec
+}
+// section end shift
+
+// section start unshift
+///|
+pub fn unshift(n : Int, se : Bits) -> Bits {
+  while_(fn { x => not(x.test_helper(n)) }, shl, se) |> Bits::clear(_, n)
 }
 
 ///|
-pub fn f2b(self : Bits, n : Int) -> Bits {
-  self.shift(n + 1).dec()
+pub fn b2f(n : Int, se : Bits) -> Bits {
+  unshift(n + 1, se.inc())
 }
+// section end unshift
 
-///|
-pub fn unshift(self : Bits, n : Int) -> Bits {
-  while_(fn { x => not(x.test_helper(n)) }, shl, self) |> Bits::clear(_, n)
-}
-
-///|
-pub fn b2f(self : Bits, n : Int) -> Bits {
-  self.inc().unshift(n + 1)
-}
-
+// section start test_id
 ///|
 test "id" {
   let f = fn {
@@ -100,13 +107,15 @@ test "id" {
       Int::until(1, 1 << size)
       .map(fn {
         x =>
-          (x |> Bits::to_bits |> f2b(size) |> b2f(size) |> Bits::from_bits) == x
+          (f2b(size, x |> Bits::to_bits) |> b2f(size, _) |> Bits::from_bits) ==
+          x
       })
       .all(fn { x => x })
   }
   assert_true!(f(4))
   assert_true!(f(5))
 }
+// section end test_id
 
 ///|
 pub fn active_parent_binary(self : Bits) -> Bits {
@@ -144,7 +153,7 @@ test {
         guard x == 0 else { true }
         let x = x + 1
         let x = x |> Bits::to_bits
-        (f2b(x, n) |> prev_segment_binary |> b2f(n)) == x.at_lsb(dec)
+        (f2b(n, x) |> prev_segment_binary |> b2f(n, _)) == x.at_lsb(dec)
       }
   }
 

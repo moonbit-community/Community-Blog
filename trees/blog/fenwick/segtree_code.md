@@ -1,6 +1,7 @@
 ---
 title: Simple segment tree implementation in MoonBit
 collect: true
+taxon: code
 ---
 
 下面代码展示了一个在 MoonBit 中实现的简单线段树，其中使用了一些处理索引范围的工具函数，如图 8 所示。我们将线段树存储为一个递归的代数数据类型。

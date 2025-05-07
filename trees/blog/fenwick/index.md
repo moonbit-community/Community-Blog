@@ -15,3 +15,5 @@ taxon: Blog
 [+](/blog/fenwick/fenwick_tree.md#:embed)
 
 [+](/blog/fenwick/two_complement.md#:embed)
+
+[+](/blog/fenwick/index_conv.md#:embed)
