@@ -10,3 +10,4 @@ taxon: Blog
 
 [+](/blog/fenwick/introduction.md#:embed)
 
+[+](/blog/fenwick/segtree.md#:embed)
