@@ -117,11 +117,14 @@ test "id" {
 }
 // section end test_id
 
+// section start active_parent_binary
 ///|
 pub fn active_parent_binary(self : Bits) -> Bits {
-  while_(odd, shr, self) |> shr
+  while_(odd, shr, self.shr())
 }
+// section end active_parent_binary
 
+// section start at_lsb
 ///|
 fn at_lsb(self : Bits, f : (Bits) -> Bits) -> Bits {
   match self {
@@ -133,11 +136,14 @@ fn at_lsb(self : Bits, f : (Bits) -> Bits) -> Bits {
       }
   }
 }
+// section end at_lsb
 
+// section start prev_segment_binary
 ///|
 fn prev_segment_binary(self : Bits) -> Bits {
   while_(even, shr, self).dec()
 }
+// section end prev_segment_binary
 
 ///|
 test "x - lsb x" {

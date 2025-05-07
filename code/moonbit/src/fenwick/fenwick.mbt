@@ -21,7 +21,7 @@ pub fn prefix(self : FenwickTree, i : Int) -> Int {
   }
   s
 }
-
+// section start update
 ///|
 pub fn update(self : FenwickTree, i : Int, delta : Int) -> Unit {
   let mut i = i
@@ -30,6 +30,7 @@ pub fn update(self : FenwickTree, i : Int, delta : Int) -> Unit {
     i += FenwickTree::lsb(i)
   }
 }
+// section end update
 
 ///|
 pub fn range(self : FenwickTree, i : Int, j : Int) -> Int {
