@@ -19,3 +19,5 @@ taxon: Blog
 [+](/blog/fenwick/index_conv.md#:embed)
 
 [+](/blog/fenwick/deriving.md#:embed)
+
+[+](/blog/fenwick/conclusion.md#:embed)
