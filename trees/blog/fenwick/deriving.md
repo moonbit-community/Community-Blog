@@ -49,7 +49,7 @@ $$
 
 直观地说，这看起来很像加上 LSB！一般来说，要找到 LSB，必须移过连续的 0 位，直到找到第一个 1；问题是如何跟踪移过了多少个 0 位。`lsb` 函数本身通过递归栈来跟踪；找到第一个 1 位后，递归栈展开并将所有递归经过的 0 位重新追加回去。上述流水线代表了一种替代方法：将位 $n+1$ 设置为“哨兵”来跟踪我们移动了多少；右移直到第一个 1 确实在个位上，此时我们加 1；然后通过左移将所有 0 位移回，直到哨兵位回到 $n+1$ 的位置。这个过程的一个例子如图 19 所示。当然，这只适用于值足够小，以至于哨兵位在整个操作过程中不会受到干扰的情况。
 
-<figure><img src="https://static.cambridge.org/binary/version/id/urn:cambridge.org:id:binary:20250116174732089-0720:S0956796824000169:S0956796824000169_fig19.png" width="50%"><figcaption>图 19: 使用哨兵位和移位来加上LSB。</figcaption></figure>
+<figure><img src="https://static.cambridge.org/binary/version/id/urn:cambridge.org:id:binary:20250116174732089-0720:S0956796824000169:S0956796824000169_fig19.png" width="50%"><figcaption>图 19: 使用哨兵位和移位来加上 LSB。</figcaption></figure>
 
 为了使这一点更形式化，我们首先定义一个辅助函数 `at_lsb`，它执行一个“在 LSB 处”的操作，即它移出 0 位直到找到一个 1，应用给定的函数，然后恢复 0 位。
 

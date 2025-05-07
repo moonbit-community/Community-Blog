@@ -2,7 +2,7 @@
 taxon: Theorem
 ---
 
-> 加上LSB是沿芬威克索引树向上移动到最近活跃父节点的正确方法，即
+> 加上 LSB 是沿芬威克索引树向上移动到最近活跃父节点的正确方法，即
 $$\begin{align*} & \text{activeParentFenwick}(x) \\ &= \text{b2f}(n, \text{activeParentBinary}(\text{f2b}(n, x))) \\ &= \text{add}(x, \text{lsb}(x)) \end{align*} $$
 > 在范围 $[1, 2^n)$ 上处处成立。（我们排除了 $2^n$，因为它对应于芬威克索引方案下的树根。）
 
