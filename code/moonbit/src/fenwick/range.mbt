@@ -1,3 +1,4 @@
+// section start range
 ///|
 typealias Index = Int
 
@@ -22,3 +23,5 @@ fn disjoint(r1 : Range, r2 : Range) -> Bool {
   let (a2, b2) = r2._
   b1 < a2 || b2 < a1
 }
+
+// section end range

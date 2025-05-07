@@ -4,7 +4,7 @@ taxon: Theorem
 
 $$ \forall x : \text{Bits}. \quad \text{lsb}(x) = \text{and}(x, \text{neg}(x)) $$
 
-**证明** 通过对 $x$ 进行归纳 （译者注：为了便利证明书写，我们将 `pat_match(bs, b)` 和 `make(bs, b)` 记为 $bs : b$，运算名的 `op_` 前缀均省略。
+**证明** 通过对 $x$ 进行归纳（译者注：为了便利证明书写，我们将 `pat_match(bs, b)` 和 `make(bs, b)` 记为 $bs : b$，运算名的 `op_` 前缀均省略。
 
 * 首先，若 $x = \text{Rep}(\text{O})$，不难验证 $\text{lsb}(x) = \text{and}(x, \text{neg}(x)) = \text{Rep}(\text{O})$。
 * 类似地，若 $x = \text{Rep}(\text{I})$，则 $\text{lsb}(x)$ 和 $\text{and}(x, \text{neg}(x))$ 均化简为 $\text{Rep}(\text{O}) : \text{I}$。
