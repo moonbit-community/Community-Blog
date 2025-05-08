@@ -51,6 +51,8 @@ jobs:
       - name: Check moonbit code
         run: |
           cd code/moonbit
+          moon update
+          moon install
           moon check
 
       - name: Compile
