@@ -34,7 +34,7 @@ function findLiteralContent(path_, section) {
 function injectLanguage(extname) {
   switch (extname) {
     case "mbt":
-      return "markdown";
+      return "moonbit";
     case "js":
       return "javascript";
     case "rs":
