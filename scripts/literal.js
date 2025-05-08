@@ -64,7 +64,7 @@ function main(dirname) {
     const replaced = content.replace(
       /!\[([^[\]]+)\]\(([^.]+)\.([^#)]+)#:include\)/g,
       (_match, blockname, filepath, ext) =>
-        `\`\`\`${ext}\n${findLiteralContent(
+        `\`\`\`${injectLanguage(ext)}\n${findLiteralContent(
           `${filepath}.${ext}`,
           blockname
         )}\n\`\`\``
