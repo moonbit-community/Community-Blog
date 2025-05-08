@@ -6,11 +6,11 @@ collect: true
 通过前文的讨论，读者应对去函数化的核心思想建立了基本认知。
 本节将运用该技术解决更具挑战性的问题——二叉树遍历优化。首先给出二叉树的规范定义：
 
-![define](moonbit/src/defunc/tree.mbt:#include)
+![define](moonbit/src/defunc/tree.mbt#:include)
 
 考虑基础的前序遍历实现：
 
-![pre_order](moonbit/src/defunc/tree.mbt:#include)
+![pre_order](moonbit/src/defunc/tree.mbt#:include)
 
 在该函数的设计实现中，我们采用递归算法对树形数据结构进行系统性遍历，
 这种方法虽能确保每个节点都受到函数 `f` 的精确，

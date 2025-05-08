@@ -4,4 +4,4 @@ collect: true
 taxon: code
 ---
 
-![interleave](moonbit/src//fenwick/segment_tree.mbt:#include)
+![interleave](moonbit/src//fenwick/segment_tree.mbt#:include)

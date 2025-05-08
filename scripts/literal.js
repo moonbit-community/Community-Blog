@@ -62,7 +62,7 @@ function main(dirname) {
   for (const file of files) {
     const content = fs.readFileSync(file, "utf8");
     const replaced = content.replace(
-      /!\[([^[\]]+)\]\(([^.]+)\.([^:)]+):(?:#include)\)/g,
+      /!\[([^[\]]+)\]\(([^.]+)\.([^#)]+)#:include\)/g,
       (_match, blockname, filepath, ext) =>
         `\`\`\`${ext}\n${findLiteralContent(
           `${filepath}.${ext}`,

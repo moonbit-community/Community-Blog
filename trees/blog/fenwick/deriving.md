@@ -14,12 +14,12 @@ collect: true
 
 有了这些引理在手，让我们看看如何在芬威克数组中移动以实现 `update` 和 `query`；我们先从 `update` 开始。在实现 `update` 操作时，我们需要从一个叶节点开始，沿着路径向上到达根节点，更新沿途所有活跃的节点。实际上，对于任何给定的叶节点，其最近的活跃父节点恰好是存储在过去对应于该叶节点的槽中的节点（参见图 13）。因此，要更新索引 $i$，我们只需从芬威克数组中的索引 $i$ 开始，然后重复找到最近的活跃父节点，边走边更新。回想一下，用于 `update` 的命令式代码就是这样做的，通过在每一步加上当前索引的 LSB 来找到最近的活跃父节点：
 
-![update](moonbit/src//fenwick/fenwick.mbt:#include)
+![update](moonbit/src//fenwick/fenwick.mbt#:include)
 
 让我们看看如何推导出这种行为。
 要在二叉索引方案下找到一个节点的最近活跃父节点，我们首先向上移动到直接父节点（通过将索引除以二，即执行一次右位移）；然后只要当前节点是右子节点（即索引为奇数），就继续向上移动到下一个直接父节点。这产生了如下定义：
 
-![active_parent_binary](moonbit/src//fenwick/segment_tree.mbt:#include)
+![active_parent_binary](moonbit/src//fenwick/segment_tree.mbt#:include)
 
 这就是为什么我们使用了根节点索引为 2 的略显奇怪的索引方案——否则这个定义对于任何活跃父节点是根节点的节点都不起作用！
 
@@ -53,7 +53,7 @@ $$
 
 为了使这一点更形式化，我们首先定义一个辅助函数 `at_lsb`，它执行一个“在 LSB 处”的操作，即它移出 0 位直到找到一个 1，应用给定的函数，然后恢复 0 位。
 
-![at_lsb](moonbit/src//fenwick/segment_tree.mbt:#include)
+![at_lsb](moonbit/src//fenwick/segment_tree.mbt#:include)
 
 [+](/blog/fenwick/thm/thm6.md#:embed)
 
@@ -68,6 +68,6 @@ $$
 
 从图 20 中寻找灵感，我们可以看到我们想要做的是找到我们最近的非活跃父节点的左兄弟，也就是说，我们向上走直到找到第一个作为右子节点的祖先，然后移动到它的左兄弟。在二叉索引方案下，这可以简单地实现为：
 
-![prev_segment_binary](moonbit/src//fenwick/segment_tree.mbt:#include)
+![prev_segment_binary](moonbit/src//fenwick/segment_tree.mbt#:include)
 
 [+](/blog/fenwick/thm/thm9.md#:embed)

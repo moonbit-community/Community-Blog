@@ -23,7 +23,7 @@ collect: true
 
 我们可以检验这确实重现了 $n=4$ 时观察到的序列：
 
-![b4](moonbit/src//fenwick/segment_tree.mbt:#include)
+![b4](moonbit/src//fenwick/segment_tree.mbt#:include)
 
 令 $s ! k$ 表示列表 $s$ 中的第 $k$ 项（从 1 开始计数），在代码中记为 `s.nth(k)` （译者注：这和 MoonBit 标准库的 `nth` 存在差异，它是从 0 开始的索引）。下面的代码指出了两个关于索引和交错相互作用的简单引理，即 $(xs \curlyvee ys) ! (2 \cdot j) = ys ! j$ 和 $(xs \curlyvee ys) ! (2 \cdot j - 1) = xs ! j$（只要 $xs$ 和 $ys$ 长度相等）。
 
@@ -79,7 +79,7 @@ $$ \text{f2b} (n, 2^a \cdot b) = \text{f2b}(n - a, b) = 2^{(n-a)+1} + b - 1. $$
 
 换句话说，计算 `f2b` 包括只要输入是偶数就重复除以 2（即右位移），然后最终减 1 并加上一个 2 的幂。然而，要知道最后要加哪个 2 的幂，取决于我们移动了多少次。思考这个问题的一个更好的方法是在开始时加上 $2^{n+1}$，然后让它随着其他所有位一起移动。（译者注：原文在这里说的并不是很清楚，在这里补充一下我的解释：我们想要求解 $X = 2^{n-a+1} + b$，可以先乘上一个因子 $2^a$ 得到 $2^a X = 2^{n+1} + 2^ab$，这样表达式中便有一个 $k = 2^a \cdot b$ 存在，它是函数的参数。这样一来等式的右边即是 $k$ 加上一个 $2^{n+1}$，而 $X = \dfrac{2^{n+1} + 2^a \cdot b}{2^a}$，除法在这里可以使用位移操作实现）因此，我们使用我们的 `Bits` DSL 得到 `f2b` 的最终定义。单独定义 `shift` 函数将使我们的一些证明更加紧凑。
 
-![shift](moonbit/src//fenwick/segment_tree.mbt:#include)
+![shift](moonbit/src//fenwick/segment_tree.mbt#:include)
 
 容易使用 QuickCheck 验证这在范围 $[1, 2^4]$ 上产生与原始的 `f2b(4, k)` 相同的结果。
 
@@ -91,8 +91,8 @@ $$ \text{b2f} (n, 2^c + d) = 2^{n-c+1} \cdot (d + 1). $$
 
 换句话说，给定输入 $2^c + d$，我们减去最高位 $2^c$，加 1，然后左移 $n - c + 1$ 次。同样，存在一个更简单的方法：我们可以先加 1（注意因为 $d \lt 2^{c-1}$，加 1 不会干扰 $2^c$ 处的位），然后左移足够多次，使最左边的位移到位置 $n + 1$，最后移除它。即：
 
-![unshift](moonbit/src//fenwick/segment_tree.mbt:#include)
+![unshift](moonbit/src//fenwick/segment_tree.mbt#:include)
 
 验证：
 
-![test_id](moonbit/src//fenwick/segment_tree.mbt:#include)
+![test_id](moonbit/src//fenwick/segment_tree.mbt#:include)
