@@ -21,6 +21,7 @@ pub fn prefix(self : FenwickTree, i : Int) -> Int {
   }
   s
 }
+
 // section start update
 ///|
 pub fn update(self : FenwickTree, i : Int, delta : Int) -> Unit {
