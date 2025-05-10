@@ -1,6 +1,7 @@
 --- 
 title: You could have invented Fenwick trees
-author: CAIMEOX
+author: [CAIMEOX](https://github.com/CAIMEOX)
+date: 2025-05-08
 taxon: Blog
 ---
 
