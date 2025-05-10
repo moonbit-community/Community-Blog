@@ -14,3 +14,5 @@ collect: true
 [+-](/blog/lunaflow/index.md#:embed)
 
 [+-](/blog/fenwick/index.md#:embed)
+
+[+-](/blog/lrualgorithm/index.md#:embed)
