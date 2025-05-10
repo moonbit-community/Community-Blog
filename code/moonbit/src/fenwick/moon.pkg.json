@@ -1,0 +1,8 @@
+{
+    "import": [
+        {
+            "alias": "qc",
+            "path": "moonbitlang/quickcheck"
+        }
+    ]
+}

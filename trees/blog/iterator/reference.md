@@ -3,7 +3,6 @@ title: 参考资料
 collect: true
 ---
 
-
 [Why does the callback for Iter::new() need to return IterResult?](https://github.com/moonbitlang/core/issues/1638)
 
 [external iterator](https://github.com/moonbitlang/core/issues/1446#issuecomment-2579226613)

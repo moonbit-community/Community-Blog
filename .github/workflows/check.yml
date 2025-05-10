@@ -31,17 +31,29 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install moonbit toolchain
+        run: |
+          curl -fsSL https://cli.moonbitlang.cn/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> $GITHUB_PATH
+
       - name: Install dependencies
         run: npm install
 
-      - name: Set up Rust
-        uses: actions-rust-lang/setup-rust-toolchain@v1
-
       - name: Install kodama
-        run: cargo install --git https://github.com/kokic/kodama.git
+        run: |
+          wget https://github.com/Lampese/kodama-streaming-release/releases/latest/download/kodama
+          chmod +x kodama
+          sudo mv kodama /usr/local/bin/
+          wget https://github.com/typst/typst/releases/latest/download/typst-x86_64-unknown-linux-musl.tar.xz
+          tar -xf typst-x86_64-unknown-linux-musl.tar.xz
+          sudo mv typst-x86_64-unknown-linux-musl/typst /usr/local/bin/
 
-      - name: Build site with kodama
-        run: kodama compile -r trees
+      - name: Check moonbit code
+        run: |
+          cd code/moonbit
+          moon update
+          moon install
+          moon check
 
-      - name: Highlight code
-        run: node scripts/highlight.js
+      - name: Compile
+        run: node compile.js

@@ -7,8 +7,8 @@ date: 2025-04-07
 ---
 
 目前 MoonBit 社区有两个外部迭代器的实现，
-[Yu-zh/iterator](https://github.com/Yu-zh/iterator) 和 
-[FlammeShadow/iter](https://github.com/FlammeShadow/iter)。 
+[Yu-zh/iterator](https://github.com/Yu-zh/iterator) 和
+[FlammeShadow/iter](https://github.com/FlammeShadow/iter)。
 
 本文提供一个由浅入深的教程，来帮助读者学习外部迭代器。
 
@@ -23,4 +23,3 @@ date: 2025-04-07
 [+](/blog/iterator/immut-exiter.md#:embed)
 
 [+](/blog/iterator/reference.md#:embed)
-

@@ -86,7 +86,7 @@ async function processHtmlFile(filePath) {
     /<pre><code class="language-([\w-]+)">([\s\S]*?)<\/code><\/pre>/g;
   if (content.match(codeBlockRegex)) {
     content += "<link rel='stylesheet' href='/shiki.css'>";
-    
+
     const matches = Array.from(content.matchAll(codeBlockRegex));
     for (const match of matches) {
       const [fullMatch, language, codeContent] = match;
@@ -109,21 +109,29 @@ async function processHtmlFile(filePath) {
       }
     }
   }
+  content = injectPlausible(content);
   fs.writeFileSync(filePath, content, "utf8");
   console.log(`Highlighted: ${filePath}`);
 }
 
-async function main() {
-  const targetDir = "trees/publish";
+function injectPlausible(content) {
+  return content.replace(
+    /<\/body>/,
+    `<script defer data-domain="moonbit.community" src="https://plausible.io/js/script.js"></script></body>`
+  );
+}
+
+async function main(dirname) {
+  const targetDir = `${dirname}/publish`;
   console.log("Target directory:", targetDir);
   try {
     const htmlFiles = findHtmlFiles(targetDir);
-    await Promise.all(htmlFiles.map(file => processHtmlFile(file)));
+    await Promise.all(htmlFiles.map((file) => processHtmlFile(file)));
   } catch (error) {
     console.error(`Highlight error: ${error.message}`);
     console.error("Error stack:", error.stack);
   }
-  fs.copyFileSync("styles/shiki.css", "trees/publish/shiki.css");
+  fs.copyFileSync("styles/shiki.css", `${dirname}/publish/shiki.css`);
 }
 
-main();
+export default main;

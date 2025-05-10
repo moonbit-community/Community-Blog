@@ -3,9 +3,9 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite & node watch.js",
     "watch": "node watch.js",
-    "highlight": "node scripts/highlight.js"
+    "compile": "node compile.js"
   },
   "repository": {
     "type": "git",

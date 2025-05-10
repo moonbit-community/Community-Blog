@@ -1,18 +1,35 @@
 import chokidar from "chokidar";
-import cp from "node:child_process";
+import internal_build from "./scripts/build.js";
 import fs from "node:fs";
 
-let watched_path = fs
+const watched_path = fs
   .readdirSync("trees", {
     withFileTypes: true,
   })
   .filter((dir) => dir.name !== "publish" && dir.name !== "trees")
   .map((dir) => `trees/${dir.name}`);
 
+let isBuilding = false;
+let pendingBuild = false;
+
 function build() {
-  cp.execSync("kodama c -r trees");
-  cp.execSync("node scripts/highlight.js");
+  if (isBuilding) {
+    pendingBuild = true;
+    return;
+  }
+
+  isBuilding = true;
+  try {
+    internal_build();
+  } finally {
+    isBuilding = false;
+    if (pendingBuild) {
+      pendingBuild = false;
+      build();
+    }
+  }
 }
+
 build();
 
 chokidar.watch(watched_path, { ignoreInitial: true }).on("all", (_, path) => {
