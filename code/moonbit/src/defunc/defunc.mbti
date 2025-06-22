@@ -1,0 +1,19 @@
+package "community-blog/moonbit-code/defunc"
+
+// Values
+
+// Types and methods
+type Filter
+
+type FilterExtend
+
+type FilterExtendCompose
+
+type Tree[T]
+
+type TreeCont[T]
+
+// Type aliases
+
+// Traits
+

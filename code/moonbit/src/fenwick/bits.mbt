@@ -1,4 +1,5 @@
 // section start bits
+
 ///|
 enum Bits {
   Rep(Bit)
@@ -7,6 +8,7 @@ enum Bits {
 // section end bits
 
 // section start pattern
+
 ///|
 pub fn to_snoc(self : Bits) -> Bits {
   match self {
@@ -40,6 +42,7 @@ fn div(n : Int, d : Int) -> Int {
 }
 
 // section start conversion
+
 ///|
 pub fn Bits::to_bits(n : Int) -> Bits {
   match n {
@@ -63,6 +66,7 @@ pub fn Bits::from_bits(self : Bits) -> Int {
 // section end conversion
 
 // section start show
+
 ///|
 impl Show for Bits with to_string(self) {
   fn go {
@@ -83,23 +87,25 @@ impl Show for Bits with output(self, logger) {
 // section end show
 
 // section start test1
+
 ///|
 test "from . to == id" {
   let b = Snoc(Rep(O), O) |> Snoc(I) |> Snoc(O) |> Snoc(I)
-  inspect!(b, content="...0000101")
+  inspect(b, content="...0000101")
   let b1 = Snoc(Rep(I), O) |> Snoc(I)
-  inspect!(b1, content="...11101")
+  inspect(b1, content="...11101")
   let b26 = Bits::to_bits(26)
-  inspect!(b26, content="...00011010")
+  inspect(b26, content="...00011010")
   let b_30 = Bits::to_bits(-30)
-  inspect!(b_30, content="...11100010")
-  inspect!(b_30.from_bits(), content="-30")
-  @qc.quick_check_fn!(fn(x) { Bits::from_bits(Bits::to_bits(x)) == x })
+  inspect(b_30, content="...11100010")
+  inspect(b_30.from_bits(), content="-30")
+  @qc.quick_check_fn(fn(x) { Bits::from_bits(Bits::to_bits(x)) == x })
   // +++ [100/0/100] Ok, passed!
 }
 // section end test1
 
 // section start inc_dec
+
 ///|
 pub fn inc(self : Bits) -> Bits {
   match self {
@@ -126,6 +132,7 @@ pub fn dec(self : Bits) -> Bits {
 // section end inc_dec
 
 // section start lsb
+
 ///|
 pub fn lsb(self : Bits) -> Bits {
   match self {
@@ -140,16 +147,18 @@ pub fn lsb(self : Bits) -> Bits {
 // section end lsb
 
 // section start test2
+
 ///|
 test "lsb" {
-  inspect!(Bits::to_bits(26), content="...00011010")
-  inspect!(Bits::to_bits(26).lsb(), content="...00010")
-  inspect!(Bits::to_bits(24), content="...00011000")
-  inspect!(Bits::to_bits(24).lsb(), content="...0001000")
+  inspect(Bits::to_bits(26), content="...00011010")
+  inspect(Bits::to_bits(26).lsb(), content="...00010")
+  inspect(Bits::to_bits(24), content="...00011000")
+  inspect(Bits::to_bits(24).lsb(), content="...0001000")
 }
 // section end test2
 
 // section start bit_and
+
 ///|
 impl BitAnd for Bits with land(self, other) {
   match (self, other) {
@@ -163,6 +172,7 @@ impl BitAnd for Bits with land(self, other) {
 // section end bit_and
 
 // section start bit_not
+
 ///|
 pub fn Bits::inv(self : Bits) -> Bits {
   match self {
@@ -176,6 +186,7 @@ pub fn Bits::inv(self : Bits) -> Bits {
 // section end bit_not
 
 // section start op_add
+
 ///|
 impl Add for Bits with op_add(self, other) {
   match (self, other) {
@@ -191,6 +202,7 @@ impl Add for Bits with op_add(self, other) {
 // section end op_add
 
 // section start op_neg
+
 ///|
 impl Neg for Bits with op_neg(self) {
   self.inv().inc()
@@ -198,9 +210,10 @@ impl Neg for Bits with op_neg(self) {
 // section end op_neg
 
 // section start test_add
+
 ///|
 test "add" {
-  @qc.quick_check_fn!(fn {
+  @qc.quick_check_fn(fn {
     (x, y) => x + y == Bits::from_bits(Bits::to_bits(x) + Bits::to_bits(y))
   })
   // +++ [100/0/100] Ok, passed!
@@ -208,6 +221,7 @@ test "add" {
 // section end test_add
 
 // section start helpers
+
 ///|
 pub fn set_to(self : Bits, idx : Int, b1 : Bit) -> Bits {
   match (idx, self.pat_match()) {
@@ -246,6 +260,7 @@ pub fn even(self : Bits) -> Bool {
 // section end helpers
 
 // section start shift
+
 ///|
 pub fn shr(self : Bits) -> Bits {
   self.pat_match().0
@@ -257,7 +272,7 @@ pub fn shl(self : Bits) -> Bits {
 }
 
 ///|
-pub fn while_[A](p : (A) -> Bool, f : (A) -> A, x : A) -> A {
+pub fn[A] while_(p : (A) -> Bool, f : (A) -> A, x : A) -> A {
   loop x {
     x => if p(x) { continue f(x) } else { x }
   }
