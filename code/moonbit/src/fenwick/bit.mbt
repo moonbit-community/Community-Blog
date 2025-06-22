@@ -1,4 +1,5 @@
 // section start bit
+
 ///|
 enum Bit {
   O

@@ -1,4 +1,5 @@
 // section start define
+
 ///|
 priv enum Tree[A] {
   Nil
@@ -7,8 +8,9 @@ priv enum Tree[A] {
 // section end define
 
 // section start preorder
+
 ///|
-fn Tree::preorder[A](self : Tree[A], f : (A) -> Unit) -> Unit {
+fn[A] Tree::preorder(self : Tree[A], f : (A) -> Unit) -> Unit {
   fn dfs(root) {
     match root {
       Nil => ()
@@ -25,8 +27,9 @@ fn Tree::preorder[A](self : Tree[A], f : (A) -> Unit) -> Unit {
 // section end preorder
 
 // section start preorder_stack
+
 ///|
-fn Tree::preorder_stack[A](self : Tree[A], f : (A) -> Unit) -> Unit {
+fn[A] Tree::preorder_stack(self : Tree[A], f : (A) -> Unit) -> Unit {
   let stack = Array::new(capacity=4096)
   stack.push(self)
   while not(stack.is_empty()) {
@@ -44,6 +47,7 @@ fn Tree::preorder_stack[A](self : Tree[A], f : (A) -> Unit) -> Unit {
 // section end preorder_stack
 
 // section start final
+
 ///|
 fn Tree::from_n(n : Int) -> Tree[Int] {
   let mut i = 0
@@ -62,12 +66,12 @@ fn Tree::from_n(n : Int) -> Tree[Int] {
 }
 
 ///|
-fn test_preorder(root : Tree[Int]) -> Unit! {
+fn test_preorder(root : Tree[Int]) -> Unit raise {
   let b1 = StringBuilder::new()
   let b2 = StringBuilder::new()
   root.preorder(fn(x) { b1.write_object(x) })
   root.preorder_stack(fn(x) { b2.write_object(x) })
-  assert_eq!(b1.to_string(), b2.to_string())
+  assert_eq(b1.to_string(), b2.to_string())
 }
 
 ///|
@@ -79,8 +83,8 @@ test "preorder/preorder_stack" {
   )
   let mut sum = 0
   t1.preorder(fn(x) { sum += x })
-  inspect!(sum, content="15")
+  inspect(sum, content="15")
   let t2 = Tree::from_n(15)
-  test_preorder!(t2)
+  test_preorder(t2)
 }
 // section end final

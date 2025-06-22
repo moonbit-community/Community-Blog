@@ -1,6 +1,7 @@
 // section start pre_order_cps
+
 ///|
-fn pre_order_cps[T : Show](self : Tree[T], f : (T) -> Unit) -> Unit {
+fn[T : Show] pre_order_cps(self : Tree[T], f : (T) -> Unit) -> Unit {
   fn go {
     Leaf(x), k => k(f(x))
     Node(x, left, right), k => {
@@ -14,6 +15,7 @@ fn pre_order_cps[T : Show](self : Tree[T], f : (T) -> Unit) -> Unit {
 // section end pre_order_cps
 
 // section start tree_cont
+
 ///|
 enum TreeCont[T] {
   Return
@@ -22,8 +24,9 @@ enum TreeCont[T] {
 // section end tree_cont
 
 // section start pre_order_cps_defunct
+
 ///|
-fn pre_order_cps_defunct[T : Show](self : Tree[T], f : (T) -> Unit) -> Unit {
+fn[T : Show] pre_order_cps_defunct(self : Tree[T], f : (T) -> Unit) -> Unit {
   fn run_cont {
     Next(tree, k) => go(tree, k)
     Return => ()
@@ -45,8 +48,9 @@ fn pre_order_cps_defunct[T : Show](self : Tree[T], f : (T) -> Unit) -> Unit {
 // section end pre_order_cps_defunct
 
 // section start pre_order_cps_defunct_loop
+
 ///|
-fn pre_order_cps_defunct_loop[T : Show](
+fn[T : Show] pre_order_cps_defunct_loop(
   self : Tree[T],
   f : (T) -> Unit
 ) -> Unit {
@@ -67,8 +71,9 @@ fn pre_order_cps_defunct_loop[T : Show](
 // section end pre_order_cps_defunct_loop
 
 // section start pre_order_loop
+
 ///|
-fn pre_order_loop[T : Show](self : Tree[T], f : (T) -> Unit) -> Unit {
+fn[T : Show] pre_order_loop(self : Tree[T], f : (T) -> Unit) -> Unit {
   let mut k = Return
   let mut t = self
   while true {
@@ -94,8 +99,9 @@ fn pre_order_loop[T : Show](self : Tree[T], f : (T) -> Unit) -> Unit {
 // section end pre_order_loop
 
 // section start pre_order_loop_stack
+
 ///|
-fn pre_order_loop_stack[T : Show](self : Tree[T], f : (T) -> Unit) -> Unit {
+fn[T : Show] pre_order_loop_stack(self : Tree[T], f : (T) -> Unit) -> Unit {
   let k = []
   let mut t = self
   while true {

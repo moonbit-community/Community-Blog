@@ -1,0 +1,66 @@
+package "community-blog/moonbit-code/fenwick"
+
+import(
+  "moonbitlang/core/immut/list"
+)
+
+// Values
+fn b2f(Int, Bits) -> Bits
+
+fn f2b(Int, Bits) -> Bits
+
+fn[T] interleave(@list.T[T], @list.T[T]) -> @list.T[T]
+
+fn shift(Int, Bits) -> Bits
+
+fn unshift(Int, Bits) -> Bits
+
+fn[A] while_((A) -> Bool, (A) -> A, A) -> A
+
+// Types and methods
+type Bit
+fn Bit::from_enum(Self) -> Int
+fn Bit::not(Self) -> Self
+fn Bit::to_enum(Int) -> Self
+impl Eq for Bit
+
+type Bits
+fn Bits::active_parent_binary(Self) -> Self
+fn Bits::clear(Self, Int) -> Self
+fn Bits::dec(Self) -> Self
+fn Bits::even(Self) -> Bool
+fn Bits::from_bits(Self) -> Int
+fn Bits::inc(Self) -> Self
+fn Bits::inv(Self) -> Self
+fn Bits::lsb(Self) -> Self
+fn Bits::make(Self, Bit) -> Self
+fn Bits::odd(Self) -> Bool
+fn Bits::pat_match(Self) -> (Self, Bit)
+fn Bits::set(Self, Int) -> Self
+fn Bits::set_to(Self, Int, Bit) -> Self
+fn Bits::shl(Self) -> Self
+fn Bits::shr(Self) -> Self
+fn Bits::test_helper(Self, Int) -> Bool
+fn Bits::to_bits(Int) -> Self
+fn Bits::to_snoc(Self) -> Self
+impl Eq for Bits
+
+type FenwickTree
+fn FenwickTree::get(Self, Int) -> Int
+fn FenwickTree::new(Int) -> Self
+fn FenwickTree::prefix(Self, Int) -> Int
+fn FenwickTree::range(Self, Int, Int) -> Int
+fn FenwickTree::set(Self, Int, Int) -> Unit
+fn FenwickTree::update(Self, Int, Int) -> Unit
+
+type SegTree
+fn SegTree::get(Self, Int) -> Int
+fn SegTree::set(Self, Int, Int) -> Self
+fn SegTree::update(Self, Int, Int) -> Self
+impl Eq for SegTree
+impl Show for SegTree
+
+// Type aliases
+
+// Traits
+

@@ -17,17 +17,18 @@ pub fn prefix(self : FenwickTree, i : Int) -> Int {
   let mut s = 0
   while i > 0 {
     i -= FenwickTree::lsb(i)
-    s += self._[i]
+    s += self.inner()[i]
   }
   s
 }
 
 // section start update
+
 ///|
 pub fn update(self : FenwickTree, i : Int, delta : Int) -> Unit {
   let mut i = i
-  while i < self._.length() {
-    self._[i] += delta
+  while i < self.inner().length() {
+    self.inner()[i] += delta
     i += FenwickTree::lsb(i)
   }
 }

@@ -1,9 +1,10 @@
 ///|
-typealias List[A] = @immut/list.T[A]
+typealias @immut/list.T as List
 
 // section start original_filter
+
 ///|
-fn filter[T](xs : List[T], pred : (T) -> Bool) -> List[T] {
+fn[T] filter(xs : List[T], pred : (T) -> Bool) -> List[T] {
   match xs {
     Nil => Nil
     Cons(x, xs) if pred(x) => Cons(x, filter(xs, pred))
@@ -13,6 +14,7 @@ fn filter[T](xs : List[T], pred : (T) -> Bool) -> List[T] {
 // section end original_filter
 
 // section start limited_filter
+
 ///|
 enum Filter {
   IsEven
@@ -33,6 +35,7 @@ fn run(self : Filter, data : Int) -> Bool {
 // section end limited_filter
 
 // section start defunc_filter
+
 ///|
 fn filter_defunct(xs : List[Int], pred : Filter) -> List[Int] {
   match xs {
@@ -44,6 +47,7 @@ fn filter_defunct(xs : List[Int], pred : Filter) -> List[Int] {
 // section end defunc_filter
 
 // section start defunc_filter_extend
+
 ///|
 enum FilterExtend {
   //...
@@ -60,6 +64,7 @@ fn run_extend(self : FilterExtend, data : Int) -> Bool {
 // section end defunc_filter_extend
 
 // section start defunc_filter_extend_compose
+
 ///|
 enum FilterExtendCompose {
   //...

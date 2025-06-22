@@ -1,4 +1,5 @@
 // section start define
+
 ///|
 enum Tree[T] {
   Leaf(T)
@@ -7,8 +8,9 @@ enum Tree[T] {
 // section end define
 
 // section start pre_order
+
 ///|
-fn pre_order[T : Show](tree : Tree[T], f : (T) -> Unit) -> Unit {
+fn[T : Show] pre_order(tree : Tree[T], f : (T) -> Unit) -> Unit {
   match tree {
     Leaf(x) => f(x)
     Node(x, left, right) => {
