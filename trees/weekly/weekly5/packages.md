@@ -10,6 +10,7 @@ title: 本周社区新增优质包
 - [AdUhTkJm Yue Huang](https://github.com/AdUhTkJm) 编写了一个支持 SIMD 的高速数值库 [nummoon](https://github.com/AdUhTkJm/nummoon)，有非常完善的文档和 Benchmark。是 MoonBit 在数值运算领域非常值得关注的库。
 - [bikallem](https://github.com/bikallem) 编写了一个 MoonBit 的响应式编程库 [Reactive](https://github.com/bikallem/reactive)，代码质量较高，文档也比较完善，已经可以构建一个简单的 demo。
 - [TheWaWaR LinFeng](https://github.com/TheWaWaR) 编写了一个新的命令解析器（此前社区也有，但是不能完成一些更加复杂的任务）[clap.mbt](https://github.com/TheWaWaR/clap.mbt)，目前已经可以完成一些复杂的解析任务，而且还可以输出命令的详细信息，可以投入生产环境当中。
+- [BigOrangeQWQ](https://github.com/BigOrangeQWQ) 编写了一个 [UnificationTable](https://github.com/BigOrangeQWQ/UnificationTable) 库，用于解决符号计算中的代数化简问题。
 - [LunaFlow](https://github.com/Luna-Flow) 团队的 [wangjuwudi](https://github.com/wangjuwudi) 编写了一个用于解决一次线形规划问题的库 [Linear-Program](https://github.com/wangjuwudi/Linear-program)，现在刚刚完成 LP 问题定义和标准化部分。
 - [MINGtoMING Zhenming Lin](https://github.com/MINGtoMING) 编写了一个在 native 后段支持 SIMD 的字符串库 [simdstring.mbt](https://github.com/MINGtoMING/simdstring.mbt)，目前的完成度还不错，可以进行一些简单的字符串操作。
 - MoonBit 官方的同学 [NSlash951 myfrees](https://github.com/myfreess) 开源了一个 [propagator](https://github.com/myfreess/propagator) 库。Propagator 是一个用于解决约束传播问题的算法，之前在解决绝症的医疗用药问题中被使用过。
@@ -17,4 +18,4 @@ title: 本周社区新增优质包
 - [33761](https://github.com/33761) 编写了一个 MoonBit 对 Raylib 的绑定库 [raylib-mbt](https://github.com/moonbit-community/raylib-mbt)，现在还处于未完成的状态，已经可以看到 API 设计的雏形。
 - [Milky2018](https://github.com/Milky2018) 编写了一个 MoonBit 的分布式计算引擎 [moonlight](https://github.com/Milky2018/moonlight)。虽然目前还没有完善的文档，但是代码量已经很多了。
 - [FrenchPicnic](https://github.com/FrenchPicnic) 在 MoonBit-Community 编写了一个新的库 [crypto.mbt](https://github.com/moonbit-community/crypto.mbt)，用于补充官方仓库中 crypto 缺失的算法，只是现在还没有任何内容。值得注意的是社区活跃用户 [Glenn Lewis](https://github.com/gmlewis) 应该也编写过类似的大量库，有待考察。
-- MoonBit 官方的同学 [NSlash951 myfrees](https://github.com/myfreess) 开源了一个 [intmap](https://github.com/myfreess/intmap) 库，意图不明。
+- MoonBit 官方的同学 [NSlash951 myfrees](https://github.com/myfreess) 开源了一个 [intmap](https://github.com/myfreess/intmap) 库，库中包含了一些函数式数据结构。
