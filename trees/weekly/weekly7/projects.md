@@ -1,5 +1,5 @@
 ---
 title: 本周社区新增优质项目
 ---
-- [tonyfettes](https://github.com/tonyfettes)创建了一个 MoonBit 与 libuv 库绑定的支持库 [uv.mbt](https://github.com/moonbit-community/uv.mbt)。目前该库已具备基本功能。
-- [RuifengFu](https://github.com/RuifengFu)创建了一个 [moondsa](https://github.com/moonbit-community/moondsa) 库，主要在 MoonBit 语言中，完整实现 NIST FIPS 204 标准定义的 ML-DSA 算法，目前正在完善中。
+
+- MoonBit 官方同学 [tonyfettes](https://github.com/tonyfettes) 开源了一个 MoonBit 与 libuv 库绑定的支持库 [uv.mbt](https://github.com/moonbit-community/uv.mbt)，用于解决一些跨平台的移步 I/O 需求。目前该库已经可以完成预期的基础需求。

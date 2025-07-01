@@ -1,7 +1,12 @@
 ---
 title: 本周官方重要动态
 ---
-- Moonbit 官方在 6.24 发布[对 MoonBit 编程语言创始人张宏波的访谈](https://mp.weixin.qq.com/s/NSIU7Lw4_MYRAdW52HMWtw)，围绕 MoonBit 的设计理念、发展历程、核心特点及行业思考展开，核心内容如下：
+
+- MoonBit 官方开源了官网 [moonbitlang.cn](moonbitlang.cn) 的源代码 [website](https://github.com/moonbitlang/website)，未来社区成员可以参与 MoonBit 官网的建设了。
+
+- MoonBit 官方创建了一个新仓库 [moonbit-evolution](https://github.com/moonbitlang/moonbit-evolution)，后续 MoonBit 所有用户可见的改动，都会在仓库中说吗，使得 MoonBit 的发展更加透明，用户可追踪。用户也可以在仓库中讨论和提出提案，象征着 MoonBit 的社区写作文进入新阶段。
+
+- MoonBit 官方在 6.24 发布[对 MoonBit 编程语言创始人张宏波的访谈](https://mp.weixin.qq.com/s/NSIU7Lw4_MYRAdW52HMWtw)，围绕 MoonBit 的设计理念、发展历程、核心特点及行业思考展开，核心内容如下：
   - MoonBit 简介
     - 基本定位：一门全新的通用编程语言，可用于开发网站、APP、服务器后台等各种应用，2025 年 6 月 18 日发布 Beta 正式版，正从“实验性技术”演进为适用于企业正式场景的工具。
     - 核心理念：“AI 原生”，并非要成为 AI，而是创造一门能让 AI 用起来最得心应手、最不容易出错的语言，从语法、类型系统、错误处理机制等设计之初就深度考虑 AI 的理解、生成和验证代码需求，解决 AI 编程中代码可维护性等痛点。
