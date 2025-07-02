@@ -5,6 +5,7 @@ title: 本周社区新增优质包
 - [illusory0x0 猗露](https://github.com/illusory0x0) 开源了一个新的包 [simple_parserc](https://github.com/moonbit-community/simple_parserc)，一个简单的 Monadic Parser Combinator 库。目前的完成度比较高，是 MoonBit 符号计算相关非常值得关注的库。
 - [BigOrangeQWQ](https://github.com/BigOrangeQWQ) 编写了一个新的格式化工具库（吐槽：虽然社区其实已经有很多了，但是新的尝试值得鼓励）[fmt](https://github.com/moonbit-community/fmt)，代码和文档完成度都比较高，该库的 API 设计参考了 Python 的 `str.format` 的设计。
 - [kesmeey](https://github.com/kesmeey) 编写了一个新的库 [immut_IntervalTree](https://github.com/moonbit-community/immut_IntervalTree)，是不可变的区间树库，目前完成度较高。而可变版本的区间树库早前也是由这位同学编写的。
+- MoonBit 官方在组织中创建了一个由官方提供支持的正则库 [regexp.mbt](https://github.com/moonbitlang/regexp.mbt)，比之前的社区维护的几个正则库功能都要完善，文档也非常齐全。
 - 资深开发者 [justjavac 迷渡](https://github.com/justjavac) 编写了一个新的库[moonbit-webview](https://github.com/justjavac/moonbit-webview)，这是一个基于 Moonbit 的 WebView 绑定项目，目前完成度已经较高，可以运行 WebView 的 demo。味了编写该库他同时编写了一个 FFI 工具库 [moonbit-ffi](https://github.com/justjavac/moonbit-ffi)。
 - [ShellWen 颉文](https://github.com/ShellWen) 编写了一个新的库 [sw-socket](https://github.com/moonbit-community/sw-socket)，是一个强大的套接字处理库，代码质量较高，文档也十分完善。他使用该库编写了 demo 项目 [sw-http-server](https://github.com/moonbit-community/sw-http-server)。
 - [AdUhTkJm Yue Huang](https://github.com/AdUhTkJm) 编写了一个支持 SIMD 的高速数值库 [nummoon](https://github.com/AdUhTkJm/nummoon)，有非常完善的文档和 Benchmark。是 MoonBit 在数值运算领域非常值得关注的库。
