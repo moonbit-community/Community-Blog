@@ -40,7 +40,7 @@ fn run(self : Filter, data : Int) -> Bool {
 fn filter_defunct(xs : List[Int], pred : Filter) -> List[Int] {
   match xs {
     Nil => Nil
-    Cons(x, xs) if run(pred, x) => Cons(x, filter_defunct(xs, pred))
+    Cons(x, xs) if pred.run(x) => Cons(x, filter_defunct(xs, pred))
     Cons(_, xs) => filter_defunct(xs, pred)
   }
 }
@@ -74,7 +74,7 @@ enum FilterExtendCompose {
 ///|
 fn run_extend_compose(self : FilterExtendCompose, data : Int) -> Bool {
   match self {
-    And(f1, f2) => run_extend(f1, data) && run_extend(f2, data)
+    And(f1, f2) => f1.run_extend(data) && f2.run_extend(data)
     //...
   }
 }

@@ -60,7 +60,7 @@ fn b(i : Int) -> List[Int] {
   match i {
     0 => Cons(2, Nil)
     n =>
-      Int::until(1 << n, (1 << n) + (1 << (n - 1))).map(fn { x => x * 2 })
+      Int::until(1 << n, (1 << n) + (1 << (n - 1))).map(x => x * 2)
       |> @immut/list.from_iter
       |> interleave(b(n - 1))
   }
@@ -95,7 +95,7 @@ pub fn f2b(n : Int, se : Bits) -> Bits {
 
 ///|
 pub fn unshift(n : Int, se : Bits) -> Bits {
-  while_(fn { x => not(x.test_helper(n)) }, Bits::shl, se) |> Bits::clear(_, n)
+  while_(x => not(x.test_helper(n)), Bits::shl, se) |> Bits::clear(_, n)
 }
 
 ///|
@@ -108,16 +108,10 @@ pub fn b2f(n : Int, se : Bits) -> Bits {
 
 ///|
 test "id" {
-  let f = fn {
-    size =>
-      Int::until(1, 1 << size)
-      .map(fn {
-        x =>
-          (f2b(size, x |> Bits::to_bits) |> b2f(size, _) |> Bits::from_bits) ==
-          x
-      })
-      .all(fn { x => x })
-  }
+  let f = size => Int::until(1, 1 << size)
+    .map(x => (f2b(size, x |> Bits::to_bits) |> b2f(size, _) |> Bits::from_bits) ==
+      x)
+    .all(x => x)
   assert_true(f(4))
   assert_true(f(5))
 }
@@ -162,16 +156,12 @@ test "x - lsb x" {
 
 ///|
 test {
-  fn for_n {
-    n =>
-      fn(x) {
-        guard x == 0 else { true }
-        let x = x + 1
-        let x = x |> Bits::to_bits
-        (f2b(n, x) |> prev_segment_binary |> b2f(n, _)) == x.at_lsb(dec)
-      }
+  let for_n = n => fn(x) {
+    guard x == 0 else { true }
+    let x = x + 1
+    let x = x |> Bits::to_bits
+    (f2b(n, x) |> prev_segment_binary |> b2f(n, _)) == x.at_lsb(dec)
   }
-
   @qc.quick_check_fn(for_n(4))
   // +++ [100/0/100] Ok, passed!
 }
