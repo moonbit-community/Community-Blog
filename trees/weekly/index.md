@@ -14,6 +14,6 @@ title: Weekly
 
 [+-](/weekly/weekly6.md#:embed)
 
-[+](/weekly/weekly7.md#:embed)
+[+-](/weekly/weekly7.md#:embed)
 
-[+-](/weekly/weekly8.md#:embed)
+[+](/weekly/weekly8.md#:embed)
