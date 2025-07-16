@@ -3,7 +3,7 @@ title: 本周官方重要动态
 ---
 
 - MoonBit 官方开源了使用 MoonBit 编写的编译器前端 [parser](https://github.com/moonbitlang/parser)，基于 [moonlex](https://github.com/moonbitlang/moonlex) 与[moonyacc](https://github.com/moonbitlang/moonyacc)。证明 MoonBit 当前的编译器前端已经完成了自举，也证明了 MoonBit 在符号计算相关领域的优势。
-- MoonBit 官方开源了异步基础设施 [async](https://github.com/moonbitlang/async)，目前可以确保在 Linux/MacOS 的 Native/LLVM 后端上正常运行。库的功能非常完善，支持结构化并发、优秀的错误传播和任务取消。未来将会支持比如 Windows 支持之类的更多功能。
+- MoonBit 官方开源了异步基础设施 [async](https://github.com/moonbitlang/async)，目前可以确保在 Linux/macOS 的 Native/LLVM 后端上正常运行。库的功能非常完善，支持结构化并发、优秀的错误传播和任务取消。未来将会支持比如 Windows 支持之类的更多功能。
 - MoonBit 官方开源了使用 WasmOfOCaml 编译的跨平台 MoonBit 编译器 [moonc_wasm](https://github.com/moonbitlang/moonc_wasm)，采用 Wasm 文件发行，可以解决很多小众平台的 MoonBit 发行问题。
 - MoonBit 官方的 Pearls 系列文章更新了第三、四篇文章[《MoonBit Pearls Vol.03：算法竞赛经典：背包问题》](https://mp.weixin.qq.com/s/9bey04RiYhvTj2x8ZD268Q)、[《MoonBit Pearls Vol.04：用 MoonBit 探索协同式编程（上）》](https://mp.weixin.qq.com/s/Uc6uZuIIbOapOaVyZZ1ong)，分别讨论了 MoonBit 与动态规划和协同式编程的的话题。
 - MoonBit 官方在 Beta 阶段的双周报正式改为月报，7 月 15 日发布了一次[月报](https://mp.weixin.qq.com/s/253cG9u57B1B0LVavgE2zQ)，有以下内容：
