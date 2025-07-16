@@ -87,7 +87,7 @@ pub fn shift(n : Int, se : Bits) -> Bits {
 
 ///|
 pub fn f2b(n : Int, se : Bits) -> Bits {
-  shift(n + 1, se) |> dec
+  shift(n + 1, se).dec()
 }
 // section end shift
 
@@ -151,7 +151,7 @@ fn prev_segment_binary(self : Bits) -> Bits {
 ///|
 test "x - lsb x" {
   let x = Bits::to_bits(26)
-  inspect(x.at_lsb(dec), content="...00011000")
+  inspect(x.at_lsb(Bits::dec), content="...00011000")
 }
 
 ///|
@@ -160,7 +160,7 @@ test {
     guard x == 0 else { true }
     let x = x + 1
     let x = x |> Bits::to_bits
-    (f2b(n, x) |> prev_segment_binary |> b2f(n, _)) == x.at_lsb(dec)
+    (f2b(n, x) |> Bits::prev_segment_binary |> b2f(n, _)) == x.at_lsb(Bits::dec)
   }
   @qc.quick_check_fn(for_n(4))
   // +++ [100/0/100] Ok, passed!
