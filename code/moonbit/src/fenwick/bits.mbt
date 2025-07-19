@@ -69,11 +69,13 @@ pub fn Bits::from_bits(self : Bits) -> Int {
 
 ///|
 impl Show for Bits with to_string(self) {
-  fn go {
-    Rep(b) => b.to_string().repeat(3) + "..."
-    s => {
-      let (bs, b) = s.pat_match()
-      b.to_string() + go(bs)
+  fn go(s) {
+    match s {
+      Rep(b) => b.to_string().repeat(3) + "..."
+      s => {
+        let (bs, b) = s.pat_match()
+        b.to_string() + go(bs)
+      }
     }
   }
 
@@ -99,7 +101,7 @@ test "from . to == id" {
   let b_30 = Bits::to_bits(-30)
   inspect(b_30, content="...11100010")
   inspect(b_30.from_bits(), content="-30")
-  @qc.quick_check_fn(fn(x) { Bits::from_bits(Bits::to_bits(x)) == x })
+  @qc.quick_check_fn(x => Bits::from_bits(Bits::to_bits(x)) == x)
   // +++ [100/0/100] Ok, passed!
 }
 // section end test1
@@ -213,8 +215,8 @@ impl Neg for Bits with op_neg(self) {
 
 ///|
 test "add" {
-  @qc.quick_check_fn(fn {
-    (x, y) => x + y == Bits::from_bits(Bits::to_bits(x) + Bits::to_bits(y))
+  @qc.quick_check_fn(fn(x : (Int, Int)) {
+    x.0 + x.1 == Bits::from_bits(Bits::to_bits(x.0) + Bits::to_bits(x.1))
   })
   // +++ [100/0/100] Ok, passed!
 }
@@ -242,9 +244,9 @@ pub fn Bits::clear(self : Bits, idx : Int) -> Bits {
 
 ///|
 pub fn test_helper(self : Bits, i : Int) -> Bool {
-  loop i, self.pat_match() {
-    0, (_bs, b) => b == I
-    k, (bs, _b) => continue k - 1, bs.pat_match()
+  loop (i, self.pat_match()) {
+    (0, (_bs, b)) => b == I
+    (k, (bs, _b)) => continue (k - 1, bs.pat_match())
   }
 }
 

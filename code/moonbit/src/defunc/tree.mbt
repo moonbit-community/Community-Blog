@@ -10,7 +10,7 @@ enum Tree[T] {
 // section start pre_order
 
 ///|
-fn[T : Show] pre_order(tree : Tree[T], f : (T) -> Unit) -> Unit {
+fn[T] pre_order(tree : Tree[T], f : (T) -> Unit) -> Unit {
   match tree {
     Leaf(x) => f(x)
     Node(x, left, right) => {

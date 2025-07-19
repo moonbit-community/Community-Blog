@@ -6,4 +6,4 @@ title: 本周社区新增优质包
 - [kesmeey](https://github.com/kesmeey) 编写了一个库，实现了 [IndexSet](https://github.com/moonbit-community/IndexSet)、[IndexMap](https://github.com/moonbit-community/IndexMap)两个主要数据结构。它们与 [MoonBit Core](https://github.com/moonbitlang/core) 的 [HashSet 库](https://github.com/moonbitlang/core/tree/main/hashset) 和 [HashMap 库](https://github.com/moonbitlang/core/tree/main/hashmap) 的所有操作都兼容，目前可进行创建、添加、查询、排序、遍历、集合运算、索引访问等操作。该包目前已基本完成，意见。
 - [GreatHank](https://github.com/GreatHank) 编写了 Mutable 版本 [BitVector 库](https://github.com/GreatHank/moonbit-BitVector)，实现了对位向量的表示、存储与常用作，包括设置/清除/翻转位、位计数、逻辑运算、范围截取与序列化等，目前已通过 PLCT 实验室的产出第一次阶段认证。
 - MoonBit 的官方同学 [Yu-zh Yu Zhang](https://github.com/Yu-zh) 编写了一个终端操作库 [termbit](https://github.com/Yu-zh/termbit)，项目灵感来自 [corssterm-rs](https://github.com/crossterm-rs/crossterm)。目前该包还在开发中，仅在 Mac 芯片上测试过。
-- MoonBit 的官方同学 [myfreess](https://github.com/myfreess) 编写了一个 MoonBit Native 后端的 [SQLite3 Binding](https://github.com/myfreess/sqlite3.mbt)，目前还处于早期开发阶段。
+- MoonBit 的官方同学 [NSlash951 myfreess](https://github.com/myfreess) 编写了一个 MoonBit Native 后端的 [SQLite3 Binding](https://github.com/myfreess/sqlite3.mbt)，目前还处于早期开发阶段。
