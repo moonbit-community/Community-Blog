@@ -12,3 +12,4 @@ title: 本周社区新增优质项目
 - [illusory0x0 猗露](https://github.com/illusory0x0) 开源了一个项目 [moonbit-native-ffi-examples](https://github.com/illusory0x0/moonbit-native-ffi-examples)，是采用 MoonBit 进行 Native FFI 的示范 Collections。
 - 官方的同学 [lijunchen](https://github.com/lijunchen) 开发了一个叫做 [mvm](https://github.com/lijunchen/mvm) 的项目，可以快速将 MoonBit 工具链在 Stable，Pre-Release，Bleeding 版本之间切换。
 - 官方的同学 [tonyfettes](https://github.com/tonyfettes) 开源了一个新的仓库 [openssl.mbt](https://github.com/tonyfettes/openssl.mbt)，应该是要绑定到 Python 的 openssl 相关库，不过目前应该还没完工。
+- [Yang Ming-Tian skylee03](https://github.com/skylee03) 使用 MoonBit 编写了一个支持多个有界量化机制的玩具编程语言 [citysub](https://github.com/skylee03/citysub)，是 MoonBit 在符号运算领域非常好的尝试。

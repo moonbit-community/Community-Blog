@@ -20,3 +20,5 @@ title: 本周社区新增优质包
 - [Milky2018](https://github.com/Milky2018) 编写了一个 MoonBit 的分布式计算引擎 [moonlight](https://github.com/Milky2018/moonlight)。虽然目前还没有完善的文档，但是代码量已经很多了。
 - [FrenchPicnic](https://github.com/FrenchPicnic) 在 MoonBit-Community 编写了一个新的库 [crypto.mbt](https://github.com/moonbit-community/crypto.mbt)，用于补充官方仓库中 crypto 缺失的算法，只是现在还没有任何内容。值得注意的是社区活跃用户 [Glenn Lewis](https://github.com/gmlewis) 应该也编写过类似的大量库，有待考察。
 - MoonBit 官方的同学 [NSlash951 myfrees](https://github.com/myfreess) 开源了一个 [intmap](https://github.com/myfreess/intmap) 库，库中包含了一些函数式数据结构。
+- MoonBit 官方的同学 [NSlash951 myfrees](https://github.com/myfreess) 编写了一个 [asm.mbt](https://github.com/myfreess/asm.mbt) 库，使用 ffi 接入了一些简单的 Assembly 接口，可以在 MoonBit 中无缝完成一些 Asssembly 操作。
+- [CAIMEO](http) 编写了一个 MoonBit 的 SVG 库 [svg](https://github.com/CAIMEOX/svg)。根据介绍，这个库提供了一种干净、类型正确的方法在 MoonBit 中构造 SVG 内容。目前该库的文档已经相当完善。

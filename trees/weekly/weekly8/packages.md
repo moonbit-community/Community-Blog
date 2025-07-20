@@ -9,3 +9,5 @@ title: 本周社区新增优质包
 - [迷渡 justjavac](https://github.com/justjavac) 编写了一个字符串 Case 转换库 [moonbit-case](https://github.com/justjavac/moonbit-case)，可以支持将字符串在 `camelCase`、`PascalCase`、`snake_case` 等等多种命名格式中转换。
 - [AXiX AXiX-official](https://github.com/AXiX-official) 编写了一个对 MoonBit 的 Primitive Type（除 BigInt 外）以 `ArrayView[Byte]` 形式读写的支持库 [binaryPrimitives](https://github.com/AXiX-official/binaryPrimitives)，该库受启发自 C# 语言的 `System.Buffers.Binary.BinaryPrimitives`。目前的完成度较高。
 - [ryota0624](https://github.com/ryota0624) 编写了一个新的包 [moonbit-mustache](https://github.com/ryota0624/moonbit-mustache)，参考自 Go 语言的 [mustache](https://github.com/alexkappa/mustache)。可以用于处理 Mustache 模板语言的工作。
+- [CAIMEO](https://github.com/CAIMEOX) 编写了一个用于编码与解码可变量长度（VLQ）和 Base64 VLQ 的库 [vlq](https://github.com/CAIMEOX/vlq)，目前有比较完善的实现与对应的文档。
+- [Milky2018](https://github.com/Milky2018) 编写了一个 MoonBit 的 [SQL Parser](https://github.com/Milky2018/sqlparser-mbt)，可以解析 SQL 语句，为 MoonBit 进行数据库相关生态开发奠定了基础。目前该库以及有比较完善的实现与对应的文档。
