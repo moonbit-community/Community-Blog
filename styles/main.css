@@ -239,7 +239,7 @@ section.block>details[open] {
 }
 
 .block {
-  /* width: fit-content; */
+  width: fit-content;
   border-radius: var(--radius)
 }
 
@@ -295,11 +295,6 @@ hr {
 section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
 section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
   display: none;
-}
-
-section .block[data-taxon]>header>h1,
-section .block[data-taxon] details>summary>header>h1 {
-  font-size: 13pt;
 }
 
 footer>section {
@@ -371,25 +366,27 @@ body>header {
   flex-direction: row;
   min-height: 100vh;
 }
+
 #grid-wrapper > nav {
   order: 1;
   width: 260px;
-  background: #f7f7f7;
-  border-right: 1px solid #e0e0e0;
+  background: var(--background-color);  
+  border-right: 1px solid var(--slug-color);
   position: sticky;
   top: 0;
   height: 100vh;
   overflow-y: auto;
   z-index: 10;
 }
+
 #grid-wrapper > article {
   order: 2;
-  flex: 1;
-  background: #fff;
+  flex: 1; 
   min-width: 0;
   padding: 32px 5vw 32px 5vw;
   z-index: 1;
 }
+
 @media (max-width: 900px) {
   #grid-wrapper {
     flex-direction: column;
@@ -401,33 +398,33 @@ body>header {
   #grid-wrapper > article {
     padding: 16px 4vw 16px 4vw;
   }
-  body {
-    font-size: 1.05em;
-  }
 }
 
 /* Hamburger button and overlay styles*/
 #menu-toggle {
   display: none;
 }
+
 #menu-overlay {
   display: none;
 }
+
 @media (max-width: 900px) {
   #menu-toggle {
     display: block;
     position: fixed;
-    top: 0;
-    right: 0;
+    top: 16px;
+    right: 16px;
     left: auto;
     z-index: 1001;
     font-size: 1.7em;
     background: none;
     border: none;
     border-radius: 0;
-    padding: 0;
+    padding: 8px;
     box-shadow: none;
     cursor: pointer;
+    color: var(--text-color); 
   }
   #menu-overlay {
     display: none;
@@ -445,9 +442,7 @@ body>header {
     left: 0;
     width: 80vw;
     max-width: 320px;
-    height: 100vh;
-    background: #fff;
-    box-shadow: 2px 0 12px rgba(0,0,0,0.08);
+    height: 100vh; 
     z-index: 1002;
     overflow-y: auto;
     transition: transform 0.2s cubic-bezier(.4,0,.2,1);
@@ -486,14 +481,15 @@ body>header {
     top: 10px;
     right: 10px;
     z-index: 20;
-    background: #eee;
+    background: var(--background-color-code);
     border: none;
-    border-radius: 4px;
+    border-radius: var(--radius);
     cursor: pointer;
     width: 24px;
     height: 24px;
     font-size: 1.2em;
     display: block;
+    color: var(--text-color);
   }
   #menu-toggle {
     display: none !important;
@@ -501,4 +497,13 @@ body>header {
   #menu-overlay {
     display: none !important;
   }
+}
+
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
 }

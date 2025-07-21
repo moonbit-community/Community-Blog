@@ -5,27 +5,13 @@
       const btn = document.createElement('button');
       btn.id = 'menu-toggle';
       btn.innerHTML = '&#9776;'; 
-      btn.style.position = 'fixed';
-      btn.style.top = '16px';
-      btn.style.right = '16px';
-      btn.style.zIndex = '1001';
-      btn.style.background = 'none';
-      btn.style.border = 'none';
-      btn.style.fontSize = '2em';
-      btn.style.cursor = 'pointer';
+      btn.setAttribute('aria-label', 'Toggle navigation menu');
       document.body.appendChild(btn);
     }
     if (!document.getElementById('menu-overlay')) {
       const overlay = document.createElement('div');
       overlay.id = 'menu-overlay';
-      overlay.style.display = 'none';
-      overlay.style.position = 'fixed';
-      overlay.style.top = '0';
-      overlay.style.left = '0';
-      overlay.style.width = '100vw';
-      overlay.style.height = '100vh';
-      overlay.style.background = 'rgba(0,0,0,0.3)';
-      overlay.style.zIndex = '1000';
+      overlay.setAttribute('aria-label', 'Menu overlay');
       document.body.appendChild(overlay);
     }
   }
@@ -39,28 +25,22 @@
       const btn = document.createElement('button');
       btn.id = 'sidebar-toggle';
       btn.textContent = '«';
+      btn.setAttribute('aria-label', 'Toggle sidebar');
       btn.style.display = window.innerWidth > 900 ? 'block' : 'none';
-      btn.style.position = 'absolute';
-      btn.style.top = '10px';
-      btn.style.right = '10px';
-      btn.style.zIndex = '20';
-      btn.style.background = '#eee';
-      btn.style.border = 'none';
-      btn.style.borderRadius = '4px';
-      btn.style.cursor = 'pointer';
-      btn.style.width = '24px';
-      btn.style.height = '24px';
-      btn.style.fontSize = '1.2em';
+      
       const toc = getToc();
       if (toc) toc.appendChild(btn);
+      
       window.addEventListener('resize', () => {
         btn.style.display = window.innerWidth > 900 ? 'block' : 'none';
       });
+      
       btn.addEventListener('click', function() {
         const toc = getToc();
         if (toc) {
           toc.classList.toggle('collapsed');
           btn.textContent = toc.classList.contains('collapsed') ? '»' : '«';
+          btn.setAttribute('aria-expanded', !toc.classList.contains('collapsed'));
         }
       });
     }
@@ -75,27 +55,48 @@
     function openMenu() {
       toc.classList.add('nav-open');
       menuOverlay.style.display = 'block';
+      menuToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden'; 
     }
+    
     function closeMenu() {
       toc.classList.remove('nav-open');
       menuOverlay.style.display = 'none';
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = ''; 
     }
+    
     menuToggle.addEventListener('click', openMenu);
     menuOverlay.addEventListener('click', closeMenu);
+    
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeMenu();
+    });
+    
+    const navLinks = toc.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 900) {
+          closeMenu();
+        }
+      });
     });
   }
 
   function handleResize() {
     const toc = getToc();
     const menuOverlay = document.getElementById('menu-overlay');
+    const menuToggle = document.getElementById('menu-toggle');
+    
     if (toc && window.innerWidth <= 900) {
       toc.classList.remove('collapsed');
     }
+    
     if (window.innerWidth > 900) {
       if (menuOverlay) menuOverlay.style.display = 'none';
       if (toc) toc.classList.remove('nav-open');
+      if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
     }
   }
 
@@ -112,11 +113,19 @@
     return false;
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      if (tryInit()) return;
+      const observer = new MutationObserver(() => {
+        if (tryInit()) observer.disconnect();
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    });
+  } else {
     if (tryInit()) return;
     const observer = new MutationObserver(() => {
       if (tryInit()) observer.disconnect();
     });
     observer.observe(document.body, { childList: true, subtree: true });
-  });
+  }
 })(); 
