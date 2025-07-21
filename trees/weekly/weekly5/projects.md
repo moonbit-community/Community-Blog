@@ -11,4 +11,4 @@ title: 本周社区新增优质项目
 - MoonBit 官方同学 [tonyfettes Haoxiang Fei](https://github.com/tonyfettes) 发布了一个 MoonBit 的 [Flatpak SDK](https://github.com/tonyfettes/org.freedesktop.Sdk.Extension.moonbit)，用于在 Flatpak 中运行 MoonBit 程序。
 - MoonBit 创始人[张宏波老师](https://github.com/bobzhang) 使用 MoonAgent 生成了一个实验性的 sexp parser 项目 [lisp-machine-MoonPilot](https://github.com/bobzhang/lisp-machine-MoonPilot)，可见 MoonAgent 已经可以在大型项目中发挥作用。
 - [A-23187](https://github.com/A-23187) 编写了一个基于树状的语法和语义感知代码分块器，用于 RAG 的代码分块。
-- [Kresna Sucandra SHA888](https://github.com/SHA888) 基于 MoonBit 构建了一个基于网络的远程医疗平台 [TMDash](https://github.com/SHA888/TMDash)，利用WebAssembly（WASM）为智能健康数据处理提供高性能和人工智能原生功能。该仪表板为患者和医疗保健提供者提供实时视频/聊天通信、健康数据可视化、预约管理以及人工智能驱动的见解。
+- [Kresna Sucandra SHA888](https://github.com/SHA888) 基于 MoonBit 构建了一个基于网络的远程医疗平台 [TMDash](https://github.com/SHA888/TMDash)，利用 WebAssembly（WASM）为智能健康数据处理提供高性能和人工智能原生功能。该仪表板为患者和医疗保健提供者提供实时视频/聊天通信、健康数据可视化、预约管理以及人工智能驱动的见解。
