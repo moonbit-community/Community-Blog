@@ -10,3 +10,4 @@ title: 本周社区新增优质包
 - [xunyoyo](https://github.com/xunyoyo) 编写了 [NyaNBT](https://github.com/moonbit-community/NyaNBT) 库，是一个基于 MoonBit 的 NBT 文件解析库，支持读取和写入 NBT 文件，并提供了丰富的 API 用于处理 NBT 数据。目前还处于起步阶段，不过这是对于 MoonBit 参与游戏插件和周边生态开发的一个良好开端。
 - [ryota0624](https://github.com/ryota0624) 参考 Rust 的 [routerify](https://github.com/routerify/routerify) 编写了一个一个 MoonBit 的 HTTP 路由库 [moonbit-router](https://github.com/ryota0624/moonbit-router)，目前仍处在起步阶段。
 - [Milky2018](https://github.com/Milky2018) 开发了一个采用 MoonBit 的 Choreographic Programming 库 [moonchor](https://github.com/Milky2018/moonchor)。这是一个很有意思的小项目，可以完成一些编舞式编程的协同操作。
+- MoonBit 官方同学 [tonyfettes](https://github.com/tonyfettes) 开发了 BearSSL 的 MoonBit 绑定库 [bearssl.mbt](https://github.com/tonyfettes/bearssl.mbt)。该库通过 FFI 方式将 BearSSL 加密库集成到 MoonBit，支持安全的加密通信功能，适合需要 SSL/TLS 支持的应用开发。
