@@ -12,10 +12,10 @@ cd community-blog
 git submodule update --init --recursive
 ```
 
-确保你安装了 Rust 和 Node.js 环境，在项目根目录下运行如下指令安装必要依赖项：
+确保你安装了 Rust 和 Node.js 环境，在项目根目录下运行如下指令安装 Kodama 与 Node.js 依赖：
 
 ```bash
-cargo install --git https://github.com/kokic/kodama.git
+cargo install --git https://github.com/kokic/kodama.git --rev 323f97cf023c8a605f9ef986aba2fc34888abeed
 npm i
 ```
 
