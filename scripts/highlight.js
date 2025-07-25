@@ -109,16 +109,8 @@ async function processHtmlFile(filePath) {
       }
     }
   }
-  content = injectPlausible(content);
   fs.writeFileSync(filePath, content, "utf8");
   console.log(`Highlighted: ${filePath}`);
-}
-
-function injectPlausible(content) {
-  return content.replace(
-    /<\/body>/,
-    `<script defer data-domain="moonbit.community" src="https://plausible.io/js/script.js"></script></body>`
-  );
 }
 
 async function main(dirname) {

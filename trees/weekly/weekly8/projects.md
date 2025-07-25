@@ -8,5 +8,6 @@ title: 本周社区新增优质项目
 - [Hank HCHogan](https://github.com/HCHogan) 编写了一个 [Moongle](https://github.com/HCHogan/moongle) 项目，参考了 Haskell 语言社区的著名项目 [Hoogle](https://hoogle.haskell.org)，可以对 MoonBit 包中的 API 进行搜索。目前项目还处于早期阶段。
 - [Hank HCHogan](https://github.com/HCHogan) 编写了一个 Haskell 的 MoonBit Tree Sitter 绑定 [haskell-tree-sitter-moonbit](https://github.com/HCHogan/haskell-tree-sitter-moonbit)，可以更方便的在 Haskell 中解析 MoonBit 代码。
 - [zhangweijun Zhang-WJ](https://github.com/Zhang-WJ) 采用 [cmark.mbt](https://github.com/moonbit-community/cmark.mbt) 编写了一个简单的前端例子 [cmark-frontend-example](https://github.com/Zhang-WJ/cmark-frontend-example)，展示了如何使用 cmark.mbt 或 OCaml 编写前端应用。
-- [Morphir](https://github.com/finos/morphir) 是一个种可以抽象业务逻辑的 IR 和周边工具链和框架，[Eleven19](https://github.com/Eleven19) 编写了一个 Morphir 的 [MoonBit](https://github.com/Eleven19/morphir-moonbit) 实现，目前还处于初期阶段，但是这一工作非常有趣。
+- [Morphir](https://github.com/finos/morphir) 是一个种可以抽象业务逻辑的 IR 和周边工具链和框架，[Eleven19](https://github.com/Eleven19) 编写了一个 Morphir 的 [MoonBit 实现](https://github.com/Eleven19/morphir-moonbit)，目前还处于初期阶段，但是这一工作非常有趣。
 - [Congcong Cai HerrCai0907](https://github.com/HerrCai0907) 进行了一个针对 OOP 情况下 MoonBit/AssemblyScript/Native(C++) 三种语言的 [Benchmark](https://github.com/HerrCai0907/moonbit-for-OO-bench)。结果显示 MoonBit 仅在很少的情况下比 AssemblyScript 的结果更优秀，在 Binaryen + WasmGC 的情况下可以与 AssemblyScript 达到基本持平的性能。
+- [Gasai ジェリー gasacchi](https://github.com/gasacchi) 用 MoonBit 编写了一个名为 [Glimpse](https://github.com/gasacchi/glimpse) 的编程语言，目前已经完成了 Lexer 部分。

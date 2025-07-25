@@ -41,7 +41,7 @@ jobs:
 
       - name: Install kodama and typst
         run: |
-          wget https://github.com/Lampese/kodama-streaming-release/releases/latest/download/kodama
+          wget https://github.com/Lampese/kodama-streaming-release/releases/download/kodama-b682cf6c1452a00c60ccae61a1767958afd5e146/kodama
           chmod +x kodama
           sudo mv kodama /usr/local/bin/
           wget https://github.com/typst/typst/releases/latest/download/typst-x86_64-unknown-linux-musl.tar.xz
