@@ -1,5 +1,5 @@
 ---
-title: Bodys
+title: Bodies
 ---
 
 网站目前分为以下部分：
