@@ -16,3 +16,5 @@ collect: true
 [+-](/blog/fenwick/index.md#:embed)
 
 [+-](/blog/lrualgorithm/index.md#:embed)
+
+[+-](/blog/lti/index.md#:embed)
