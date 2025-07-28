@@ -28,7 +28,7 @@ function findLiteralContent(path_, section) {
   return lines
     .filter((x) => x != "///|")
     .slice(1, -1)
-    .join("\n");
+    .join("\n").trim();
 }
 
 function injectLanguage(extname) {
