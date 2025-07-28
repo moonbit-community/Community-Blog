@@ -8,7 +8,7 @@ collect: true
 
 ### 变量规则 (Variable Rules)
 
-**1. 综合-变量 (Synthesis-Var)**
+**1. 综合 - 变量 (Synthesis-Var)**
 
 $$
 \frac{}{\Gamma \vdash x \Rightarrow \Gamma(x)} \quad (\text{S-Var})
@@ -18,7 +18,7 @@ $$
 
 ---
 
-**2. 检查-变量 (Checking-Var)**
+**2. 检查 - 变量 (Checking-Var)**
 
 $$
 \frac{\Gamma \vdash \Gamma(x) \lt: T}{\Gamma \vdash x \Leftarrow T} \quad (\text{C-Var})
@@ -30,7 +30,7 @@ $$
 
 ### 函数抽象规则 (Function Abstraction Rules)
 
-**3. 综合-抽象 (Synthesis-Abs)**
+**3. 综合 - 抽象 (Synthesis-Abs)**
 
 $$
 \frac{\Gamma, \overline{X}, \overline{x}:\overline{S} \vdash e \Rightarrow T}{\Gamma \vdash \textbf{fun} [\overline{X}] (\overline{x}:\overline{S}) e \Rightarrow \forall \overline{X}. \overline{S} \rightarrow T} \quad (\text{S-Abs})
@@ -44,7 +44,7 @@ $$
 
 ---
 
-**4. 检查-无标注抽象 (Checking-Abs-Inf)**
+**4. 检查 - 无标注抽象 (Checking-Abs-Inf)**
 
 $$
 \frac{\Gamma, \overline{X}, \overline{x}:\overline{S} \vdash e \Leftarrow T}{\Gamma \vdash \textbf{fun} [\overline{X}] (\overline{x}) e \Leftarrow \forall \overline{X}. \overline{S} \rightarrow T} \quad (\text{C-Abs-Inf})
@@ -59,7 +59,7 @@ $$
 
 ---
 
-**5. 检查-有标注抽象 (Checking-Abs)**
+**5. 检查 - 有标注抽象 (Checking-Abs)**
 
 $$
 \frac{\Gamma, \overline{X} \vdash \overline{T} \lt: \overline{S} \quad \Gamma, \overline{X}, \overline{x}:\overline{S} \vdash e \Leftarrow R}{\Gamma \vdash \textbf{fun} [\overline{X}] (\overline{x}:\overline{S}) e \Leftarrow \forall \overline{X}. \overline{T} \rightarrow R} \quad (\text{C-Abs})
@@ -75,7 +75,7 @@ $$
 
 ### 函数应用规则 (Function Application Rules)
 
-**6. 综合-应用 (Synthesis-App)**
+**6. 综合 - 应用 (Synthesis-App)**
 
 $$
 \frac{\Gamma \vdash f \Rightarrow \forall \overline{X}. \overline{S} \rightarrow R \quad \Gamma \vdash \overline{e} \Leftarrow [\overline{T}/\overline{X}]\overline{S}}{\Gamma \vdash f [\overline{T}] (\overline{e}) \Rightarrow [\overline{T}/\overline{X}]R} \quad (\text{S-App})
@@ -90,7 +90,7 @@ $$
 
 ---
 
-**7. 检查-应用 (Checking-App)**
+**7. 检查 - 应用 (Checking-App)**
 
 $$
 \frac{\Gamma \vdash f \Rightarrow \forall \overline{X}. \overline{S} \rightarrow R \quad \Gamma \vdash [\overline{T}/\overline{X}]R \lt: U \quad \Gamma \vdash \overline{e} \Leftarrow [\overline{T}/\overline{X}]\overline{S}}{\Gamma \vdash f [\overline{T}] (\overline{e}) \Leftarrow U} \quad (\text{C-App})
@@ -105,7 +105,7 @@ $$
 
 ### 结合双向检查和类型参数综合的规则
 
-**8. 综合-应用-推断规格 (Synthesis-App-InfAlg)**
+**8. 综合 - 应用 - 推断规格 (Synthesis-App-InfAlg)**
 
 $$
 \frac{
@@ -123,7 +123,7 @@ $$
 
 ---
 
-**9. 检查-应用-推断规格 (Checking-App-InfAlg)**
+**9. 检查 - 应用 - 推断规格 (Checking-App-InfAlg)**
 
 $$
 \frac{\begin{matrix} \Gamma \vdash f \Rightarrow \forall \overline{X}. \overline{T} \rightarrow R \quad \Gamma \vdash \overline{e} \Rightarrow \overline{S} \quad |\overline{X}| \gt 0 \\ \emptyset \vdash \overline{S} \lt: \overline{T} \Rightarrow C \quad \emptyset \vdash R \lt: V \Rightarrow D \quad \sigma \in \bigwedge C \wedge D \end{matrix}}{\Gamma \vdash f(\overline{e}) \Leftarrow V} \quad (\text{C-App-InfAlg})
@@ -144,7 +144,7 @@ $$
 
 ### 顶类型和底类型
 
-**10. 检查-顶类型 (Checking-Top)**
+**10. 检查 - 顶类型 (Checking-Top)**
 
 $$
 \frac{\Gamma \vdash e \Rightarrow T}{\Gamma \vdash e \Leftarrow \top} \quad (\text{C-Top})
@@ -154,7 +154,7 @@ $$
 
 ---
 
-**11. 综合-应用-底类型 (Synthesis-App-Bot)**
+**11. 综合 - 应用 - 底类型 (Synthesis-App-Bot)**
 
 $$
 \frac{\Gamma \vdash f \Rightarrow \bot \quad \Gamma \vdash \overline{e} \Rightarrow \overline{S}}{\Gamma \vdash f [\overline{T}] (\overline{e}) \Rightarrow \bot} \quad (\text{S-App-Bot})
@@ -167,7 +167,7 @@ $$
 
 ---
 
-**12. 检查-应用-底类型 (Checking-App-Bot)**
+**12. 检查 - 应用 - 底类型 (Checking-App-Bot)**
 
 $$
 \frac{\Gamma \vdash f \Rightarrow \bot \quad \Gamma \vdash \overline{e} \Rightarrow \overline{S}}{\Gamma \vdash f [\overline{T}] (\overline{e}) \Leftarrow R} \quad (\text{C-App-Bot})
