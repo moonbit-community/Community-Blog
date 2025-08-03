@@ -5,7 +5,7 @@ title: 本周社区新增优质项目
 - MoonBit 官方同学 [Kaida-Amethyst](https://github.com/Kaida-Amethyst) 开发了一个 MoonBit 的 Godot 绑定 [godot.mbt](https://github.com/Kaida-Amethyst/godot.mbt)，允许开发者使用 MoonBit 语言搭配 Godot 引擎开发游戏。目前完成了 GDExtension 到 MoonBit 类型的映，进一步的抽象需要等待 MoonBit 语言功能的更新，因此项目的开发处于暂停状态。
 - MoonBit 官方同学 [Milky2018](https://github.com/Milky2018) 编写了一个新的游戏框架 [selene](https://github.com/Milky2018/selene)，现在项目仍处于早期阶段。该框架将会用于 MGPIC 2025 游戏赛道的教程编写。
 - [hanbings](https://github.com/hanbings) 编写了一个新的数据库项目 [chongming](https://github.com/hanbings/chongming)，是一个使用 MoonBit 编写的基于 LSM Tree 的 NoSQL 数据库。目前已完成了 xxhash 算法、murmur3 算法、布隆过滤器、跳表等基本算法和数据结构，后续将继续开发 bson 与 sql 解析，并尝试基于 Raft 算法构建分布式系统。
-- [Thomas Gorny trival](https://github.com/trival) 编写了一个编译为 JavaScript 的 WebGPU 实验项目 [moon-webgpu-test](https://github.com/trival/moon-webgpu-test)。该项目演示了如何使用 MoonBit 的 FFI 功能与WebGPU API 接口并渲染经典的 RGB 三角形。
+- [Thomas Gorny trival](https://github.com/trival) 编写了一个编译为 JavaScript 的 WebGPU 实验项目 [moon-webgpu-test](https://github.com/trival/moon-webgpu-test)。该项目演示了如何使用 MoonBit 的 FFI 功能与 WebGPU API 接口并渲染经典的 RGB 三角形。
 - [Nathan Soufflet nathsou](https://github.com/nathsou) 开发了一个硬件描述语言项目 [yodl](https://github.com/nathsou/yodl)，是一个用 MoonBit 编写的另一种硬件描述语言。该项目支持 FIRRTL 导出、多端口存储器、模块参数、类型参数等高级功能，提供了完整的硬件设计工具链，包括仿真、测试台和 KiCad 原理图导出功能。
 - [Nathan Soufflet nathsou](https://github.com/nathsou) 开发了一个简单的 16 位加载存储 CPU 项目 [cpu16](https://github.com/nathsou/cpu16)，包含指令集架构设计、Rust 模拟器和 Yodl 设计。该项目实现了完整的 CPU16 指令集，支持控制标志、寄存器操作、内存访问和 ALU 运算，可在 FPGA 上运行，并提供了 Nexys A7 开发板的构建支持。
 - [Zhehao 0xFF KCN-judu](https://github.com/KCN-judu) 创建了一个新的项目 [luna_engine](https://github.com/KCN-judu/luna_engine)，是一个基于 [rabbit-tea](https://github.com/moonbit-community/rabbit-tea) 的 2D 游戏引擎，目前还处在初期阶段。

@@ -2,21 +2,21 @@
 title: 本周官方重要动态
 ---
 
-- 2025 MoonBit 全球编程创新挑战赛（MGPIC 2025）官宣开始报名。2025 MoonBit 编程创新挑战赛是面向全球开发者的专业性挑战赛事，2024 年的首届大赛曾吸引超1888支队伍参赛，覆盖清华大学、剑桥大学、中山大学、香港科技大学(广州)等多所国内外知名高校，比赛由沈向洋、林惠民、赵琛、倪明选等担任荣誉评委，获得学术界与产业界的广泛关注与高度认可。本次仍分为游戏与编译器两个赛道进行比赛，但比赛形式更加丰富多维。具体可见[官方宣发文章](https://mp.weixin.qq.com/s/8IbEQ0dasvQlIMeAgJhHww)。
+- 2025 MoonBit 全球编程创新挑战赛（MGPIC 2025）官宣开始报名。2025 MoonBit 编程创新挑战赛是面向全球开发者的专业性挑战赛事，2024 年的首届大赛曾吸引超 1888 支队伍参赛，覆盖清华大学、剑桥大学、中山大学、香港科技大学(广州)等多所国内外知名高校，比赛由沈向洋、林惠民、赵琛、倪明选等担任荣誉评委，获得学术界与产业界的广泛关注与高度认可。本次仍分为游戏与编译器两个赛道进行比赛，但比赛形式更加丰富多维。具体可见[官方宣发文章](https://mp.weixin.qq.com/s/8IbEQ0dasvQlIMeAgJhHww)。
 - 2025 年七月底，MoonBit 发布了全球首个自底向上的代码智能体 Moon Pilot。IDEA 研究院的宣发文章提到：“通过从语言到工具链的 AI 原生重构，IDEA 研究院基础软件中心打造的 MoonBit Pilot 构建出与大模型深度协同的开发环境，在代码生成质量与大规模重构效率上均超越 Cursor 等现有智能编程工具，首次呈现无需人类接管的 L4 软件交付能力的工程闭环雏形。”对于该产品的发布，媒体与社区布道者都有相关介绍文章：
   - IDEA 研究院 [《MoonBit Pilot：全球首个自底向上的智能编程工具，全栈 AI 原生》](https://mp.weixin.qq.com/s/Y8y5UbxE42AqXqdPWi5kug)
-  - CSDN [《MoonBit Pilot：全球首个自底向上的代码智能体，比Cursor更快更稳定》](https://mp.weixin.qq.com/s/QmFByVz-2ro81-akd4XZWg)
-  - 陈随易 [《国产之光，把AI融入到语言级别的编程语言-MoonBit》](https://mp.weixin.qq.com/s/uOz-YexUgY_tJXyQjxWGkw)
-  - 码农翻身 [《国产小厂的AI编程击败国际巨头，竟然是因为做了这项优化......》](https://mp.weixin.qq.com/s/v_bv3W6xljqYvr65FAmK5Q)
+  - CSDN [《MoonBit Pilot：全球首个自底向上的代码智能体，比 Cursor 更快更稳定》](https://mp.weixin.qq.com/s/QmFByVz-2ro81-akd4XZWg)
+  - 陈随易 [《国产之光，把 AI 融入到语言级别的编程语言-MoonBit》](https://mp.weixin.qq.com/s/uOz-YexUgY_tJXyQjxWGkw)
+  - 码农翻身 [《国产小厂的 AI 编程击败国际巨头，竟然是因为做了这项优化......》](https://mp.weixin.qq.com/s/v_bv3W6xljqYvr65FAmK5Q)
 - 2025 年 7 月 27 日，由中国科学院软件研究所 PLCT Lab 联合 MoonBit 官方宣发的第二次 J139 岗位实习生 Demo Day 顺利举行。一共有九位实习生带来了十场精彩的 Workshop，现在回放链接已经可以在 [Biliili](https://space.bilibili.com/3546645654407506/lists/5981946) 查看。详细的 Workshop 标题见下：
-  - 孙翊轩 《MoonBit 社区建设阶段性总结 & Community Blog 最近在干啥》
-  - 黄越 《MoonBit 与计算机底层的交互》
-  - 查适未 《走进密码学——用 mbt 实现简单的对称加密》
-  - 孙翊轩 肖铭坤 《用 Virtual Package 搓个 Functor》
+  - 孙翊轩《MoonBit 社区建设阶段性总结 & Community Blog 最近在干啥》
+  - 黄越《MoonBit 与计算机底层的交互》
+  - 查适未《走进密码学——用 mbt 实现简单的对称加密》
+  - 孙翊轩 肖铭坤《用 Virtual Package 搓个 Functor》
   - 孙翊轩《MoonBit 的 Parser 实践——从计算器到 MoonBibLaTeX》
-  - 朱哲皓 《数独求解器的实现》
-  - 王珏 《用 MoonYacc 打开 HTML Parser》
-  - 邢凯泽 《IntroSort 的 MoonBit 算法实现》
-  - 薛煜孑 《位运算在 MoonBit 中的适用——以 VEB tree 为例》
-  - 雷正宇 《用 MoonBit 实现可扩展的 SQL Parser》
+  - 朱哲皓《数独求解器的实现》
+  - 王珏《用 MoonYacc 打开 HTML Parser》
+  - 邢凯泽《IntroSort 的 MoonBit 算法实现》
+  - 薛煜孑《位运算在 MoonBit 中的适用——以 VEB tree 为例》
+  - 雷正宇《用 MoonBit 实现可扩展的 SQL Parser》
 - MoonBit 官方的 Pearls 系列文章更新了第五篇文章[《MoonBit Pearls Vol.05：函数式里的依赖注入：Reader Monad》](https://mp.weixin.qq.com/s/6g4XG1Bw2pcEtmKCLHwyMQ)，探究了函数式编程里解决 DI 的方法——Reader Monad。
