@@ -46,7 +46,7 @@ class TranslationBot:
     def parse_args(self):
         parser = argparse.ArgumentParser(description='Automated Markdown Translation Bot')
         parser.add_argument("--source-dir", default="trees", help="Source directory with Chinese markdown")
-        parser.add_argument("--target-dir", default="tree_en", help="Target directory for English translations")
+        parser.add_argument("--target-dir", default="s", help="Target directory for English translations")
         parser.add_argument("--pr-reviewers", default="", help="Comma-separated GitHub reviewers")
         parser.add_argument("--dry-run", action="store_true", help="Run without pushing changes")
         return parser.parse_args()
@@ -69,7 +69,7 @@ class TranslationBot:
                 logger.info("⚠️ Dry run mode activated. No changes will be committed.")
                 logger.info(f"Would create PR for {len(changed_files)} files")
             else:
-                self.commit_and_push(changed_files, stats)
+                self.create_versioned_pr(changed_files, stats)
             
             logger.info(f"Translation completed successfully")
             
@@ -162,38 +162,21 @@ class TranslationBot:
         logger.info(f"Translation results: ✅ {stats['success']} succeeded, ❌ {stats['failed']} failed")
         return stats
 
-    def commit_and_push(self, changed_files: List[str], stats: Dict[str, int]):
-        """提交变更到固定分支并推送"""
+    def create_versioned_pr(self, changed_files: List[str], stats: Dict[str, int]):
+        """提交变更并创建带版本的 PR"""
         # 配置 Git 身份
         self.repo.git.config("user.name", "Translation Bot")
         self.repo.git.config("user.email", "translation-bot@users.noreply.github.com")
         
-        # 使用固定分支名称
-        branch_name = "translation-bot"
-        logger.info(f"Using fixed branch: {branch_name}")
-        
-        # 切换到固定分支（如果存在）
-        try:
-            self.repo.git.checkout(branch_name)
-            logger.info(f"Checked out existing branch {branch_name}")
-        except:
-            # 如果分支不存在，创建新分支
-            self.repo.git.checkout("-b", branch_name)
-            logger.info(f"Created new branch {branch_name}")
-        
-        # 拉取最新变更（如果分支已存在）
-        try:
-            origin = self.repo.remote(name='origin')
-            origin.pull(branch_name)
-            logger.info(f"Pulled latest changes to {branch_name}")
-        except Exception as e:
-            logger.warning(f"Failed to pull latest changes: {str(e)}")
+        # 创建带版本的 branch
+        branch_name = f"translation-{self.run_id}"
+        logger.info(f"Creating branch {branch_name}")
         
         # 添加所有更改
         self.repo.git.add(A=True)
         
         # 创建提交
-        commit_msg = f"""feat(translation): update {self.run_id}
+        commit_msg = f"""feat(translation): batch update {self.run_id}
 
 Files processed:
 - Success: {stats['success']}
@@ -202,16 +185,12 @@ Files processed:
         self.repo.index.commit(commit_msg)
         logger.info("Changes committed")
         
-        # 推送到分支
+        # 推送到 branch
         origin = self.repo.remote(name='origin')
         origin.push(refspec=f"HEAD:{branch_name}", force=True)
         logger.info(f"Pushed to {branch_name}")
         
-        # 创建或更新 PR
-        self.create_or_update_pr(branch_name, changed_files, stats)
-
-    def create_or_update_pr(self, branch_name: str, changed_files: List[str], stats: Dict[str, int]):
-        """创建或更新固定分支的 PR"""
+        # 创建 PR
         github_token = os.getenv("GITHUB_TOKEN")
         if not github_token:
             raise Exception("Missing GITHUB_TOKEN")
@@ -226,42 +205,24 @@ Files processed:
         pr_title = f"[Bot] Translation Updates ({self.run_id})"
         pr_body = self.generate_pr_body(changed_files, stats)
         
-        # 检查是否已存在 PR
-        existing_pr = None
-        for pr in repo.get_pulls(state="open"):
-            if pr.head.ref == branch_name:
-                existing_pr = pr
-                break
+        # 创建 PR（不使用 labels 参数）
+        pr = repo.create_pull(
+            title=pr_title,
+            body=pr_body,
+            head=branch_name,
+            base="main"
+        )
         
-        if existing_pr:
-            # 更新现有 PR
-            existing_pr.edit(title=pr_title, body=pr_body)
-            logger.info(f"Updated existing PR #{existing_pr.number}")
-        else:
-            # 创建新 PR
-            pr = repo.create_pull(
-                title=pr_title,
-                body=pr_body,
-                head=branch_name,
-                base="main"
-            )
-            
-            # 添加标签
-            try:
-                pr.add_to_labels("translation", "needs-review")
-            except Exception as e:
-                logger.warning(f"Failed to add labels: {str(e)}")
-            
-            # 设置审阅者
-            if self.args.pr_reviewers:
-                reviewers = [r.strip() for r in self.args.pr_reviewers.split(",") if r.strip()]
-                logger.info(f"Adding reviewers: {', '.join(reviewers)}")
-                try:
-                    pr.create_review_request(reviewers=reviewers)
-                except Exception as e:
-                    logger.warning(f"Failed to add reviewers: {str(e)}")
-            
-            logger.info(f"Created new PR #{pr.number}: {pr.html_url}")
+        # 单独添加标签
+        pr.add_to_labels("translation", "needs-review")
+        
+        # 设置审阅者
+        if self.args.pr_reviewers:
+            reviewers = [r.strip() for r in self.args.pr_reviewers.split(",") if r.strip()]
+            logger.info(f"Adding reviewers: {', '.join(reviewers)}")
+            pr.create_review_request(reviewers=reviewers)
+        
+        logger.info(f"Created PR #{pr.number}: {pr.html_url}")
 
     def generate_pr_body(self, files: List[str], stats: Dict[str, int]) -> str:
         """生成完整的 PR 描述"""
