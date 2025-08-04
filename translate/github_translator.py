@@ -46,7 +46,7 @@ class TranslationBot:
     def parse_args(self):
         parser = argparse.ArgumentParser(description='Automated Markdown Translation Bot')
         parser.add_argument("--source-dir", default="trees", help="Source directory with Chinese markdown")
-        parser.add_argument("--target-dir", default="s", help="Target directory for English translations")
+        parser.add_argument("--target-dir", default="tree_en", help="Target directory for English translations")
         parser.add_argument("--pr-reviewers", default="", help="Comma-separated GitHub reviewers")
         parser.add_argument("--dry-run", action="store_true", help="Run without pushing changes")
         return parser.parse_args()
