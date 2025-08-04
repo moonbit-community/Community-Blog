@@ -1,0 +1,71 @@
+name: Automated Markdown Translation
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'trees/**/*.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: "translation-${{ github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Validate source files
+        run: |
+          if [ ! -d "./trees" ]; then
+            echo "::error::Source directory ./trees not found"
+            exit 1
+          fi
+          echo "Found $(find ./trees -name '*.md' | wc -l) markdown files"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r ./translate/requirements.txt
+          sudo apt-get install -y tree
+
+      - name: Run translation
+        env:
+          API_KEY: ${{ secrets.TRANSLATION_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -exo pipefail
+
+          # 添加环境变量供Python脚本使用
+          export GITHUB_RUN_ID=$GITHUB_RUN_ID
+          export GITHUB_REPOSITORY=$GITHUB_REPOSITORY
+
+          # 确保翻译目录存在
+          mkdir -p ./trees_en
+
+          python ./translate/github_translator.py \
+            --source-dir ./trees \
+            --target-dir ./tree_en \
+            --pr-reviewers "YOUR_GITHUB_USERNAME_HERE,ANOTHER_USERNAME"  # 替换为实际审阅者
+
+      - name: Verify output
+        run: |
+          echo "### Translation Results ###"
+          tree -L 3 ./trees_en || true
+          echo "Total files: $(find ./trees_en -name '*.md' | wc -l)"
