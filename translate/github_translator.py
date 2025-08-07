@@ -12,10 +12,9 @@ import logging
 from datetime import datetime
 import shutil
 
-# 修复模块导入问题
 sys.path.append(str(Path(__file__).parent.resolve()))
 
-# Configure logging
+# 配置日志
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
