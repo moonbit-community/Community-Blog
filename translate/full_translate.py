@@ -19,7 +19,7 @@ def full_translate(source_dir: str, target_dir: str, api_key: str):
     """
     全量翻译指定目录中的所有 Markdown 文件
     
-    参数:
+    参数：
         source_dir: 源目录路径
         target_dir: 目标目录路径
         api_key: 翻译 API 密钥
@@ -29,7 +29,7 @@ def full_translate(source_dir: str, target_dir: str, api_key: str):
     target_path = Path(target_dir)
     
     if not source_path.exists():
-        logger.error(f"源目录不存在: {source_dir}")
+        logger.error(f"源目录不存在：{source_dir}")
         return
     
     # 创建目标目录
@@ -54,11 +54,11 @@ def full_translate(source_dir: str, target_dir: str, api_key: str):
     )
     
     # 输出结果统计
-    logger.info(f"翻译完成: ✅ {stats['success']} 个成功, ❌ {stats['failed']} 个失败")
+    logger.info(f"翻译完成：✅ {stats['success']} 个成功，❌ {stats['failed']} 个失败")
     
     # 生成目录结构报告
     tree_report = generate_directory_tree(target_path)
-    logger.info(f"输出目录结构:\n{tree_report}")
+    logger.info(f"输出目录结构：\n{tree_report}")
 
 def generate_directory_tree(path: Path, max_depth: int = 3) -> str:
     """生成目录结构文本表示"""
@@ -75,7 +75,7 @@ def generate_directory_tree(path: Path, max_depth: int = 3) -> str:
         
         return "\n".join(lines)
     except Exception as e:
-        logger.warning(f"生成目录树失败: {str(e)}")
+        logger.warning(f"生成目录树失败：{str(e)}")
         return "无法生成目录树"
 
 def walk_directory(path: Path, lines: list, prefix: str, depth: int):
@@ -97,16 +97,16 @@ def walk_directory(path: Path, lines: list, prefix: str, depth: int):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='全量翻译 Markdown 文件')
-    parser.add_argument("--source-dir", default="trees", help="源目录路径 (默认: trees)")
-    parser.add_argument("--target-dir", default="tree_en", help="目标目录路径 (默认: tree_en)")
+    parser.add_argument("--source-dir", default="trees", help="源目录路径 (默认：trees)")
+    parser.add_argument("--target-dir", default="tree_en", help="目标目录路径 (默认：tree_en)")
     parser.add_argument("--api-key", required=True, help="翻译 API 密钥")
     
     args = parser.parse_args()
     
     try:
         logger.info("开始全量翻译...")
-        logger.info(f"源目录: {args.source_dir}")
-        logger.info(f"目标目录: {args.target_dir}")
+        logger.info(f"源目录：{args.source_dir}")
+        logger.info(f"目标目录：{args.target_dir}")
         
         full_translate(
             source_dir=args.source_dir,
@@ -116,5 +116,5 @@ if __name__ == "__main__":
         
         logger.info("全量翻译完成")
     except Exception as e:
-        logger.error(f"全量翻译失败: {str(e)}", exc_info=True)
+        logger.error(f"全量翻译失败：{str(e)}", exc_info=True)
         sys.exit(1)
