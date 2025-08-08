@@ -5,6 +5,7 @@
 
   --text-color: black;
   --background-color: white;
+  --background-color-mixable: 255, 255, 255;
 
   --background-color-pre: rgba(0, 100, 100, 0.04);
   --background-color-code: rgba(0, 100, 100, 0.04);
@@ -26,6 +27,7 @@
   :root {
     --text-color: white;
     --background-color: #2f2f2f;
+    --background-color-mixable: 47, 47, 47;
 
     --background-color-pre: rgba(100, 100, 100, 0.2);
     --background-color-code: rgba(150, 150, 150, 0.2);
@@ -390,7 +392,7 @@ body > header {
   我也只能用z-index来调整图层顺序了 */
   z-index: 11;
   padding-bottom: 0.5em;
-  background-color: rgb(255, 255, 255, 0.5);
+  background-color: rgba(var(--background-color-mixable), 0.5);
   backdrop-filter: blur(4px);
 }
 
