@@ -388,8 +388,6 @@ a.slug {
 body > header {
   position: sticky;
   top: 0;
-  /* 我不明白为什么用了这么多z-index
-  我也只能用z-index来调整图层顺序了 */
   z-index: 11;
   padding-bottom: 0.5em;
   background-color: rgba(var(--background-color-mixable), 0.5);
