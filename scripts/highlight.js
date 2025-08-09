@@ -109,8 +109,16 @@ async function processHtmlFile(filePath) {
       }
     }
   }
+  content = injectClicky(content);
   fs.writeFileSync(filePath, content, "utf8");
   console.log(`Highlighted: ${filePath}`);
+}
+
+function injectClicky(content) {
+  return content.replace(
+    /<\/body>/,
+    `<script async data-id="101490373" src="//static.getclicky.com/js"></script></body>`
+  );
 }
 
 async function main(dirname) {
@@ -133,7 +141,10 @@ async function main(dirname) {
     for (const file of htmlFiles) {
       let html = fs.readFileSync(file, "utf8");
       if (!html.includes('<script src="/catalog.js"></script>')) {
-        html = html.replace(/<\/body>/i, '<script src="/catalog.js"></script>\n</body>');
+        html = html.replace(
+          /<\/body>/i,
+          '<script src="/catalog.js"></script>\n</body>'
+        );
         fs.writeFileSync(file, html, "utf8");
       }
     }
