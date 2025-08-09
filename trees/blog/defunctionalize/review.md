@@ -35,6 +35,9 @@ $$ \text{CPS} \to \text{Defunctionalization} \to \text{Inlining} \to \text{Tail 
 
 “去函数化”的确是精妙的程序转换技术，
 若读者在看完本文仍意犹未尽，
-希望能够深入了解其背后的理论基础，
-推荐阅读 John Reynolds 关于去函数化的经典文章，
-以及 Olivier Danvy 很多相关的研究工作。
+希望能够深入了解其背后的理论基础和更多实现细节，
+可以参考以下资源：
+
+- [Defunctionalization: Everybody Does It, Nobody Talks About It](https://blog.sigplan.org/2019/12/30/defunctionalization-everybody-does-it-nobody-talks-about-it/)
+  - [[Translation]去函数变换：一项程序员习焉而不察的技术](https://zhuanlan.zhihu.com/p/1936586173591032199)
+- [Definitional interpreters for higher-order programming languages](https://dl.acm.org/doi/10.1145/800194.805852)
