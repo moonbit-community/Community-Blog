@@ -1,5 +1,5 @@
 ///|
-pub(all) type Var String derive(Hash, Eq)
+pub(all) struct Var(String) derive(Hash, Eq)
 
 // section start spec
 
@@ -122,7 +122,7 @@ pub fn demotion(self : Type, v : Set[Var]) -> Type {
 // section start constraints
 
 ///|
-type Constraints Map[Var, Subtype]
+struct Constraints(Map[Var, Subtype])
 
 ///|
 pub fn Constraints::empty() -> Constraints {
@@ -202,6 +202,7 @@ enum Variance {
 } derive(Show)
 
 // section start solve
+
 ///|
 pub fn solve(self : Constraints, ty : Type) -> Map[Var, Type]? {
   let f = (vs : (Var, Subtype)) => {

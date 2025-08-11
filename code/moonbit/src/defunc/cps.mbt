@@ -14,6 +14,7 @@ fn[T] pre_order_cps(self : Tree[T], f : (T) -> Unit) -> Unit {
 
   go(self, x => x)
 }
+
 // section end pre_order_cps
 
 // section start tree_cont
@@ -23,6 +24,7 @@ enum TreeCont[T] {
   Return
   Next(Tree[T], TreeCont[T])
 }
+
 // section end tree_cont
 
 // section start pre_order_cps_defunct
@@ -50,6 +52,7 @@ fn[T] pre_order_cps_defunct(self : Tree[T], f : (T) -> Unit) -> Unit {
 
   go(self, Return)
 }
+
 // section end pre_order_cps_defunct
 
 // section start pre_order_cps_defunct_loop
@@ -70,6 +73,7 @@ fn[T] pre_order_cps_defunct_loop(self : Tree[T], f : (T) -> Unit) -> Unit {
     }
   }
 }
+
 // section end pre_order_cps_defunct_loop
 
 // section start pre_order_loop
@@ -98,6 +102,7 @@ fn[T] pre_order_loop(self : Tree[T], f : (T) -> Unit) -> Unit {
     }
   }
 }
+
 // section end pre_order_loop
 
 // section start pre_order_loop_stack
@@ -123,4 +128,5 @@ fn[T] pre_order_loop_stack(self : Tree[T], f : (T) -> Unit) -> Unit {
     }
   }
 }
+
 // section end pre_order_loop_stack

@@ -10,7 +10,7 @@ tool: Powered by [Kodama](https://github.com/kokic/kodama)
 
 [+](/weekly/index.md#:embed)
 
-[+-](/blog/index.md#:embed)
+[+](/blog/index.md#:embed)
 
 [+-](/knowledge/index.md#:embed)
 

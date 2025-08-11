@@ -1,16 +1,17 @@
 // section start bits
 
 ///|
-enum Bits {
+priv enum Bits {
   Rep(Bit)
   Snoc(Bits, Bit)
 } derive(Eq)
+
 // section end bits
 
 // section start pattern
 
 ///|
-pub fn to_snoc(self : Bits) -> Bits {
+fn to_snoc(self : Bits) -> Bits {
   match self {
     Rep(a) => Snoc(Rep(a), a)
     self => self
@@ -18,18 +19,19 @@ pub fn to_snoc(self : Bits) -> Bits {
 }
 
 ///|
-pub fn Bits::pat_match(self : Bits) -> (Bits, Bit) {
+fn Bits::pat_match(self : Bits) -> (Bits, Bit) {
   guard self.to_snoc() is Snoc(bs, b)
   (bs, b)
 }
 
 ///|
-pub fn Bits::make(self : Bits, b : Bit) -> Bits {
+fn Bits::make(self : Bits, b : Bit) -> Bits {
   match (self, b) {
     (Rep(b), b1) if b == b1 => Rep(b)
     (bs, b) => Snoc(bs, b)
   }
 }
+
 // section end pattern
 
 ///|
@@ -44,7 +46,7 @@ fn div(n : Int, d : Int) -> Int {
 // section start conversion
 
 ///|
-pub fn Bits::to_bits(n : Int) -> Bits {
+fn Bits::to_bits(n : Int) -> Bits {
   match n {
     0 => Rep(O)
     -1 => Rep(I)
@@ -53,7 +55,7 @@ pub fn Bits::to_bits(n : Int) -> Bits {
 }
 
 ///|
-pub fn Bits::from_bits(self : Bits) -> Int {
+fn Bits::from_bits(self : Bits) -> Int {
   match self {
     Rep(O) => 0
     Rep(I) => -1
@@ -63,6 +65,7 @@ pub fn Bits::from_bits(self : Bits) -> Int {
     }
   }
 }
+
 // section end conversion
 
 // section start show
@@ -86,6 +89,7 @@ impl Show for Bits with to_string(self) {
 impl Show for Bits with output(self, logger) {
   logger.write_string(self.to_string())
 }
+
 // section end show
 
 // section start test1
@@ -104,12 +108,13 @@ test "from . to == id" {
   @qc.quick_check_fn(x => Bits::from_bits(Bits::to_bits(x)) == x)
   // +++ [100/0/100] Ok, passed!
 }
+
 // section end test1
 
 // section start inc_dec
 
 ///|
-pub fn inc(self : Bits) -> Bits {
+fn inc(self : Bits) -> Bits {
   match self {
     Rep(I) => Rep(O)
     s =>
@@ -121,7 +126,7 @@ pub fn inc(self : Bits) -> Bits {
 }
 
 ///|
-pub fn dec(self : Bits) -> Bits {
+fn dec(self : Bits) -> Bits {
   match self {
     Rep(O) => Rep(I)
     s =>
@@ -131,12 +136,13 @@ pub fn dec(self : Bits) -> Bits {
       }
   }
 }
+
 // section end inc_dec
 
 // section start lsb
 
 ///|
-pub fn lsb(self : Bits) -> Bits {
+fn lsb(self : Bits) -> Bits {
   match self {
     Rep(O) => Rep(O)
     s =>
@@ -146,6 +152,7 @@ pub fn lsb(self : Bits) -> Bits {
       }
   }
 }
+
 // section end lsb
 
 // section start test2
@@ -157,6 +164,7 @@ test "lsb" {
   inspect(Bits::to_bits(24), content="...00011000")
   inspect(Bits::to_bits(24).lsb(), content="...0001000")
 }
+
 // section end test2
 
 // section start bit_and
@@ -171,12 +179,13 @@ impl BitAnd for Bits with land(self, other) {
       }
   }
 }
+
 // section end bit_and
 
 // section start bit_not
 
 ///|
-pub fn Bits::inv(self : Bits) -> Bits {
+fn Bits::inv(self : Bits) -> Bits {
   match self {
     Rep(x) => Rep(x.not())
     s =>
@@ -185,6 +194,7 @@ pub fn Bits::inv(self : Bits) -> Bits {
       }
   }
 }
+
 // section end bit_not
 
 // section start op_add
@@ -201,6 +211,7 @@ impl Add for Bits with op_add(self, other) {
       }
   }
 }
+
 // section end op_add
 
 // section start op_neg
@@ -209,6 +220,7 @@ impl Add for Bits with op_add(self, other) {
 impl Neg for Bits with op_neg(self) {
   self.inv().inc()
 }
+
 // section end op_neg
 
 // section start test_add
@@ -220,12 +232,13 @@ test "add" {
   })
   // +++ [100/0/100] Ok, passed!
 }
+
 // section end test_add
 
 // section start helpers
 
 ///|
-pub fn set_to(self : Bits, idx : Int, b1 : Bit) -> Bits {
+fn set_to(self : Bits, idx : Int, b1 : Bit) -> Bits {
   match (idx, self.pat_match()) {
     (0, (bs, _)) => Bits::make(bs, b1)
     (k, (bs, b)) => Bits::make(bs.set_to(k - 1, b1), b)
@@ -233,17 +246,17 @@ pub fn set_to(self : Bits, idx : Int, b1 : Bit) -> Bits {
 }
 
 ///|
-pub fn Bits::set(self : Bits, idx : Int) -> Bits {
+fn Bits::set(self : Bits, idx : Int) -> Bits {
   self.set_to(idx, I)
 }
 
 ///|
-pub fn Bits::clear(self : Bits, idx : Int) -> Bits {
+fn Bits::clear(self : Bits, idx : Int) -> Bits {
   self.set_to(idx, O)
 }
 
 ///|
-pub fn test_helper(self : Bits, i : Int) -> Bool {
+fn test_helper(self : Bits, i : Int) -> Bool {
   loop (i, self.pat_match()) {
     (0, (_bs, b)) => b == I
     (k, (bs, _b)) => continue (k - 1, bs.pat_match())
@@ -251,32 +264,34 @@ pub fn test_helper(self : Bits, i : Int) -> Bool {
 }
 
 ///|
-pub fn odd(self : Bits) -> Bool {
+fn odd(self : Bits) -> Bool {
   self.test_helper(0)
 }
 
 ///|
-pub fn even(self : Bits) -> Bool {
+fn even(self : Bits) -> Bool {
   not(self.odd())
 }
+
 // section end helpers
 
 // section start shift
 
 ///|
-pub fn shr(self : Bits) -> Bits {
+fn shr(self : Bits) -> Bits {
   self.pat_match().0
 }
 
 ///|
-pub fn shl(self : Bits) -> Bits {
+fn shl(self : Bits) -> Bits {
   Bits::make(self, O)
 }
 
 ///|
-pub fn[A] while_(p : (A) -> Bool, f : (A) -> A, x : A) -> A {
+fn[A] while_(p : (A) -> Bool, f : (A) -> A, x : A) -> A {
   loop x {
     x => if p(x) { continue f(x) } else { x }
   }
 }
+
 // section end shift

@@ -1,5 +1,5 @@
 ///|
-typealias @immut/list.T as List
+typealias MyList as List
 
 // section start original_filter
 
@@ -11,6 +11,7 @@ fn[T] filter(xs : List[T], pred : (T) -> Bool) -> List[T] {
     Cons(_, xs) => filter(xs, pred)
   }
 }
+
 // section end original_filter
 
 // section start limited_filter
@@ -32,6 +33,7 @@ fn run(self : Filter, data : Int) -> Bool {
     IsNegative => data < 0
   }
 }
+
 // section end limited_filter
 
 // section start defunc_filter
@@ -78,4 +80,5 @@ fn run_extend_compose(self : FilterExtendCompose, data : Int) -> Bool {
     //...
   }
 }
+
 // section end defunc_filter_extend_compose

@@ -1,16 +1,16 @@
 ///|
-typealias @immut/list.T as List
+typealias MyList as List
 
 // section start seg_tree
 
 ///|
-enum SegTree {
+priv enum SegTree {
   Empty
   Branch(Int, Range, SegTree, SegTree)
 } derive(Eq, Show)
 
 ///|
-pub fn SegTree::update(self : SegTree, i : Index, v : Int) -> SegTree {
+fn SegTree::update(self : SegTree, i : Index, v : Int) -> SegTree {
   match self {
     Empty => Empty
     Branch(a, rng, l, r) if rng.contains(i) =>
@@ -35,20 +35,21 @@ fn rq(self : SegTree, q : Range) -> Int {
 }
 
 ///|
-pub fn SegTree::get(self : SegTree, i : Index) -> Int {
+fn SegTree::get(self : SegTree, i : Index) -> Int {
   self.rq((i, i))
 }
 
 ///|
-pub fn SegTree::set(self : SegTree, i : Index, v : Int) -> SegTree {
+fn SegTree::set(self : SegTree, i : Index, v : Int) -> SegTree {
   self.update(i, v - self.get(i))
 }
+
 // section end seg_tree
 
 // section start interleave
 
 ///|
-pub fn[T] interleave(sel : List[T], other : List[T]) -> List[T] {
+fn[T] interleave(sel : List[T], other : List[T]) -> List[T] {
   match (sel, other) {
     (Nil, _) => Nil
     (Cons(x, xs), ys) => Cons(x, interleave(ys, xs))
@@ -61,10 +62,11 @@ fn b(i : Int) -> List[Int] {
     0 => Cons(2, Nil)
     n =>
       Int::until(1 << n, (1 << n) + (1 << (n - 1))).map(x => x * 2)
-      |> @immut/list.from_iter
+      |> from_iter
       |> interleave(b(n - 1))
   }
 }
+
 // section end interleave
 
 // section start b4
@@ -76,32 +78,35 @@ test "b(4)" {
     content="@list.of([32, 16, 34, 8, 36, 18, 38, 4, 40, 20, 42, 10, 44, 22, 46, 2])",
   )
 }
+
 // section end b4
 
 // section start shift
 
 ///|
-pub fn shift(n : Int, se : Bits) -> Bits {
+fn shift(n : Int, se : Bits) -> Bits {
   while_(Bits::even, Bits::shr, se.set(n))
 }
 
 ///|
-pub fn f2b(n : Int, se : Bits) -> Bits {
+fn f2b(n : Int, se : Bits) -> Bits {
   shift(n + 1, se).dec()
 }
+
 // section end shift
 
 // section start unshift
 
 ///|
-pub fn unshift(n : Int, se : Bits) -> Bits {
+fn unshift(n : Int, se : Bits) -> Bits {
   while_(x => not(x.test_helper(n)), Bits::shl, se) |> Bits::clear(_, n)
 }
 
 ///|
-pub fn b2f(n : Int, se : Bits) -> Bits {
+fn b2f(n : Int, se : Bits) -> Bits {
   unshift(n + 1, se.inc())
 }
+
 // section end unshift
 
 // section start test_id
@@ -115,14 +120,16 @@ test "id" {
   assert_true(f(4))
   assert_true(f(5))
 }
+
 // section end test_id
 
 // section start active_parent_binary
 
 ///|
-pub fn active_parent_binary(self : Bits) -> Bits {
+fn active_parent_binary(self : Bits) -> Bits {
   while_(Bits::odd, Bits::shr, self.shr())
 }
+
 // section end active_parent_binary
 
 // section start at_lsb
@@ -138,6 +145,7 @@ fn at_lsb(self : Bits, f : (Bits) -> Bits) -> Bits {
       }
   }
 }
+
 // section end at_lsb
 
 // section start prev_segment_binary
@@ -146,6 +154,7 @@ fn at_lsb(self : Bits, f : (Bits) -> Bits) -> Bits {
 fn prev_segment_binary(self : Bits) -> Bits {
   while_(Bits::even, Bits::shr, self).dec()
 }
+
 // section end prev_segment_binary
 
 ///|

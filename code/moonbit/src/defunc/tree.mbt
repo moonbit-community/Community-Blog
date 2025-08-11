@@ -20,4 +20,5 @@ fn[T] pre_order(tree : Tree[T], f : (T) -> Unit) -> Unit {
     }
   }
 }
+
 // section end pre_order

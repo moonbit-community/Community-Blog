@@ -1,5 +1,5 @@
 ///|
-type FenwickTree Array[Int]
+priv struct FenwickTree(Array[Int])
 
 ///|
 fn FenwickTree::lsb(i : Int) -> Int {
@@ -7,12 +7,12 @@ fn FenwickTree::lsb(i : Int) -> Int {
 }
 
 ///|
-pub fn FenwickTree::new(len : Int) -> FenwickTree {
+fn FenwickTree::new(len : Int) -> FenwickTree {
   Array::new(capacity=len)
 }
 
 ///|
-pub fn prefix(self : FenwickTree, i : Int) -> Int {
+fn prefix(self : FenwickTree, i : Int) -> Int {
   let mut i = i
   let mut s = 0
   while i > 0 {
@@ -25,26 +25,27 @@ pub fn prefix(self : FenwickTree, i : Int) -> Int {
 // section start update
 
 ///|
-pub fn update(self : FenwickTree, i : Int, delta : Int) -> Unit {
+fn update(self : FenwickTree, i : Int, delta : Int) -> Unit {
   let mut i = i
   while i < self.inner().length() {
     self.inner()[i] += delta
     i += FenwickTree::lsb(i)
   }
 }
+
 // section end update
 
 ///|
-pub fn range(self : FenwickTree, i : Int, j : Int) -> Int {
+fn range(self : FenwickTree, i : Int, j : Int) -> Int {
   self.prefix(j) - self.prefix(i - 1)
 }
 
 ///|
-pub fn get(self : FenwickTree, i : Int) -> Int {
+fn get(self : FenwickTree, i : Int) -> Int {
   self.range(i, i)
 }
 
 ///|
-pub fn set(self : FenwickTree, i : Int, value : Int) -> Unit {
+fn set(self : FenwickTree, i : Int, value : Int) -> Unit {
   self.update(i, value - self.get(i))
 }

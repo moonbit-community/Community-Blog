@@ -4,7 +4,7 @@
 typealias Int as Index
 
 ///|
-priv type Range (Index, Index) derive(Eq, Show)
+priv struct Range((Index, Index)) derive(Eq, Show)
 
 ///|
 fn subset(r1 : Range, r2 : Range) -> Bool {

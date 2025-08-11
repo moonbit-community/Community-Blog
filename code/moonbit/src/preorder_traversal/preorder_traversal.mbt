@@ -5,6 +5,7 @@ priv enum Tree[A] {
   Nil
   Node(A, Tree[A], Tree[A])
 }
+
 // section end define
 
 // section start preorder
@@ -24,6 +25,7 @@ fn[A] Tree::preorder(self : Tree[A], f : (A) -> Unit) -> Unit {
 
   dfs(self)
 }
+
 // section end preorder
 
 // section start preorder_stack
@@ -44,6 +46,7 @@ fn[A] Tree::preorder_stack(self : Tree[A], f : (A) -> Unit) -> Unit {
     }
   }
 }
+
 // section end preorder_stack
 
 // section start final
@@ -87,4 +90,5 @@ test "preorder/preorder_stack" {
   let t2 = Tree::from_n(15)
   test_preorder(t2)
 }
+
 // section end final
