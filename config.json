@@ -1,0 +1,5 @@
+{
+    "api_key": "$TRANSLATION_API_KEY",
+    "max_retries": 3,
+    "timeout": 60
+}
