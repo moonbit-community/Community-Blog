@@ -1,4 +1,4 @@
-name: check typos
+name: Check Typos
 
 on:
   workflow_dispatch:
