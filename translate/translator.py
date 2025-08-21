@@ -1,4 +1,3 @@
-import os
 import json
 import requests
 from pathlib import Path
@@ -30,7 +29,11 @@ class MarkdownTranslator:
         self.cache_dir = Path(".translation_cache")
         self.cache_dir.mkdir(exist_ok=True)
 
-    @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
+    @retry(
+        stop=stop_after_attempt(5), 
+        wait=wait_exponential(multiplier=1, min=2, max=30),
+        reraise=True
+    )
     def translate_text(self, text: str, file_path: str) -> str:
         """使用技术内容保留进行翻译"""
         # 检查缓存
@@ -50,22 +53,29 @@ class MarkdownTranslator:
                 {
                     "role": "system",
                     "content": (
-                        "你是一位专业的技术文档翻译助手。\n"
-                        "规则:\n"
-                        "1. 完全保留所有 Markdown 格式\n"
-                        "2. 绝不修改代码块或行内代码\n"
-                        "3. 保留 URL 和 YAML front matter 不变\n"
-                        f"4. 使用以下术语表:\n{self.format_glossary()}\n"
-                        "5. 保持技术术语一致\n"
-                        f"6. 正在翻译的文件路径：{file_path}"
+                        "你是一位专业的计算机科学和技术文档翻译专家，专门负责将中文技术文档翻译成英文。\n\n"
+                        "翻译任务：将以下中文 Markdown 文档翻译成英文，保持技术准确性和可读性。\n\n"
+                        "核心要求：\n"
+                        "1. 目标语言：英语（美式英语）\n"
+                        "2. 完全保留所有 Markdown 格式、语法和结构\n"
+                        "3. 绝不修改任何代码块（```...```）或行内代码（`...`）\n"
+                        "4. 保留所有 URL、链接和 YAML front matter 完全不变\n"
+                        "5. 保持技术术语的一致性和准确性\n"
+                        "6. 使用专业、清晰、自然的英文表达\n"
+                        "7. 保持原文的逻辑结构和段落组织\n"
+                        "8. 对于数学公式、算法描述等保持精确性\n"
+                        "9. 请检查翻译内容的头尾是否符合原文件的格式\n\n"
+                        f"技术术语表（必须遵循）：\n{self.format_glossary()}\n\n"
+                        f"当前翻译文件：{file_path}\n\n"
+                        "请直接输出翻译后的英文内容，不要添加任何解释或注释。"
                     )
                 },
                 {
                     "role": "user",
-                    "content": text
+                    "content": f"请将以下中文技术文档翻译成英文：\n\n{text}"
                 }
             ],
-            "temperature": 0.3,
+            "temperature": 0.2,
             "max_tokens": 4000,
             "top_p": 0.9
         }
@@ -117,8 +127,13 @@ class MarkdownTranslator:
     def format_glossary(self) -> str:
         """为 API 提示格式化术语表"""
         if not self.glossary:
-            return "（空术语表）"
-        return "\n".join(f"{k} → {v}" for k, v in self.glossary.items())
+            return "（无特定术语表，请使用标准计算机科学术语）"
+        
+        formatted_terms = []
+        for chinese, english in self.glossary.items():
+            formatted_terms.append(f"  • {chinese} → {english}")
+        
+        return "术语对照表：\n" + "\n".join(formatted_terms)
 
     def translate_file(self, input_path: str, output_path: str) -> bool:
         """处理单个文件，使用原子写入"""

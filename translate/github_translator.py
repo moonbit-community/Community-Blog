@@ -9,8 +9,6 @@ from translator import MarkdownTranslator
 from github import Github
 from git import Repo
 import logging
-from datetime import datetime
-import shutil
 
 sys.path.append(str(Path(__file__).parent.resolve()))
 
