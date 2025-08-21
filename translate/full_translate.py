@@ -110,13 +110,13 @@ class AsyncMarkdownTranslator:
                     
             except aiohttp.ClientError as e:
                 logger.error(f"API 请求失败：{str(e)}")
-                raise AsyncTranslationError(f"翻译服务不可用: {str(e)}")
+                raise AsyncTranslationError(f"翻译服务不可用： {str(e)}")
             except asyncio.TimeoutError as e:
                 logger.error(f"请求超时：{str(e)}")
-                raise AsyncTranslationError(f"请求超时: {str(e)}")
+                raise AsyncTranslationError(f"请求超时： {str(e)}")
             except Exception as e:
                 logger.error(f"意外错误：{str(e)}", exc_info=True)
-                raise AsyncTranslationError(f"处理翻译失败: {str(e)}")
+                raise AsyncTranslationError(f"处理翻译失败： {str(e)}")
 
     def load_glossary(self) -> Dict[str, str]:
         """加载技术术语表"""
@@ -230,7 +230,7 @@ class AsyncMarkdownTranslator:
         
         # 创建 HTTP 会话
         connector = aiohttp.TCPConnector(limit=0, limit_per_host=0)  # 无限制连接
-        timeout = aiohttp.ClientTimeout(total=600)  # 10分钟超时
+        timeout = aiohttp.ClientTimeout(total=600)  # 10 分钟超时
         
         async with aiohttp.ClientSession(connector=connector, timeout=timeout) as session:
             retry_count = 0

@@ -1,5 +1,4 @@
 
-```markdown
 ---
 title: Defining Basic Data Structures
 collect: true
@@ -12,15 +11,15 @@ Before implementing the LRU cache, we first need to define some basic data struc
 We start by defining the node structure for the doubly linked list. Each node needs to store a key-value pair and contain references to its previous and next nodes:
 
 ```moonbit
-// 定义Node结构体，用于双向链表
+// Define Node struct for doubly linked list
 struct Node[K, V] {
   key : K
   mut value : V
-  mut pre : Node[K, V]?  // 前驱节点
-  mut next : Node[K, V]? // 后继节点
+  mut pre : Node[K, V]?  // Previous node
+  mut next : Node[K, V]? // Next node
 }
 
-// Node构造函数
+// Node constructor
 fn new_node[K, V](k : K, v : V) -> Node[K, V] {
   { key: k, value: v, pre: None, next: None }
 }
@@ -41,11 +40,11 @@ Several interesting MoonBit features in this node structure deserve attention:
 Next, we define the main structure for the LRU cache:
 
 ```moonbit
-// LRU缓存结构体
+// LRU cache struct
 struct LRUCache[K, V] {
-  capacity : Int // 容量
-  dummy : Node[K, V] // 哑节点，用于标记双向链表的头尾
-  key_to_node : Map[K, Node[K, V]] // 键到节点的映射
+  capacity : Int // Capacity
+  dummy : Node[K, V] // Sentinel node for marking head and tail of doubly linked list
+  key_to_node : Map[K, Node[K, V]] // Mapping from key to node
 }
 ```
 
