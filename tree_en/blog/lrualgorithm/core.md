@@ -1,4 +1,3 @@
-
 ---
 title: Core Operations - get and put
 collect: true

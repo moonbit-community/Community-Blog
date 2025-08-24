@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Index conversion
 collect: true

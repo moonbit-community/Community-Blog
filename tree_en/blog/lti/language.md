@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Language Specification
 collect: true
@@ -44,4 +42,3 @@ pub(all) enum Expr {
 ```
 
 [+](/blog/lti/subtype.md#:embed)
-```

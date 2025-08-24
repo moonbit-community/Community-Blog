@@ -1,4 +1,3 @@
-
 ---
 title: Fenwick trees
 collect: true

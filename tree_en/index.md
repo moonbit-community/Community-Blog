@@ -1,4 +1,3 @@
-
 ---
 title: 🐰 MoonBit Community
 description: MoonBit Community Weekly, blog, and knowledge base

@@ -1,4 +1,3 @@
-
 ---
 title: Bidirectional Checking
 collect: true

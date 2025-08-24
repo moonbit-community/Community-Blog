@@ -1,7 +1,5 @@
-
-```markdown
 ---
-title: Official Highlights of the Week
+title: This Week's Official Highlights
 ---
 
 - Meetup Chengdu Station
@@ -38,4 +36,3 @@ title: Official Highlights of the Week
   Thanks to MoonBit's global Dead Code Elimination (DCE), Rabbit-TEA applications are extremely lightweight (e.g., 33KB for a counter app), outperforming mainstream frameworks. The MoonBit team has rewritten the package management site mooncakes.io using this framework and continues to explore advanced features like SSR and time-travel debugging.
   
   A new era of web development has arrived – MoonBit and Rabbit-TEA inject fresh vitality into frontend engineering!
-```

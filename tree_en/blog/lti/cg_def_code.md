@@ -1,4 +1,3 @@
-
 ---
 title: Constraint and Constraint Set Code
 collect: true

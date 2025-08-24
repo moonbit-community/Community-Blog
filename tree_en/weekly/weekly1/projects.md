@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: High-Quality New Projects in the Community This Week
 ---
@@ -14,4 +12,3 @@ title: High-Quality New Projects in the Community This Week
 - [colmugx](https://github.com/colmugx) has created an experimental project [moonbit-zig-experimental](https://github.com/colmugx/moonbit-zig-experimental) that implements an HTTP client using Zig and MoonBit.
 - [Hyrious](https://github.com/hyrious) has developed MoonBit syntax highlighting and LSP support for the [Sublime](https://www.sublimetext.com) editor, [now open-sourced on GitHub](https://github.com/hyrious/moonbit-syntax-highlight/).
 - [quirk-lab](https://github.com/quirk-lab) has written [Zed plugin support](https://github.com/quirk-lab/zed-moonbit) for MoonBit.
-```

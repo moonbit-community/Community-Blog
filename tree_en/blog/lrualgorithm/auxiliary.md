@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Auxiliary Operations - push_front and remove
 collect: true
@@ -84,4 +82,3 @@ Recall the dummy node in our design, which provides these benefits:
 - Provides stable reference points for "head" and "tail"
 
 With these auxiliary operations, our LRU cache algorithm becomes more complete. Next, we'll add additional utility methods to enhance the usability of our LRU cache.
-```

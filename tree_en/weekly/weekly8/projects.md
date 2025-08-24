@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: High-Quality New Projects in the Community This Week
 ---
@@ -13,4 +11,3 @@ title: High-Quality New Projects in the Community This Week
 - [Morphir](https://github.com/finos/morphir) is an IR and toolchain/framework for abstracting business logic. [Eleven19](https://github.com/Eleven19) built a [MoonBit implementation](https://github.com/Eleven19/morphir-moonbit) of Morphir, currently in early stages but representing fascinating work.
 - [Congcong Cai HerrCai0907](https://github.com/HerrCai0907) conducted a [Benchmark](https://github.com/HerrCai0907/moonbit-for-OO-bench) comparing MoonBit, AssemblyScript, and Native (C++) under OOP conditions. Results show MoonBit outperforms AssemblyScript in limited scenarios, achieving near-parity performance with AssemblyScript when using Binaryen + WasmGC.
 - [Gasai ジェリー gasacchi](https://github.com/gasacchi) implemented a programming language called [Glimpse](https://github.com/gasacchi/glimpse) in MoonBit, having completed the Lexer component.
-```

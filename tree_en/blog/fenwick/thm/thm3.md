@@ -1,4 +1,3 @@
-
 ---
 taxon: Theorem
 title: shr-inc-dec

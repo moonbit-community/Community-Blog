@@ -1,4 +1,3 @@
-
 ---
 title: Implementing the LRU Cache Algorithm with MoonBit
 collect: true

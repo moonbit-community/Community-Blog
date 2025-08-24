@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Calculating Type Arguments
 collect: true
@@ -47,4 +45,3 @@ $$
 }
 \quad (\text{App-InfAlg})
 $$
-```

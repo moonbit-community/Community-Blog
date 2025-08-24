@@ -1,6 +1,5 @@
-
 ---
-title: New High-Quality Community Projects This Week
+title: High-Quality New Projects in the Community This Week
 ---
 
 - [AdUhTkJm Yue Huang](https://github.com/AdUhTkJm) implemented a MoonBit compiler [moonc](https://github.com/AdUhTkJm/moonc) using MoonBit. He manually developed all passes from Lexer/Parser to the interpreter. Currently, the compiler can fully parse itself. This project can also be used independently as a package on [mooncakes.io](https://mooncakes.io).

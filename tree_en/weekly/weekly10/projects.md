@@ -1,6 +1,5 @@
-
 ---
-title: New High-Quality Community Projects This Week
+title: High-Quality New Projects in the Community This Week
 ---
 
 - MoonBit official developer [Kaida-Amethyst](https://github.com/Kaida-Amethyst) created a Godot binding for MoonBit called [godot.mbt](https://github.com/Kaida-Amethyst/godot.mbt), enabling developers to build games using MoonBit with the Godot engine. The project has completed the mapping from GDExtension to MoonBit types. Further abstraction awaits updates to MoonBit's language features, so development is currently paused.  

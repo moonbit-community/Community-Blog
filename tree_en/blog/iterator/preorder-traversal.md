@@ -1,4 +1,3 @@
-
 ---
 title: Implementing Preorder Traversal of Trees in MoonBit
 collect: true

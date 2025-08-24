@@ -1,4 +1,3 @@
-
 ---
 title: Implementing External Iterators in MoonBit
 collect: true

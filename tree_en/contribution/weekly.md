@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Weekly
 ---
@@ -11,4 +9,3 @@ The weekly report is tentatively updated every two weeks, authored and edited by
 
 Community members may submit PRs for *not officially released* weekly reports to add new entries or modify existing ones.  
 The current responsible person will conduct code reviews daily on schedule.
-```

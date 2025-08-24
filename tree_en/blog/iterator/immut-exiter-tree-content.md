@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Body
 collect: true
@@ -97,4 +95,3 @@ test {
     #|("apple", 0),("orange", 1),("watermetlon", 2),
   )
 }
-```

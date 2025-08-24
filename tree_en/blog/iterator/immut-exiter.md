@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Immutable External Iterator
 collect: true
@@ -53,4 +51,3 @@ test "ImmutExIter::from_array" {
 ```
 
 [+](/blog/iterator/immut-exiter-tree.md#:embed)
-```

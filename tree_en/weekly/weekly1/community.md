@@ -1,4 +1,3 @@
-
 ---
 title: Weekly Community Project Maintenance Updates (Covering Significant Changes Only)
 ---

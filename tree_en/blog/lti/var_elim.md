@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Variable Elimination
 collect: true
@@ -21,4 +19,3 @@ This carefully designed rule set guarantees the correctness and optimality of va
 
 - **Soundness**: If $S \Uparrow^V T$, then $S \lt: T$ holds and $T$ contains no free variables from $V$. Dually, if $S \Downarrow^V T$, then $T \lt: S$ holds and $T$ contains no free variables from $V$.
 - **Completeness**: The operation finds the "best" bound. For example, in promotion, if there exists another supertype $T'$ of $S$ containing no variables from $V$, then the $T$ computed by $S \Uparrow^V T$ must be a subtype of $T'$ (that is, $T \lt: T'$), proving $T$ is the smallest among all possible options.
-```

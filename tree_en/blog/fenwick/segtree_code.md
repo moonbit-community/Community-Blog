@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Simple segment tree implementation in MoonBit
 collect: true
@@ -13,4 +11,3 @@ The following code shows a simple segment tree implementation in MoonBit, which 
 Range utility functions:
 
 ![range](moonbit/src//fenwick/range.mbt#:include)
-```

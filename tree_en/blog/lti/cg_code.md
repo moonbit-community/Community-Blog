@@ -1,4 +1,3 @@
-
 ---
 title: Constraint Generation Code
 collect: true

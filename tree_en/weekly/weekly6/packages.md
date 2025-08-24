@@ -1,6 +1,5 @@
-
 ---
-title: High-Quality Packages Added by the Community This Week
+title: This Week's New High-Quality Community Packages
 ---
 
 - [CAIMEO](https://github.com/CAIMEOX) implemented a simple [Functor](https://github.com/CAIMEOX/functor) in MoonBit using the newly released Virtual Package feature (supporting abstract types), which offers enhanced capabilities.

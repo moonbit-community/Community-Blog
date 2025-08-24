@@ -1,4 +1,3 @@
-
 ---
 title: How QuickCheck Works?
 collect: true

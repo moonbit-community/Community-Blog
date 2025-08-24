@@ -1,4 +1,3 @@
-
 ---
 title: Levels of Abstraction
 collect: true

@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Constraint Generation
 collect: true
@@ -64,4 +62,3 @@ A crucial observation is that in any invocation $V \vdash_{\overline{X}} S \lt: 
 - **Completeness**: The algorithm is "sufficiently good". Conversely, if there exists a substitution $\sigma$ such that $\sigma S \lt: \sigma T$ holds, then the algorithm must successfully generate a constraint set $C$, and $\sigma$ must satisfy $C$ (i.e., $\sigma \in C$).  
 
 Together, these properties show that the constraint generator precisely characterizes all possible solutions—no more, no less. -->
-```

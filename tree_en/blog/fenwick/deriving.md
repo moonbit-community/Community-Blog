@@ -1,4 +1,3 @@
-
 ---
 title: Deriving Fenwick operations
 collect: true

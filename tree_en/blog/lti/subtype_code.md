@@ -1,4 +1,3 @@
-
 ---
 title: Solution
 collect: true

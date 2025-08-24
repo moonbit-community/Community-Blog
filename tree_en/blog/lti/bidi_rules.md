@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Typing Rules
 collect: true
@@ -175,4 +173,3 @@ $$
 
 - If $f$ has type $\bot$, the application result is $\bot$.
 - Since $\bot$ is a subtype of any type $R$, the check always succeeds.
-```

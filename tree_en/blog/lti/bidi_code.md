@@ -1,4 +1,3 @@
-
 ---
 title: Bidirectional Typing Code
 collect: true

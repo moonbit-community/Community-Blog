@@ -1,6 +1,5 @@
-
 ---
-title: Weekly2 社区周报 2025/4/7 ~ 2025/4/13
+title: Weekly1 Community Report 2025/4/7 ~ 2025/4/13
 ---
 
 This is the community weekly report for 2025/4/7 to 2025/4/13, a single-week report.

@@ -1,4 +1,3 @@
-
 ---
 title: Continuation-Passing Style Transformation
 collect: true

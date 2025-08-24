@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Summary and Reflections
 collect: true
@@ -22,4 +20,3 @@ My greatest takeaway is the deepened understanding of how algorithms and data st
 Finally, I hope this LRU cache implementation journey proves helpful. Whether you're learning MoonBit or exploring caching algorithms, I trust this article provides valuable insights. Programming's joy lies not just in solving problems but in crafting elegant solutions—where LRU cache stands as a compact, perfect example.
 
 If you have questions or improvement suggestions, feel free to discuss them on Github. After all, code and ideas continually evolve through collaboration.
-```

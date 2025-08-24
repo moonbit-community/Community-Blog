@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Introduction
 collect: true
@@ -60,4 +58,3 @@ Our goal is not to write elegant functional code for this solved problem. Instea
 [^2]: In this article, $\log$ denotes base-2 logarithm; the original text uses $\lg$.
 [^3]: The original text says *balanced binary tree*, but to avoid ambiguity, we use *complete binary tree* here.
 [^4]: There is some confusion in terminology. As of this writing, the Wikipedia entry for segment trees (Wikipedia Contributors, 2024) discusses an interval data structure for computational geometry. However, most Google results for "segment tree" come from competitive programming, where it refers to the data structure described here (e.g., see Halim et al., 2020, Section 2.8 or Ivanov, 2011b). These two data structures are essentially unrelated.
-```

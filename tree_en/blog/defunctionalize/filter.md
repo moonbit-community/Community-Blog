@@ -1,4 +1,3 @@
-
 ---
 title: Defunctionalization: A Taste of the Filter DSL
 collect: true

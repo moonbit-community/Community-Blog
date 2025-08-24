@@ -1,6 +1,5 @@
-
 ---
-title: This Week's New High-Quality Community Projects
+title: High-Quality New Projects in the Community This Week
 ---
 
 - This week, with the refinement and official release of rabbit-tea, MoonBit official member [Yoorkin](https://github.com/Yoorkin) open-sourced two new repositories in MoonBit-Community: [rabbit-tea-template](https://github.com/moonbit-community/rabbit-tea-template) and [rabbit-tea-vite](https://github.com/moonbit-community/rabbit-tea-vite). The former is a template repository based on rabbit-tea, while the latter is a Vite plugin for rabbit-tea.

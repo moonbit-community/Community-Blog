@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Two's complement binary 
 collect: true
@@ -85,4 +83,3 @@ We also need left and right shifts, and a generic `while` combinator that iterat
 ![shift](moonbit/src//fenwick/bits.mbt#:include)
 
 [^5]: Some readers may recognize infinite two's complement bit strings as binary numbers, i.e., the case $p=2$ of p-adic numbers, but our discussion does not rely on understanding this connection.
-```

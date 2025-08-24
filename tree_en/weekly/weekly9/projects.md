@@ -1,6 +1,5 @@
-
 ---
-title: This Week's New Quality Community Projects
+title: High-Quality New Projects in the Community This Week
 ---
 
 - [Arimura Romi BIYUEHU](https://github.com/BIYUEHU) developed a web-based mini-game [kana-rhythm](https://github.com/BIYUEHU/kana-rhythm) using MoonBit, which has now implemented sound effects and visual elements.

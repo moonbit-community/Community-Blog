@@ -1,6 +1,5 @@
-
 ---
-title: This Week's New Quality Community Projects
+title: High-Quality New Projects in the Community This Week
 ---
 
 - [illusory0x0](https://github.com/illusory0x0) (猗露) open-sourced a project [clang](https://github.com/moonbit-community/clang.mbt), a native binding library for libclang designed for C/C++ code analysis. It provides AST (Abstract Syntax Tree) capabilities for MoonBit developers via Clang's C interface. The project is still in progress.

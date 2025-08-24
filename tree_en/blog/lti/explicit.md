@@ -1,4 +1,3 @@
-
 ---
 title: Explicit Typing Rules
 collect: true

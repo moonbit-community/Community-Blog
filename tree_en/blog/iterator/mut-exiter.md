@@ -1,4 +1,3 @@
-
 ---
 title: Mutable External Iterator
 collect: true

@@ -1,4 +1,3 @@
-
 ---
 title: Promotion and Demotion Rules
 collect: true

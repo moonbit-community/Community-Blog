@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Just Enough Type Information
 collect: true
@@ -22,4 +20,3 @@ Based on these quantitative observations, we can outline the contours of an "eno
 3. Local variable bindings should generally not require explicit type annotations.
 
 [+](/blog/lti/strategies.md#:embed)
-```

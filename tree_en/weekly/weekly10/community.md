@@ -1,6 +1,5 @@
-
 ---
-title: Weekly Community Updates
+title: Community Updates This Week
 ---
 
 - Articles by community evangelists this week have already been featured in official updates and will not be repeated here.  

@@ -1,4 +1,3 @@
-
 ---
 title: Community Updates This Week
 ---

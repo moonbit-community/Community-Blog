@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Practical Auxiliary Methods
 collect: true
@@ -73,4 +71,3 @@ let usage_percentage = size(cache) * 100 / cache.capacity
 ```
 
 Though simple, these methods significantly enhance the LRU cache's practicality. With these auxiliary methods, our LRU cache implementation is now comprehensive and ready for real-world use.
-```

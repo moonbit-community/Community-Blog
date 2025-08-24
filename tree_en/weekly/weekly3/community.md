@@ -1,6 +1,5 @@
-
 ---
-title: Weekly Community Updates
+title: Community Updates This Week
 ---
 
 - On April 19, PLCT Lab's J139 MoonBit Application Development position hosted an Intern Demo Day. Led by J139 Mentor [Lampese](https://github.com/Lampese), the event featured twelve interns who delivered twelve exceptional workshops. Topics spanned graphical libraries, scientific computing, foundational tutorials, FFI bindings, AI Agents, and more. Replays are available on the [BiliBili PLCT Official Account](https://space.bilibili.com/3546645654407506/lists/5283770).

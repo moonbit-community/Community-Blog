@@ -1,4 +1,3 @@
-
 ```markdown
 ---
 title: You could have invented Fenwick trees
@@ -24,4 +23,3 @@ Fenwick trees, also known as binary indexed trees, are an ingenious data structu
 [+](/blog/fenwick/deriving.md#:embed)
 
 [+](/blog/fenwick/conclusion.md#:embed)
-```

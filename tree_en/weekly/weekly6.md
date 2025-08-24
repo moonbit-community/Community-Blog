@@ -1,9 +1,8 @@
-
 ---
-title: Weekly6 Community Weekly Report June 16 - June 22, 2025
+title: Weekly6 Community Report 2025/6/16 ~ 2025/6/22
 ---
 
-This is the community weekly report for June 16 - June 22, 2025. This week marked a significant milestone as the MoonBit language officially entered its Beta version.
+This is the community weekly report for 2025/6/16 to 2025/6/22. This week marked a significant milestone as the MoonBit language officially entered its Beta version.
 
 [+-](/weekly/weekly6/official.md#:embed)
 

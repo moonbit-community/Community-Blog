@@ -1,4 +1,3 @@
-
 ---
 title: Subtyping Relation
 collect: true

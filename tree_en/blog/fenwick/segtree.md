@@ -1,4 +1,3 @@
-
 ---
 title: Segment tree
 collect: true

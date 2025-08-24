@@ -1,4 +1,3 @@
-
 ---
 title: This Week's Official Highlights
 ---

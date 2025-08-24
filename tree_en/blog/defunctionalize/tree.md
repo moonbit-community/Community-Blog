@@ -1,4 +1,3 @@
-
 ---
 title: Traverse a Tree
 collect: true

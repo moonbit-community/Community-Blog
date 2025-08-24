@@ -1,4 +1,3 @@
-
 ---
 title: Polarity
 collect: true

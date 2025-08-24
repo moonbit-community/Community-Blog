@@ -1,6 +1,5 @@
-
 ---
-title: New High-Quality Community Projects This Week
+title: High-Quality New Projects in the Community This Week
 ---
 
 - MoonBit core team member [Kaida-Amethyst](https://github.com/Kaida-Amethyst) developed [TinyMoonBit](https://github.com/Kaida-Amethyst/TinyMoonbit), an extremely simplified MoonBit-like language compiler project with complexity comparable to that of the C language. This project serves as a comprehensive educational example for the [llvm.mbt](https://github.com/moonbitlang/llvm.mbt) LLVM binding project and the LLVM-inspired project [Aether](https://github.com/Kaida-Amethyst/Aether), demonstrating how to develop an LLVM IR-generating compiler using MoonBit. 2025/6/17 04:22  
@@ -12,4 +11,4 @@ title: New High-Quality Community Projects This Week
 - MoonBit core team member [tonyfettes Haoxiang Fei](https://github.com/tonyfettes) published a [Flatpak SDK](https://github.com/tonyfettes/org.freedesktop.Sdk.Extension.moonbit) for MoonBit, enabling MoonBit program execution within Flatpak environments.  
 - MoonBit founder [Prof. Zhang Hongbo](https://github.com/bobzhang) utilized MoonAgent to generate an experimental sexp parser project [lisp-machine-MoonPilot](https://github.com/bobzhang/lisp-machine-MoonPilot), demonstrating MoonAgent's capability in large-scale projects.  
 - [A-23187](https://github.com/A-23187) created a tree-based syntax-and-semantics-aware code chunker for RAG-based code segmentation.  
-- [Kresna Sucandra SHA888](https://github.com/SHA888) built [TMDash](https://github.com/SHA888/TMDash), a web-based telemedicine platform using MoonBit. Leveraging WebAssembly (WASM), it delivers high-performance and AI-native capabilities for smart health data processing. The dashboard provides real-time video/chat communication, health data visualization, appointment management, and AI-driven insights for patients and healthcare providers.  
+- [Kresna Sucandra SHA888](https://github.com/SHA888) built [TMDash](https://github.com/SHA888/TMDash), a web-based telemedicine platform using MoonBit. Leveraging WebAssembly (WASM), it delivers high-performance and AI-native capabilities for smart health data processing. The dashboard provides real-time video/chat communication, health data visualization, appointment management, and AI-driven insights for patients and healthcare providers.

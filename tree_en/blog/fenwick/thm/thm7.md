@@ -1,4 +1,3 @@
-
 ---
 title: sentinel
 taxon: Theorem

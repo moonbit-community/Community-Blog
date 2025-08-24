@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Constructor Implementation
 collect: true
@@ -76,4 +74,3 @@ dummy ⟷ B ⟷ A ⟷ dummy
 In this structure, `dummy.next` points to the most recently used node (B), while `dummy.pre` points to the least recently used node (A).
 
 This design lays the foundation for implementing core operations like `get` and `put`. Next, we'll implement these core operations to complete the LRU cache functionality.
-```

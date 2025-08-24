@@ -1,6 +1,5 @@
-
 ---
-title: Official Highlights of the Week
+title: This Week's Official Highlights
 ---
 
 - MoonBit officially open-sourced the compiler frontend [parser](https://github.com/moonbitlang/parser) written in MoonBit, built upon [moonlex](https://github.com/moonbitlang/moonlex) and [moonyacc](https://github.com/moonbitlang/moonyacc). This demonstrates that MoonBit's compiler frontend has achieved self-hosting and showcases MoonBit's advantages in symbolic computation domains.
@@ -24,4 +23,4 @@ title: Official Highlights of the Week
   - Added `...` as a pattern matching placeholder for code omission.  
   - Introduced `moon coverage analyze` command for one-click code coverage detection and visualization of untested branches.  
   - Standard library preview: JSON type construction will be updated. Use recommended functions like `Json::number` for future compatibility.  
-  - MoonBit Community will participate as an open-source partner at China RISC-V Summit 2025 (July 16-18). The event expects 1000+ professional attendees. Visit our booth to connect with MoonBit ambassadors.  
+  - MoonBit Community will participate as an open-source partner at China RISC-V Summit 2025 (July 16-18). The event expects 1000+ professional attendees. Visit our booth to connect with MoonBit ambassadors.

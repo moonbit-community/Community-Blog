@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: JavaScript FFI
 ---
@@ -13,4 +11,3 @@ title: JavaScript FFI
 [tiye/dom-ffi](https://github.com/Respo/dom-ffi.mbt)
 
 [tiye/respo](https://github.com/Respo/respo.mbt)
-```

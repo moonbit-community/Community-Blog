@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Proof Sketch
 collect: true
@@ -24,4 +22,3 @@ The proof of their equivalence is distilled into a core proposition asserting:
     When the algorithm fails, it must be because the constraint interval $[S, T]$ for some invariant variable $X_i$ has $S \neq T$.
     We use proof by contradiction: assume that an optimal solution $\sigma$ still exists under these circumstances. Since $S \neq T$, we can always find another valid substitution $\sigma'$ such that $\sigma(X_i)$ differs from $\sigma'(X_i)$. However, because $R$ is invariant in $X_i$, $\sigma(R)$ and $\sigma'(R)$ become incomparable. This contradicts the assumption that "$\sigma$ is the optimal solution (i.e., it is smaller than all other solutions)".
     Therefore, in this case, the optimal solution necessarily does not exist.
-```

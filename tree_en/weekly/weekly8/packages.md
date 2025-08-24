@@ -1,7 +1,5 @@
-
-```markdown
 ---
-title: New High-Quality Community Packages This Week
+title: This Week's New High-Quality Community Packages
 ---
 
 - [Fangyin Cheng fangyinc](https://github.com/fangyinc) developed a cross-platform (backend) networking package for MoonBit: [net.mbt](https://github.com/fangyinc/net.mbt). It now features comprehensive documentation and supports building simple HTTP servers (currently compatible with Native and JavaScript backends). This represents one of the community's most mature and complete network encapsulation libraries. Complementary infrastructure [socket.mbt](https://github.com/fangyinc/socket.mbt) provides socket binding support.
@@ -17,4 +15,3 @@ title: New High-Quality Community Packages This Week
 - [SupremeHuaji](https://github.com/SupremeHuaji) created a high-performance [van Emde Boas (VEB) Tree](https://github.com/SupremeHuaji/VEBTree) in MoonBit for integer set operations. It achieves O(log log U) time complexity for insertions, deletions, lookups, predecessor/successor queries, outperforming traditional balanced trees and hash tables for bounded integer ranges.
 - [SupremeHuaji](https://github.com/SupremeHuaji) built a simple [MaxStack](https://github.com/SupremeHuaji/MaxStack) using dual-stack design, enabling O(1) maximum value retrieval.
 - [HCHogan Hank](https://github.com/HCHogan) developed [sorted_map](https://github.com/HCHogan/btree.mbt) based on BTree implementation. Core features (add/query/delete) are complete. Once documented, this CPU cache-friendly library may replace the AVL Tree-based `sorted_map` in MoonBit's standard library.
-```

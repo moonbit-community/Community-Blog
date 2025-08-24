@@ -1,4 +1,3 @@
-
 ---
 title: How to Read Typing Rules
 collect: true

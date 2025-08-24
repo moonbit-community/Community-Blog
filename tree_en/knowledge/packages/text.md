@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Text
 ---
@@ -9,4 +7,3 @@ title: Text
 [Yoorkin/fuzzy_search](https://github.com/Yoorkin/fuzzy-search)
 
 [xunyoyo/NyaSearch](https://github.com/moonbit-community/NyaSearch)
-```

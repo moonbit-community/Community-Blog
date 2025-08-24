@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Basic
 ---
@@ -12,4 +10,3 @@ For complex diagramming needs, we recommend using Typst for rendering.
 Contributing to Community-Blog is straightforward:  
 Simply submit a Pull Request to our GitHub [repository](https://github.com/moonbit-community/community-blog).  
 **Writing specifications** will be introduced later in this document.
-```

@@ -1,4 +1,3 @@
-
 ---
 title: Solving Constraints
 collect: true

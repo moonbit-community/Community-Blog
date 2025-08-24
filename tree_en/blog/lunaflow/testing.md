@@ -1,4 +1,3 @@
-
 ---
 title: Validating Constraints on Algebraic Structures 
 collect: true

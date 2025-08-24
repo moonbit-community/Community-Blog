@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Data Structures
 ---
@@ -15,4 +13,3 @@ title: Data Structures
 [smallbearrr/NetworkX](https://github.com/moonbit-community/NetworkX)
 
 [smallbearrr/pandas](https://github.com/moonbit-community/pandas)
-```

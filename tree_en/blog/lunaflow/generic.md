@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Mathematical Structures In Luna-Generic
 collect: true
@@ -34,4 +32,3 @@ impl[A : Eq + Semiring] Add for Polynomial[A] with op_add(xs, ys)
 ```
 
 From a software engineering perspective, hierarchical abstraction of algebraic structures perfectly embodies the Separation of Concerns design philosophy. Mathematically, groups (Group) extend monoids by introducing inverse elements, while rings (Ring) further require additive commutative groups. These progressive relationships manifest in MoonBit through trait composition: each new trait only declares extended algebraic operations without redefining underlying ones. This approach not only eliminates code redundancy but, more importantly, establishes a rigorous correspondence between mathematical theory and program implementation, making abstraction-layer relationships transparently clear.
-```

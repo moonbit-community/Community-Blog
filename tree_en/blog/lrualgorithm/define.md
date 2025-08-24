@@ -1,4 +1,3 @@
-
 ---
 title: Defining Basic Data Structures
 collect: true

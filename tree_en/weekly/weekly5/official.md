@@ -1,6 +1,5 @@
-
 ---
-title: Official Highlights of the Week
+title: This Week's Official Highlights
 ---
 
 - On May 19th, MoonBit officially released a [Weekly Report](https://mp.weixin.qq.com/s/KQBsPOajuHErFFawZvHKuQ), featuring syntax and toolchain updates:

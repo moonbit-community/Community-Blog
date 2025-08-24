@@ -1,4 +1,3 @@
-
 ---
 title: References
 collect: true

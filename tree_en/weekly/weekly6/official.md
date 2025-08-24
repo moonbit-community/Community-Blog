@@ -1,7 +1,5 @@
-
-```markdown
 ---
-title: Official Highlights of the Week
+title: This Week's Official Highlights
 ---
 
 - On June 16, MoonBit officially released an [official weekly report](https://mp.weixin.qq.com/s/QNYVLKpVRCLAJ0EuwzzxHA). This marks the final update before the beta version, indicating the syntax is approaching stabilization. Key updates include:
@@ -62,4 +60,3 @@ title: Official Highlights of the Week
 - MoonBit was featured at two major tech events from June 13-15, 2025: the 3rd INNOTECH Innovation Carnival hosted by HKUST(GZ), and the 12th GIAC (Global Internet Architecture Conference) by msup. At GIAC, Zhang Hongbo, Chief Scientist of the Basic Software Center at IDEA Research Institute and Head of the MoonBit Platform, delivered a keynote titled "Vertical Integration of AI Programming in MoonBit".
 - On June 18, 2025, CSDN published an article titled "20 Years in the Making: China's First Industrial-Grade Programming Language Enters Beta Version", detailing MoonBit's progress and marking its official beta release.
 - MoonBit's Pearls series updated with its second article: [MoonBit Pearls Vol.02: Object-Oriented Programming in MoonBit](https://mp.weixin.qq.com/s/mDsY4fnGmggk9JSH1sLE2g). Written by Liu Ziyue from the MoonBit team, it explores OOP through an RPG game development example.
-```

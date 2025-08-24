@@ -1,4 +1,3 @@
-
 ---
 title: Understanding Local Type Inference
 collect: true

@@ -1,6 +1,5 @@
-
 ---
-title: New High-Quality Packages in the Community This Week
+title: This Week's New High-Quality Community Packages
 ---
 
 - [justjavac Midu](https://github.com/justjavac) created a new repository [moonbit-bytesize](https://github.com/justjavac/moonbit-bytesize), a Byte Count Representations Wrapper. It references Rust's [bytesize/bytesize](https://github.com/bytesize-rs/bytesize) library.

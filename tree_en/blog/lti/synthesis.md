@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Local Type Argument Synthesis
 collect: true
@@ -61,4 +59,3 @@ making it a classic non-constructive description that cannot be implemented in a
 Thus, our goal becomes clear: we need a truly executable algorithm whose results align with (App-InfSpec), 
 but without requiring non-constructive search or backtracking. This is precisely the role that **constraint generation** will play. 
 Its design motivation stems from an ingenious perspective shift on the problem itself.
-```

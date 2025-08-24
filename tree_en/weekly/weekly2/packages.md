@@ -1,6 +1,5 @@
-
 ---
-title: 本周社区新增优质包
+title: This Week's New High-Quality Community Packages
 ---
 
 - [illusory0x0 猗露](https://github.com/illusory0x0) developed a [classic adapton implementation](https://github.com/moonbit-community/adapton.mbt) based on MoonBit, supporting lazy evaluation and dependency graph-driven incremental computation. In this system, set operations do not immediately trigger updates; instead, they mark nodes as Dirty. Updates are only propagated through the dependency graph and necessary computations are performed when get is called. The dependency graph is automatically built during the first call to Thunk::get and uses a global stack to track dependencies. The implementation also supports node memoization to handle scenarios with dynamically changing dependency structures, such as spreadsheet applications. Note that due to the current lack of weak reference features in MoonBit, memory leaks may occur, especially when memoization is enabled.

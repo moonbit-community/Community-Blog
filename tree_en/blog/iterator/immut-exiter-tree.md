@@ -1,4 +1,3 @@
-
 ---
 title: Implementing Immutable External Iterator for Trees
 collect: true

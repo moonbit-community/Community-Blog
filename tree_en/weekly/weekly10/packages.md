@@ -1,6 +1,5 @@
-
 ---
-title: New High-Quality Packages Added to the Community This Week
+title: This Week's New High-Quality Community Packages
 ---
 
 - MoonBit founder [Hongbo Zhang](https://github.com/bobzhang) developed a MoonBit iterator visitor pattern library [moonbit-visitors](https://github.com/bobzhang/moonbit-visitors), demonstrating an elegant implementation for traversing and processing expression trees in MoonBit. This library provides automatic tree traversal capabilities, allowing developers to override only specific behaviors as needed. It implements a design pattern that minimizes boilerplate code and includes comprehensive tests and documentation.

@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Bodies
 ---
@@ -10,4 +8,3 @@ The website is currently divided into the following sections:
 - **Community Blog (Blog)**: Accepts community contributions, sharing articles about development experiences using MoonBit within the community.
 - **Community Knowledge Base (Knowledge Base)**: A comprehensive community knowledge base aiming to be "All You Need To Know In MoonBit". It strives to integrate a "Library Index", "Extended Syntax/Miscellaneous Collection", and "Common Q&A".
 - **(TBD) MoonBit Community Tutorial (Community Tutorial)**: A community-maintained and responsive MoonBit language tutorial for developers of all levels.
-```

@@ -1,4 +1,3 @@
-
 ---
 taxon: Theorem
 title: shl-shr

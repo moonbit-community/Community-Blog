@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Requirements 
 ---
@@ -20,5 +18,4 @@ Additionally, for submitted PRs, we expect PR titles to comply with [Conventiona
 feat: add a new community information for weekly
 fix: fix typo for knowledge base
 refactor: refactor the doc structure
-```
 ```

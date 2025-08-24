@@ -1,6 +1,5 @@
-
 ---
-title: Official Highlights of the Week
+title: This Week's Official Highlights
 ---
 
 - The **2025 MoonBit Global Programming Innovation Challenge (MGPIC 2025)** is now officially open for registration. MGPIC 2025 is a professional competition for developers worldwide. The inaugural 2024 edition attracted over 1,888 teams from renowned institutions including Tsinghua University, University of Cambridge, Sun Yat-sen University, and Hong Kong University of Science and Technology (Guangzhou). Honorary judges included Harry Shum, Lin Huimin, Zhao Chen, and Ni Mingxuan, garnering widespread attention and recognition from both academia and industry. This year's competition retains two tracks—Game Development and Compiler Design—but introduces richer and more diverse formats. Details are available in the [official announcement](https://mp.weixin.qq.com/s/8IbEQ0dasvQlIMeAgJhHww).  
@@ -20,4 +19,4 @@ title: Official Highlights of the Week
   - Xing Kaize: "MoonBit Implementation of the IntroSort Algorithm"  
   - Xue Yujie: "Applying Bitwise Operations in MoonBit: A Case Study on VEB Tree"  
   - Lei Zhengyu: "Building an Extensible SQL Parser with MoonBit"  
-- MoonBit’s **Pearls series** released its fifth article: [《MoonBit Pearls Vol.05: Dependency Injection in Functional Programming: Reader Monad》](https://mp.weixin.qq.com/s/6g4XG1Bw2pcEtmKCLHwyMQ), exploring the Reader Monad as a functional solution for DI.  
+- MoonBit’s **Pearls series** released its fifth article: [《MoonBit Pearls Vol.05: Dependency Injection in Functional Programming: Reader Monad》](https://mp.weixin.qq.com/s/6g4XG1Bw2pcEtmKCLHwyMQ), exploring the Reader Monad as a functional solution for DI.

@@ -1,5 +1,3 @@
-
-```markdown
 ---
 title: Strategies
 collect: true
@@ -12,4 +10,3 @@ The following are the two primary strategies introduced in this paper:
 - **Bidirectional Propagation of Type Information**: This strategy primarily infers type annotations for bound variables in anonymous functions. It propagates type information downward from surrounding expressions (e.g., function application nodes) to their subexpressions, thereby providing an "expected type" to guide the type checking process of subexpressions.  
 
 Both techniques adhere to the principle of **locality**, meaning all information required for inference is exchanged only between adjacent nodes in the syntax tree, without involving long-range dependencies or global unification variables.
-```

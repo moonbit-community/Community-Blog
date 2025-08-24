@@ -1,6 +1,5 @@
-
 ---
-title: New High-Quality Packages Added to the Community This Week
+title: This Week's New High-Quality Community Packages
 ---
 
 - [kesmeey](https://github.com/kesmeey) developed the [immut_BitVector](https://github.com/moonbit-community/immut_BitVector) library for compactly and efficiently storing and manipulating boolean sequences. It provides a series of bit operations while maintaining immutability, with all modification operations returning new instances.

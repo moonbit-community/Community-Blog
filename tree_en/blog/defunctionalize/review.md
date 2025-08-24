@@ -1,4 +1,3 @@
-
 ---
 title: Review and Summary
 collect: true
@@ -39,5 +38,5 @@ If readers remain intrigued after this article and wish to explore its theoretic
 the following resources are recommended:
 
 - [Defunctionalization: Everybody Does It, Nobody Talks About It](https://blog.sigplan.org/2019/12/30/defunctionalization-everybody-does-it-nobody-talks-about-it/)
-  - [[Translation] Defunctionalization: A Technique Programmers Use Without Realizing](https://zhuanlan.zhihu.com/p/1936586173591032199)
+- [[Translation] Defunctionalization: A Technique Programmers Use Without Realizing](https://zhuanlan.zhihu.com/p/1936586173591032199)
 - [Definitional interpreters for higher-order programming languages](https://dl.acm.org/doi/10.1145/800194.805852)

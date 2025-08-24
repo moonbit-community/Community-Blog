@@ -1,6 +1,5 @@
-
 ---
-title: This Week's New High-Quality Packages in the Community
+title: This Week's New High-Quality Community Packages
 ---
 
 - [illusory0x0 (Yi Lu)](https://github.com/illusory0x0) open-sourced a new package [simple_parserc](https://github.com/moonbit-community/simple_parserc), a simple Monadic Parser Combinator library. With relatively high completion, it's a noteworthy library for symbolic computation in MoonBit.
