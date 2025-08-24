@@ -1,0 +1,11 @@
+---
+title: This Week's New High-Quality Community Packages
+---
+
+- The [Luna Flow](https://github.com/luna-flow) organization has launched a data visualization library (led by [yokiautummoon 结城秋月](https://github.com/yokiautummoon)) focused on providing concise and efficient charting capabilities through **Luna-Plot**, which already features highly effective demos. It is now open-sourced under the [MoonBit-Community](https://github.com/moonbit-community/luna-plot) organization. Additionally, Luna-Flow is pursuing multiple workstreams, recently establishing two new projects: [calculus-symbolic](https://github.com/Luna-Flow/calculus-symbolic) for expression differentiation and [quaternion](https://github.com/luna-flow/quaternion) for quaternion calculations.  
+- [ShellWen 颉文](https://github.com/ShellWen) developed a dotenv file parser [dotenv-mbt](https://github.com/moonbit-community/dotenv-mbt). This library parses `.env` files with comprehensive documentation, high code quality, and has passed the final output acceptance by PLCT Lab.  
+- [ShellWen 颉文](https://github.com/ShellWen) also created a URL Router library [sw-router](https://github.com/moonbit-community/sw-router) to address URL routing challenges. Its documentation and code quality are robust, and it has passed PLCT Lab's final output acceptance.  
+- [Seedking](https://github.com/Seedking) authored a semantic version parser [SemVer](https://github.com/Seedking/SemVer) for parsing and comparing version numbers semantically, enabling future development of version-handling utilities. It has passed PLCT Lab's final output acceptance.  
+- [CAIMEO](https://github.com/CAIMEOX) developed a [LazyList](https://github.com/CAIMEOX/lazy-list) library to support scenarios requiring lazy lists. Potential applications include frontend development using the [rabbit-tea](https://github.com/Yoorkin/rabbit-tea) framework. The library has passed PLCT Lab's final output acceptance.  
+- [smallbearrr](https://github.com/smallbearrr) built a graph theory algorithm library [NetworkX](https://github.com/moonbit-community/NetworkX), currently in its early stages.  
+- [ShellWen 颉文](https://github.com/smallbearrr) initiated a new ini file parsing library [sw-ini](https://github.com/moonbit-community/sw-ini), currently in early development.

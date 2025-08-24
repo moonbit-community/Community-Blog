@@ -1,0 +1,8 @@
+---
+taxon: Theorem
+---
+> Given a sparse tree, any prefix sum (and consequently any interval sum) of the original array can be computed in logarithmic time using only the values of active nodes.
+
+**Proof** Surprisingly, for the special case of prefix queries, the original interval query algorithm described in Section 1 and implemented in 2.1 works as is! That is, when we encounter the base case where the current node's range is entirely contained within the query range—at which point we return the current node's value—this situation only occurs on active nodes.
+
+First, the root node itself is active, so querying the entire range is valid. Next, consider the scenario where we are at a node and recurse to both its children. The left child is always active, so we only need to consider recursing to the right child. The right child's range cannot be entirely contained within the query range: since the query range is always a prefix of the form $[1, j]$, if the right child's range were entirely contained within $[1, j]$, then the left child's range would also necessarily be contained—implying that the parent node's range (the union of its children's ranges) would also be entirely contained within the query range. But in that case, we would directly return the parent node's value and would not recurse to the right child. Therefore, when we do recurse to a right child, we may end up returning 0, or possibly recurse further to its grandchildren, but in any case, we never attempt to look at the right child's own value.

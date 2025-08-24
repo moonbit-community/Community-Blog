@@ -1,0 +1,22 @@
+---
+title: This Week's Official Highlights
+---
+
+- The **2025 MoonBit Global Programming Innovation Challenge (MGPIC 2025)** is now officially open for registration. MGPIC 2025 is a professional competition for developers worldwide. The inaugural 2024 edition attracted over 1,888 teams from renowned institutions including Tsinghua University, University of Cambridge, Sun Yat-sen University, and Hong Kong University of Science and Technology (Guangzhou). Honorary judges included Harry Shum, Lin Huimin, Zhao Chen, and Ni Mingxuan, garnering widespread attention and recognition from both academia and industry. This year's competition retains two tracks—Game Development and Compiler Design—but introduces richer and more diverse formats. Details are available in the [official announcement](https://mp.weixin.qq.com/s/8IbEQ0dasvQlIMeAgJhHww).  
+- In late July 2025, MoonBit launched **Moon Pilot**, the world’s first bottom-up code intelligence agent. As highlighted in the announcement by IDEA Research: "Through an AI-native reconstruction from language to toolchain, MoonBit Pilot—developed by IDEA’s Fundamental Software Center—creates a development environment deeply integrated with large models. It surpasses existing tools like Cursor in code generation quality and large-scale refactoring efficiency, presenting the first engineering prototype of L4 software delivery capability without human intervention." Media and community advocates have covered this release:  
+  - IDEA Research: [《MoonBit Pilot: The World’s First Bottom-Up Intelligent Programming Tool, Fully AI-Native》](https://mp.weixin.qq.com/s/Y8y5UbxE42AqXqdPWi5kug)  
+  - CSDN: [《MoonBit Pilot: The World’s First Bottom-Up Code Intelligence Agent, Faster and More Stable Than Cursor》](https://mp.weixin.qq.com/s/QmFByVz-2ro81-akd4XZWg)  
+  - Chen Suiyi: [《A Domestic Marvel: MoonBit, the Programming Language Integrating AI at the Language Level》](https://mp.weixin.qq.com/s/uOz-YexUgY_tJXyQjxWGkw)  
+  - Coderising: [《A Domestic Startup Defeats International Giants in AI Programming by Optimizing This Key Aspect...》](https://mp.weixin.qq.com/s/v_bv3W6xljqYvr65FAmK5Q)  
+- On July 27, 2025, the second **J139 Intern Demo Day**, co-hosted by the PLCT Lab of the Institute of Software, Chinese Academy of Sciences and MoonBit, concluded successfully. Nine interns delivered ten workshops, now available for replay on [Bilibili](https://space.bilibili.com/3546645654407506/lists/5981946). Workshop titles include:  
+  - Sun Yixuan: "MoonBit Community Progress & Recent Updates on Community Blog"  
+  - Huang Yue: "MoonBit’s Interaction with Low-Level Computing"  
+  - Cha Shiwei: "Exploring Cryptography: Implementing Simple Symmetric Encryption with mbt"  
+  - Sun Yixuan & Xiao Mingkun: "Crafting a Functor with Virtual Package"  
+  - Sun Yixuan: "Parser Practices in MoonBit: From Calculator to MoonBibLaTeX"  
+  - Zhu Zhehao: "Implementing a Sudoku Solver"  
+  - Wang Jue: "Building an HTML Parser with MoonYacc"  
+  - Xing Kaize: "MoonBit Implementation of the IntroSort Algorithm"  
+  - Xue Yujie: "Applying Bitwise Operations in MoonBit: A Case Study on VEB Tree"  
+  - Lei Zhengyu: "Building an Extensible SQL Parser with MoonBit"  
+- MoonBit’s **Pearls series** released its fifth article: [《MoonBit Pearls Vol.05: Dependency Injection in Functional Programming: Reader Monad》](https://mp.weixin.qq.com/s/6g4XG1Bw2pcEtmKCLHwyMQ), exploring the Reader Monad as a functional solution for DI.
