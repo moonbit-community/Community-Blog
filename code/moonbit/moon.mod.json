@@ -2,7 +2,7 @@
   "name": "community-blog/moonbit-code",
   "version": "0.1.0",
   "deps": {
-    "moonbitlang/quickcheck": "0.8.8"
+    "moonbitlang/quickcheck": "0.9.6"
   },
   "repository": "",
   "license": "Apache-2.0",

@@ -3,7 +3,7 @@ title: 本周社区新增优质项目
 ---
 
 - 由 [Lampese 东灯](https://github.com/Lampese) 主导中科院软件所 PLCT 实验室 J139 小队基于 [Kodama](https://github.com/kokic/kodama) 搭建的 [Community-Blog](https://github.com/moonbit-community/community-blog) 本周正式开源并接受社区贡献，用于表达社区声音和促进社区发展。现在已经可以在 https://moonbit.community 访问。
-- MoonBit 官方同学 [Yu Zhang](https://github.com/Yu-zh) 采用 MoonBit 编写了一个 Text Editor [Tuzi](https://github.com/Yu-zh/Tuzi)，是使用 MoonBit Native 开发 cli 应用很有意思的尝试。
+- MoonBit 官方同学 [Yu-zh Yu Zhang](https://github.com/Yu-zh) 采用 MoonBit 编写了一个 Text Editor [Tuzi](https://github.com/Yu-zh/Tuzi)，是使用 MoonBit Native 开发 cli 应用很有意思的尝试。
 - MoonBit 官方同学 [tonyfettes](https://github.com/tonyfettes) 开源了 [MoonBit Interface (.mbt) 文件的 tree-sitter 支持](https://github.com/tonyfettes/tree-sitter-mbti) 仓库，这与官方最近两周支持了该文件的高亮有关。
 - MoonBit 官方同学 [tonyfettes](https://github.com/tonyfettes) 制作了 MoonBit 的 Linter 工具 [moon-lint](https://github.com/tonyfettes/moon-lint)，在 3 月 30 日的 Meetup 中也有对应介绍。该工具基于 tree-sitter，目前可以完成一些非静态语义分析的 lint 工作。
 - MoonBit 官方同学 [NSlash951 myfreess](https://github.com/myfreess) 编写了一个针对 MoonBit 代码的 diff 工具 [mbtdiff](https://github.com/myfreess/mbtdiff)。该 diff 工具基于 MoonBit Native 后端编写，可以在命令行使用。将来可能为 LLM for MoonBitCode 的效果带来提升。
