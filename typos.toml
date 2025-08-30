@@ -4,3 +4,4 @@ extend-exclude = ["*.typ"]
 [default.extend-words]
 thm = "thm"
 trival = "trival"
+UE = "UE"
