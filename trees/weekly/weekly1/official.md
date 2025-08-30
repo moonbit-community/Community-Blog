@@ -61,6 +61,6 @@ title: 本周官方重要动态
 
 - Mooncakes 开源
 
-  由 MoonBit 官方的 [Yoorkin](https://github.com/Yoorkin) 领头，[Lampese 东灯](https://github.com/Lampese) 参与建设新版 mooncakes.io 网站已经[开源在 moonbitlang 组织内](https://github.com/moonbitlang/mooncakes.io)。该网站采用纯 MoonBit 基于 [rabbit-tea](https://github.com/Yoorkin/rabbit-tea) 框架与 [Tailwind CSS](https://tailwindcss.com) 构建，是采用 MoonBit 开发多网页应用的一个优秀示例。而且官方的 mooncakes.io 已经更换了这一版的实现。
+  由 MoonBit 官方的 [Yoorkin Yorkin](https://github.com/Yoorkin) 领头，[Lampese 东灯](https://github.com/Lampese) 参与建设新版 mooncakes.io 网站已经[开源在 moonbitlang 组织内](https://github.com/moonbitlang/mooncakes.io)。该网站采用纯 MoonBit 基于 [rabbit-tea](https://github.com/Yoorkin/rabbit-tea) 框架与 [Tailwind CSS](https://tailwindcss.com) 构建，是采用 MoonBit 开发多网页应用的一个优秀示例。而且官方的 mooncakes.io 已经更换了这一版的实现。
 
   值得注意的是这次的新版 mooncakes.io 采用了来自社区的两个仓库 [fuzz-match](https://github.com/moonbit-community/fuzzy_match) 与 [lazy](https://github.com/CAIMEOX/lazy/blob/main/src/lazy.mbt)，分别用于搜索和惰性求值。

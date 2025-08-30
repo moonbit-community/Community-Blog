@@ -2,7 +2,7 @@
 title: 本周社区新增优质项目
 ---
 
-- 本周随着 rabbit-tea 的完善和正式发布，MoonBit 官方同学 [Yoorkin](https://github.com/Yoorkin) 在 MoonBit-Community 中开源了两个新仓库 [rabbit-tea-template](https://github.com/moonbit-community/rabbit-tea-template) 和 [rabbit-tea-vite](https://github.com/moonbit-community/rabbit-tea-vite)。前者是一个基于 rabbit-tea 的模板仓库，后者是一个为 rabbit-tea 的 vite 插件。
+- 本周随着 rabbit-tea 的完善和正式发布，MoonBit 官方同学 [Yoorkin Yorkin](https://github.com/Yoorkin) 在 MoonBit-Community 中开源了两个新仓库 [rabbit-tea-template](https://github.com/moonbit-community/rabbit-tea-template) 和 [rabbit-tea-vite](https://github.com/moonbit-community/rabbit-tea-vite)。前者是一个基于 rabbit-tea 的模板仓库，后者是一个为 rabbit-tea 的 vite 插件。
 - [illusory0x0 猗露](https://github.com/illusory0x0) 开发了一个新项目 [qpainter](https://github.com/moonbit-community/qpainter.mbt)，是一个基于 MoonBit 的绘图库，绑定到 C++ 的 QPainter 库，支持绘制各种图形和文本。该库是 C++ Bindings 的非常好的示范，其中使用了很多对于闭包的处理技巧。
 - MoonBit 官方同学 [Kaida-Amethyst](https://github.com/Kaida-Amethyst) 基于它自己的 [python.mbt](https://github.com/Kaida-Amethyst/python.mbt) 开发了一个新项目 [matplotlib.mbt](https://github.com/moonbit-community/matplotlib.mbt)，是一个对于 Python 的 matplotlib 库的绑定。这是 MoonBit 对 Python 的第一个绑定库，可以让我们期待后续的 Python 绑定库生态发展。
 - [hanbings](https://github.com/hanbings) 开发了一个带有 JIT 的 Brainfuck 解释器 [yuanchu](https://github.com/hanbings/yuanchu)，虽然语言十分简单，但是关于 JIT 的尝试非常新颖。
