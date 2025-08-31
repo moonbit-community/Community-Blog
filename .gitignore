@@ -1,5 +1,6 @@
 .venv
 .cache
+target
 __trees
 publish
 .DS_Store
@@ -9,4 +10,3 @@ node_modules
 pnpm-lock.yaml
 package-lock.json
 .translation_cache
-target
