@@ -8,4 +8,8 @@ date: 2025-09-03
 
 [+](/blog/gausskronrod/intro.md#:embed)
 
+[+](/blog/gausskronrod/theory.md#:embed)
+
 [+](/blog/gausskronrod/implement.md#:embed)
+
+[+](/blog/gausskronrod/ref.md#:embed)
