@@ -20,3 +20,5 @@ collect: true
 [+-](/blog/lti/index.md#:embed)
 
 [+-](/blog/trick/impl_trait_for_generic_type_with_different_instances.mbt.md#:embed)
+
+[+-](/blog/data-structure/morris.md#:embed)

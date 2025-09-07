@@ -1,0 +1,13 @@
+
+digraph {
+node [shape = box; style = filled;];
+3->4;
+2->3;
+2->8;
+12->13;
+11->12;
+11->17;
+1->2;
+1->11;
+4[label="0";]3[label="1";]8[label="3";]2[label="2";]13[label="5";]12[label="6";]17[label="8";]11[label="7";]1[label="4";]}
+
