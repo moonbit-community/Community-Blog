@@ -3,7 +3,7 @@ title: Our view on Benchmark FFT
 collect: true
 author: [Lampese](https://github.com/Lampese)
 taxon: Blog
-date: 2025-09-07
+date: 2025-09-09
 ---
 
 Fast 33%?
