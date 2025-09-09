@@ -3,7 +3,7 @@ title: Blog
 collect: true
 ---
 
-[+-](/blog/benchmark-fft/benchmark.md#embed)
+[+-](/blog/benchmark-fft/benchmark.md#:embed)
 
 [+-](/blog/iterator/preorder-traversal.md#:embed)
 
