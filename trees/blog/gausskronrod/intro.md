@@ -7,6 +7,6 @@ collect: true
 
 现代编程语言通过数值积分算法实现高效数值积分，显著提升了工程计算的效率（如 Scipy 使用了 Gauss-Kronrod 求积算法进行数值积分）。
 
-与传统求积算法相比，Gauss-Kronrod 算法是比较优秀的求积算法。Newton-Cotes 公式依赖等距节点，高阶时易出现龙格现象（Runge's phenomenon），精度受限。纯 Gauss 求积法通过正交多项式节点实现高精度（2n-1次代数精度），但节点数固定，无法自适应细分区间。Gauss-Kronrod 算法在 Gauss 节点基础上插入额外 Kronrod 节点，形成嵌套结构（如 7 阶 Gauss + 15 阶 Kronrod），同时计算高精度积分值并估计误差。
+与传统求积算法相比，Gauss-Kronrod 算法是比较优秀的求积算法。Newton-Cotes 公式依赖等距节点，高阶时易出现龙格现象（Runge's phenomenon），精度受限。纯 Gauss 求积法通过正交多项式节点实现高精度（2n - 1 次代数精度），但节点数固定，无法自适应细分区间。Gauss-Kronrod 算法在 Gauss 节点基础上插入额外 Kronrod 节点，形成嵌套结构（如 7 阶 Gauss + 15 阶 Kronrod），同时计算高精度积分值并估计误差。
 
 但是要认识到 Gauss-Kronrod 算法也有一定的局限性，它只适用于在闭区间上连续的函数进行求积，例如无法对反常积分进行求积。
