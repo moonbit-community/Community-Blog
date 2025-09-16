@@ -17,7 +17,7 @@ title: 本周官方重要动态
   - IDE 支持了对 mbti 文件的 hover 和 gotodef 等功能
 
 - MoonBit 官方的 Pearls 系列文章更新了第十、十一篇文章：[《MoonBit Pearls Vol.10: prettyprinter：使用函数组合解决结构化数据打印问题》](https://mp.weixin.qq.com/s/pMplne_nay4vHUHSmhSBTQ)、[《MoonBit Pearls Vol.11: 正则表达式引擎的两种实现方法：导数与 Thompson 虚拟机》](https://mp.weixin.qq.com/s/4uvF0KAPDfhkjiAl7mtNrg)，分别探讨了基于函数组合的 prettyprinter 实现和两种正则表达式引擎的性能对比。
-- MoonBit 再次走进清华大学：张宏波受邀参加「思源计划」与「程序设计训练课」。[《MoonBit 再次走进清华：张宏波受邀参加「思源计划」与「程序设计训练课」》](https://mp.weixin.qq.com/s/d7vODHcDOD2-6Orsd1LzyQ) 报道了 2025年9月7日-9月9日期间，MoonBit 平台负责人张宏波受邀出席清华思源导师团信息技术组 VibeCoding 夏季活动和清华大学计算机系的程序设计训练课，分享了 MoonBit 的"双向可读性"设计理念和 AI 原生编程语言的发展趋势。
+- MoonBit 再次走进清华大学：张宏波受邀参加「思源计划」与「程序设计训练课」。[《MoonBit 再次走进清华：张宏波受邀参加「思源计划」与「程序设计训练课」》](https://mp.weixin.qq.com/s/d7vODHcDOD2-6Orsd1LzyQ) 报道了 2025/9/7 日～ 2025/9/9 日期间，MoonBit 平台负责人张宏波受邀出席清华思源导师团信息技术组 VibeCoding 夏季活动和清华大学计算机系的程序设计训练课，分享了 MoonBit 的"双向可读性"设计理念和 AI 原生编程语言的发展趋势。
 - MoonBit 官方发布了重要技术博客[《性能超 Rust 约 33%，10 行代码解析 IP 包》](https://www.moonbitlang.cn/blog/moonbit-value-type)（CSDN 也有类似推文，在此不重复转发相似内容，介绍了 Beta 版本中引入的两大新特性：
 
   **Value Type（值类型）**：
