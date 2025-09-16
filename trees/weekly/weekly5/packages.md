@@ -14,11 +14,11 @@ title: 本周社区新增优质包
 - [BigOrangeQWQ](https://github.com/BigOrangeQWQ) 编写了一个 [UnificationTable](https://github.com/BigOrangeQWQ/UnificationTable) 库，用于解决符号计算中的代数化简问题。
 - [LunaFlow](https://github.com/Luna-Flow) 团队的 [wangjuwudi](https://github.com/wangjuwudi) 编写了一个用于解决一次线形规划问题的库 [Linear-Program](https://github.com/wangjuwudi/Linear-program)，现在刚刚完成 LP 问题定义和标准化部分。
 - [MINGtoMING Zhenming Lin](https://github.com/MINGtoMING) 编写了一个在 native 后段支持 SIMD 的字符串库 [simdstring.mbt](https://github.com/MINGtoMING/simdstring.mbt)，目前的完成度还不错，可以进行一些简单的字符串操作。
-- MoonBit 官方同学 [NSlash951 myfrees](https://github.com/myfreess) 开源了一个 [propagator](https://github.com/myfreess/propagator) 库。Propagator 是一个用于解决约束传播问题的算法，之前在解决绝症的医疗用药问题中被使用过。
+- MoonBit 官方同学 [myfreess NSlash951](https://github.com/myfreess) 开源了一个 [propagator](https://github.com/myfreess/propagator) 库。Propagator 是一个用于解决约束传播问题的算法，之前在解决绝症的医疗用药问题中被使用过。
 - [illusory0x0 猗露](https://github.com/illusory0x0) 编写了一个用于解决 RC 环境下内存问题的库 [clonembt](https://github.com/illusory0x0/clone.mbt)。该库可以在原生后端的多线程环境中保证数据安全。因为尽管数据结构可能是一个不可变的容器，内存管理仍然会修改 RC 导致竞争。
 - [33761](https://github.com/33761) 编写了一个 MoonBit 对 Raylib 的绑定库 [raylib-mbt](https://github.com/moonbit-community/raylib-mbt)，现在还处于未完成的状态，已经可以看到 API 设计的雏形。
 - [Milky2018](https://github.com/Milky2018) 编写了一个 MoonBit 的分布式计算引擎 [moonlight](https://github.com/Milky2018/moonlight)。虽然目前还没有完善的文档，但是代码量已经很多了。
 - [FrenchPicnic](https://github.com/FrenchPicnic) 在 MoonBit-Community 编写了一个新的库 [crypto.mbt](https://github.com/moonbit-community/crypto.mbt)，用于补充官方仓库中 crypto 缺失的算法，只是现在还没有任何内容。值得注意的是社区活跃用户 [Glenn Lewis](https://github.com/gmlewis) 应该也编写过类似的大量库，有待考察。
-- MoonBit 官方同学 [NSlash951 myfrees](https://github.com/myfreess) 开源了一个 [intmap](https://github.com/myfreess/intmap) 库，库中包含了一些函数式数据结构。
-- MoonBit 官方同学 [NSlash951 myfrees](https://github.com/myfreess) 编写了一个 [asm.mbt](https://github.com/myfreess/asm.mbt) 库，使用 ffi 接入了一些简单的 Assembly 接口，可以在在 x86 设备上动态生成机器码然后直接放进内存中执行，是 MoonBit 模拟硬件指令的一些有意思的尝试。
-- [CAIMEO](http) 编写了一个 MoonBit 的 SVG 库 [svg](https://github.com/CAIMEOX/svg)。根据介绍，这个库提供了一种干净、类型正确的方法在 MoonBit 中构造 SVG 内容。目前该库的文档已经相当完善。
+- MoonBit 官方同学 [myfreess NSlash951](https://github.com/myfreess) 开源了一个 [intmap](https://github.com/myfreess/intmap) 库，库中包含了一些函数式数据结构。
+- MoonBit 官方同学 [myfreess NSlash951](https://github.com/myfreess) 编写了一个 [asm.mbt](https://github.com/myfreess/asm.mbt) 库，使用 ffi 接入了一些简单的 Assembly 接口，可以在在 x86 设备上动态生成机器码然后直接放进内存中执行，是 MoonBit 模拟硬件指令的一些有意思的尝试。
+- [CAIMEOX](https://github.com/CAIMEOX) 编写了一个 MoonBit 的 SVG 库 [svg](https://github.com/CAIMEOX/svg)。根据介绍，这个库提供了一种干净、类型正确的方法在 MoonBit 中构造 SVG 内容。目前该库的文档已经相当完善。

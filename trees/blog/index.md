@@ -22,3 +22,5 @@ collect: true
 [+-](/blog/trick/impl_trait_for_generic_type_with_different_instances.mbt.md#:embed)
 
 [+-](/blog/data-structure/morris.md#:embed)
+
+[+-](/blog/gausskronrod/index.md#:embed)

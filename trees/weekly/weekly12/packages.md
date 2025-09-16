@@ -1,0 +1,26 @@
+---
+title: 本周社区新增优质包
+---
+
+- [iceBear67](https://github.com/iceBear67) 开发了一个用 MoonBit 编写的 ClassFile 解析器/写入器库 [mbt-classfile](https://github.com/iceBear67/mbt-classfile)，基于 JVMS Ch.4 规范，支持 Java SE 24 版本。该库提供了完整的 ClassFile 格式解析、Java 类型描述符解析、泛型签名解析、ClassFile 写入和字节码反汇编功能，包含一个类似 javap 的实用工具，为 MoonBit 生态系统带来了重要的 Java 互操作性支持。
+- MoonBit 官方同学 [Yoorkin Yorkin](https://github.com/Yoorkin) 开发了一个 Web IDL 解析器库 [webidl.mbt](https://github.com/moonbit-community/webidl.mbt)，用于解析 Web IDL（Web Interface Definition Language）格式。该库定义了抽象语法树（AST）并实现了符合 WhatWG Web IDL 标准语法的解析器，为 MoonBit 生态系统提供了 Web 标准接口定义语言的支持，有助于开发与 Web API 交互的应用程序。
+- [CAIMEOX](https://github.com/CAIMEOX) 开发了一个轻量级的标准 MIDI 文件（SMF）解析器和写入器库 [midi](https://github.com/CAIMEOX/midi)，用于 MoonBit 语言。该库支持将 MThd/MTrk 块解析为强类型结构、处理通道语音消息、元事件、系统独占消息和常见实时消息，正确处理变长数量和运行状态，并支持将内存结构序列化回有效的 .mid 字节流，为 MoonBit 生态系统提供了音乐文件处理能力。
+- [illusory0x0 猗露](https://github.com/illusory0x0) 开发了一个用于生成符合标准的 PDF 文档的 MoonBit 库 [pdf_writer.mbt](https://github.com/illusory0x0/pdf_writer.mbt)，提供对 PDF 对象和图形操作符的全面支持。该库基于 ISO 32000-2 PDF 2.0 标准实现，支持完整的 PDF 文档生成功能，包括 PDF 对象管理、图形操作符、文档结构等。
+- [Tigls Dima Khort](https://github.com/Tigls) 开发了一个全面的 MoonBit 加密库集合 [moonbit-crypto](https://github.com/Tigls/moonbit-crypto)，提供安全且高性能的加密原语实现。该库集合包含多个独立包，包括安全随机数生成（mb-getrandom）、哈希函数（mb-hash）、流密码（mb-chacha）、消息认证码（mb-mac）、密钥派生函数（mb-kdf）、认证加密（mb-aead）、AES 块密码（mb-aes）和椭圆曲线密钥交换（mb-ecdh）等，现在 MoonBit 社区中的加密算法实现很多，但是算法真正全面的不多，该库是一个良好的尝试。
+- MoonBit 官方同学 [peter-jerry-ye Zihang Ye](https://github.com/peter-jerry-ye) 开发了一个 WASI Preview 1 实现库 [wasip1](https://github.com/moonbit-community/wasip1)，为 MoonBit 提供了完整的 WebAssembly 系统接口支持。该库实现了 50+ 个 WASI Preview 1 函数，包括文件系统操作、网络套接字、进程管理、时钟和随机数生成等核心功能，支持 Wasm 和 Wasm-GC 后端。
+- [iceBear67](https://github.com/iceBear67) 开发了一个简单的字节缓冲区实现库 [mbt-bytebuf](https://github.com/iceBear67/mbt-bytebuf)，支持小端序和大端序整数的读写操作。该库提供了 mark/reset 和 discard/shrink 功能，包含完整的测试覆盖，适用于需要高效字节数据处理的场景。
+- [illusory0x0 猗露](https://github.com/illusory0x0) 开发了一个目标传递风格的格式化库 [illu-fmt](https://github.com/moonbit-community/illu-fmt)，具有可扩展的 API 设计和高效的内存管理。该库支持多种数据类型的格式化输出，包括整数、浮点数、十六进制、字节等，采用目标传递风格设计，避免了不必要的内存分配。
+- [allwefantasy WilliamZhu](https://github.com/allwefantasy) 开发了一个异步文件系统 API 库 [afs](https://github.com/moonbit-community/afs)，提供易用、强类型、可取消、支持超时、原子可恢复和错误可观察的异步文件系统操作。该库基于 moonbitlang/async 实现，支持高并发文件操作、超时控制、任务取消、原子写入、重试机制、UTF-8 支持和并发目录复制等功能。
+- [allwefantasy WilliamZhu](https://github.com/allwefantasy) 开发了一个类似 Python requests 的 HTTP 客户端库 [requests](https://github.com/moonbit-community/requests)，提供直观且类型安全的 HTTP 功能。该库支持完整的 HTTP 方法、超时控制、高级 Cookie 管理、身份验证、会话管理、增强的错误处理和优化的 URL 编码，包含 19+ 个综合测试，采用现代 MoonBit 异步模式。
+- [FrozenLemonTee 冰柠配绿茶](https://github.com/FrozenLemonTee) 开发了一个终端用户界面（TUI）库 [tui-rabbit](https://github.com/FrozenLemonTee/tui-rabbit)，用于在 MoonBit 中构建终端应用程序。该库提供了创建终端用户界面的功能，支持 CLI 和 TUI 应用开发，适用于需要交互式终端界面的命令行工具开发。
+- [illusory0x0 猗露](https://github.com/illusory0x0) 开发了一个高效的字节到字符串转换库 [illu-string_of_bytes](https://github.com/illusory0x0/illu-string_of_bytes)，专门用于将 UTF-16 LE 编码的字节转换为 MoonBit 字符串。该库支持复制和移动语义、子字符串提取、Unicode 字符和表情符号处理，提供零拷贝转换优化，适用于需要高性能字符串处理的应用场景。
+- [iceBear67](https://github.com/iceBear67) 开发了一个完整的 NBT（Named Binary Tag）解析器库 [mnbt](https://github.com/iceBear67/mnbt)，支持 SNBT 和 NBT 两种格式。该库专门用于解析 Minecraft 常用的 NBT 数据格式，提供模式匹配和访问器方法、支持 GZipped NBT 标签、流式解析 SNBT 标记，适用于游戏数据文件处理和 Minecraft 相关应用开发。
+- [CGaaaaaa](https://github.com/CGaaaaaa) 开发了一个简洁实用的命令行进度条库 [MoonProgress](https://github.com/CGaaaaaa/MoonProgress)，专为 MoonBit 设计。该库提供 5 种样式、渲染算法、链式配置 API、智能显示功能（ETA 估算、速率显示、计数器、百分比）、动态宽度适配、嵌套进度条支持，适用于命令行工具和批处理任务的进度可视化。
+- [CGaaaaaa](https://github.com/CGaaaaaa) 开发了一个 GitIgnore 模式匹配库 [gitignore](https://github.com/CGaaaaaa/gitignore)，符合 Git 官方规范。该库支持基本模式匹配、通配符、路径模式、双星号模式、否定模式等功能，提供零依赖实现，适用于解析和匹配 .gitignore 文件模式。
+- [CGaaaaaa](https://github.com/CGaaaaaa) 开发了一个 Shell 词法分析库 [Shlex](https://github.com/CGaaaaaa/Shlex)，用于解析和处理类 Shell 命令字符串。该库支持字符串分割、引号处理、转义字符、注释支持、错误处理和字符串重构等功能，提供 Unicode 支持和详细错误信息，适用于命令行工具参数解析和配置处理。
+- [CGaaaaaa](https://github.com/CGaaaaaa) 开发了一个 ASN.1 DER 编码解码库 [DER](https://github.com/CGaaaaaa/DER)，提供类型安全的 DER 数据处理。该库支持完整的 ASN.1 数据类型（BOOLEAN、INTEGER、BIT STRING、OCTET STRING、NULL、OBJECT IDENTIFIER、SEQUENCE、SET 等）、严格 DER 规则、对象标识符支持、错误处理和格式化输出，适用于证书处理、加密标准和协议实现。
+- [FrenchPicnic](https://github.com/FrenchPicnic) 开发了一个 Three.js MoonBit 移植项目 [threejs.mbt](https://github.com/FrenchPicnic/threejs.mbt)，用于在网页端获取 3D 内容。该项目将 Three.js 库移植到 MoonBit 语言，提供 3D 图形渲染功能，目前处于开发状态，适用于 Web 3D 应用开发和图形渲染。
+- MoonBit 官方同学 [tonyfettes Haoxiang Fei](https://github.com/tonyfettes) 开发了一个 SSO 实验项目 [tonyfettes-small](https://github.com/moonbit-community/tonyfettes-small)，用于单点登录功能测试。该项目提供了 SSO 相关的实验性功能，包含测试用例和基础实现，适用于身份认证和单点登录系统的开发研究。
+- MoonBit 官方同学 [hackwaly 文宇祥](https://github.com/hackwaly) 开发了一个 PEM 编码解码库 [pem.mbt](https://github.com/moonbit-community/pem.mbt)，用于处理 PEM 格式数据。该库实现了 RFC 1421 标准的 PEM 数据编码，支持编码和解码 PEM 块、处理头部信息、Base64 编码、错误处理等功能，适用于 TLS 密钥和证书处理。
+- [BigOrangeQWQ](https://github.com/BigOrangeQWQ) 开发了一个异步 WASM 组件模型适配库 [async-wasm](https://github.com/BigOrangeQWQ/async-wasm)，基于 moonbitlang/async 进行适配。该库支持 WASM 异步组件模型、回调机制、Future 处理、任务管理和组件间通信等功能，适用于 WebAssembly 异步编程和组件化开发。
+- [SupremeHuaji](https://github.com/SupremeHuaji) 开发了一个时间处理库 [ptime](https://github.com/SupremeHuaji/ptime)，用于 MoonBit 中的时间相关操作。该库提供了时间处理功能，包含时间计算、格式化、解析等基础功能，适用于需要时间处理的应用场景。
