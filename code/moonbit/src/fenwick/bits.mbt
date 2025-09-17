@@ -200,7 +200,7 @@ fn Bits::inv(self : Bits) -> Bits {
 // section start op_add
 
 ///|
-impl Add for Bits with op_add(self, other) {
+impl Add for Bits with add(self, other) {
   match (self, other) {
     (xs, Rep(O)) | (Rep(O), xs) => xs
     (Rep(I), Rep(I)) => Bits::make(Rep(I), O)
@@ -217,7 +217,7 @@ impl Add for Bits with op_add(self, other) {
 // section start op_neg
 
 ///|
-impl Neg for Bits with op_neg(self) {
+impl Neg for Bits with neg(self) {
   self.inv().inc()
 }
 
