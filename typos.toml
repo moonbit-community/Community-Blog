@@ -5,3 +5,4 @@ extend-exclude = ["*.typ"]
 thm = "thm"
 trival = "trival"
 UE = "UE"
+arange = "arange"
