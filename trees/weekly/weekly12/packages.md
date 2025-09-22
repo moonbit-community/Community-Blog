@@ -21,3 +21,4 @@ title: 本周社区新增优质包
 - MoonBit 官方同学 [hackwaly 文宇祥](https://github.com/hackwaly) 开发了一个 PEM 编码解码库 [pem.mbt](https://github.com/moonbit-community/pem.mbt)，用于处理 PEM 格式数据。该库实现了 RFC 1421 标准的 PEM 数据编码，支持编码和解码 PEM 块、处理头部信息、Base64 编码、错误处理等功能，适用于 TLS 密钥和证书处理。
 - [BigOrangeQWQ](https://github.com/BigOrangeQWQ) 开发了一个异步 WASM 组件模型适配库 [async-wasm](https://github.com/BigOrangeQWQ/async-wasm)，基于 moonbitlang/async 进行适配。该库支持 WASM 异步组件模型、回调机制、Future 处理、任务管理和组件间通信等功能，适用于 WebAssembly 异步编程和组件化开发。
 - [SupremeHuaji](https://github.com/SupremeHuaji) 开发了一个时间处理库 [ptime](https://github.com/SupremeHuaji/ptime)，用于 MoonBit 中的时间相关操作。该库提供了时间处理功能，包含时间计算、格式化、解析等基础功能，适用于需要时间处理的应用场景。
+- [myfreess NSlash951](https://github.com/myfreess) 开发了一个通用的 patience diff 算法库 [lums.mbt](https://github.com/moonbit-community/lums.mbt)，用于查找最长唯一匹配子序列。该库实现了通用的 patience diff 算法，提供了高效的子序列匹配功能，适用于文本比较、版本控制系统的差异计算、代码差异分析等场景，为 MoonBit 生态系统提供了重要的算法支持。
