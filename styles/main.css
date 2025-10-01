@@ -45,9 +45,10 @@
 }
 
 html {
-  width: 100%;
+  max-width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
@@ -55,13 +56,20 @@ body {
   hyphens: auto;
   background-color: var(--background-color);
 
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
   overflow-y: auto;
   box-sizing: border-box;
   margin: 0;
-  padding: 8px;
+  padding: min(8px, 2vw);
   padding-top: 0;
+}
+
+/* 只有当存在 header 时才为 body 添加顶部间距 */
+body:has(> header),
+body.has-header {
+  padding-top: 60px;
 }
 
 pre,
@@ -78,7 +86,7 @@ pre {
   border-radius: var(--radius);
   background-color: var(--background-color-pre);
   padding: 0.5em;
-  font-size: 11pt;
+  font-size: 0.85em;
   margin-top: 0em;
   overflow-x: auto;
   white-space: pre-wrap;
@@ -149,8 +157,8 @@ blockquote {
   display: block;
   margin-block-start: 1em;
   margin-block-end: 1em;
-  margin-inline-start: 40px;
-  margin-inline-end: 40px;
+  margin-inline-start: min(40px, 5vw);
+  margin-inline-end: min(40px, 5vw);
   unicode-bidi: isolate;
 }
 
@@ -208,7 +216,7 @@ span.taxon {
 }
 
 section .block[data-taxon] details > summary > header > h1 {
-  font-size: 13pt;
+  font-size: 1.1em;
 }
 
 article > section > details > summary > header > h1 {
@@ -256,6 +264,7 @@ section.block > details[open] {
 
 .block {
   width: fit-content;
+  max-width: 100%;
   border-radius: var(--radius);
 }
 
@@ -270,6 +279,54 @@ section.block > details[open] {
 img {
   object-fit: cover;
   max-width: 100%;
+  height: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  max-width: 100%;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding: 0.5em 0;
+  margin: 1em 0;
+  border-radius: var(--radius);
+  background-color: var(--background-color-pre);
+  scrollbar-width: thin;
+  scrollbar-color: var(--slug-color) transparent;
+}
+
+.katex-display::-webkit-scrollbar {
+  height: 6px;
+}
+
+.katex-display::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.katex-display::-webkit-scrollbar-thumb {
+  background-color: var(--slug-color);
+  border-radius: 3px;
+  opacity: 0.3;
+}
+
+.katex-display::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-color);
+  opacity: 0.5;
+}
+
+.katex-display > .katex {
+  white-space: nowrap;
+  display: inline-block;
+  min-width: max-content;
 }
 
 figure {
@@ -330,7 +387,7 @@ footer > section {
 }
 
 footer h2 {
-  font-size: 14pt;
+  font-size: 1.2em;
 }
 
 .metadata ul {
@@ -386,12 +443,15 @@ a.slug {
 }
 
 body > header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 11;
-  padding-bottom: 0.5em;
-  background-color: rgba(var(--background-color-mixable), 0.5);
-  backdrop-filter: blur(4px);
+  padding: 0.5em min(8px, 2vw);
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--slug-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #grid-wrapper {
@@ -431,11 +491,77 @@ body > header {
   #grid-wrapper > article {
     padding: 16px 4vw 16px 4vw;
   }
+
+  blockquote {
+    margin-inline-start: 4vw;
+    margin-inline-end: 4vw;
+  }
+
+  pre {
+    font-size: 0.8em;
+    padding: 0.4em;
+  }
+
+  .logo {
+    font-size: max(20px, 5vw);
+  }
+
+  .katex-display {
+    margin: 0.8em 0;
+    padding: 0.3em;
+    font-size: 0.9em;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .katex-display::after {
+    content: "←→";
+    position: absolute;
+    right: 8px;
+    top: 4px;
+    font-size: 0.7em;
+    color: var(--slug-color);
+    opacity: 0.6;
+    pointer-events: none;
+  }
 }
 
 /* Hamburger button and overlay styles*/
 #menu-toggle {
-  display: none;
+  position: absolute;
+  top: 50%;
+  right: min(8px, 2vw);
+  transform: translateY(-50%);
+  z-index: 12;
+  font-size: 1.5em;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: var(--text-color);
+  border-radius: var(--radius);
+  transition: background-color 0.2s;
+}
+
+#menu-toggle:hover {
+  background-color: var(--hover-color-block);
+}
+
+/* 当没有 header 时，改为浮动在右上角 */
+body:not(:has(> header)):not(.has-header) #menu-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1003;
+  background: var(--background-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: none;
+  padding: 4px; /* 缩小内边距 */
+  border-radius: 5%; /* 更接近方形 */
+  width: 35px; /* 缩小宽度 */
+  height: 35px; /* 缩小高度 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #menu-overlay {
@@ -443,21 +569,19 @@ body > header {
 }
 
 @media (max-width: 900px) {
-  #menu-toggle {
-    display: block;
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    left: auto;
-    z-index: 1001;
-    font-size: 1.7em;
-    background: none;
-    border: none;
-    border-radius: 0;
-    padding: 8px;
-    box-shadow: none;
-    cursor: pointer;
-    color: var(--text-color);
+  /* work only when has header */
+  body:has(> header),
+  body.has-header {
+    padding-top: 70px;
+  }
+
+  body:not(:has(> header)):not(.has-header) #menu-toggle {
+    top: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    padding: 10px;
+    font-size: 1.3em;
   }
   #menu-overlay {
     display: none;
@@ -481,52 +605,77 @@ body > header {
     transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateX(-100%);
     display: block;
+    padding-top: 10px;
   }
+
+  body:has(> header) nav#toc,
+  body.has-header nav#toc {
+    top: 60px;
+    height: calc(100vh - 60px);
+  }
+
   nav#toc.nav-open {
     transform: translateX(0);
-  }
-  #sidebar-toggle {
-    display: none !important;
   }
 }
 
 @media (min-width: 900px) {
+  #grid-wrapper {
+    display: block;
+    position: relative;
+  }
+
+  /* PC navbar is fixed in the left */
   nav#toc {
-    transition: width 0.2s;
-    width: 260px;
-    min-width: 60px;
-    overflow-x: hidden;
-    position: sticky;
+    position: fixed;
     left: 0;
     top: 0;
+    width: 260px;
+    min-width: 60px;
     height: 100vh;
     z-index: 10;
+    background: var(--background-color);
+    border-right: 1px solid var(--slug-color);
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: width 0.2s;
+    display: block;
+    padding-top: 10px;
   }
+
+  body:has(> header) nav#toc,
+  body.has-header nav#toc {
+    top: 60px;
+    height: calc(100vh - 60px);
+  }
+
+  /* folding */
   nav#toc.collapsed {
     width: 40px;
     min-width: 40px;
   }
+
   nav#toc.collapsed .block {
     display: none;
   }
-  #sidebar-toggle {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 20;
-    background: var(--background-color-code);
-    border: none;
-    border-radius: var(--radius);
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
-    font-size: 1.2em;
-    display: block;
-    color: var(--text-color);
+
+  #grid-wrapper > article {
+    margin-left: 260px;
+    transition: margin-left 0.2s;
+    order: unset;
+    flex: unset;
+    min-width: unset;
   }
+
+  nav#toc.collapsed ~ #grid-wrapper > article,
+  body:has(nav#toc.collapsed) #grid-wrapper > article {
+    margin-left: 40px;
+  }
+
   #menu-toggle {
-    display: none !important;
+    font-size: 1.2em;
   }
+
   #menu-overlay {
     display: none !important;
   }

@@ -1,13 +1,33 @@
 // Automatically insert hamburger navigation button and catalog popup logic
 (function () {
   function ensureHamburgerMenu() {
-    if (!document.getElementById("menu-toggle")) {
+    let menuToggle = document.getElementById("menu-toggle");
+
+    if (!menuToggle) {
       const btn = document.createElement("button");
       btn.id = "menu-toggle";
-      btn.innerHTML = "&#9776;";
+      btn.textContent = "☰";
       btn.setAttribute("aria-label", "Toggle navigation menu");
-      document.body.appendChild(btn);
+
+      const header = document.querySelector("header");
+      if (header) {
+        header.appendChild(btn);
+      } else {
+        console.log(
+          "No header found, menu-toggle will be floating in top-right corner"
+        );
+        document.body.appendChild(btn);
+      }
+      menuToggle = btn;
+    } else {
+      const header = document.querySelector("header");
+      const currentParent = menuToggle.parentNode;
+
+      if (header && currentParent !== header) {
+        header.appendChild(menuToggle);
+      }
     }
+
     if (!document.getElementById("menu-overlay")) {
       const overlay = document.createElement("div");
       overlay.id = "menu-overlay";
@@ -23,57 +43,42 @@
     );
   }
 
-  function ensureSidebarToggle() {
-    if (!document.getElementById("sidebar-toggle")) {
-      const btn = document.createElement("button");
-      btn.id = "sidebar-toggle";
-      btn.textContent = "«";
-      btn.setAttribute("aria-label", "Toggle sidebar");
-      btn.style.display = window.innerWidth > 900 ? "block" : "none";
-
-      const toc = getToc();
-      if (toc) toc.appendChild(btn);
-
-      window.addEventListener("resize", () => {
-        btn.style.display = window.innerWidth > 900 ? "block" : "none";
-      });
-
-      btn.addEventListener("click", function () {
-        const toc = getToc();
-        if (toc) {
-          toc.classList.toggle("collapsed");
-          btn.textContent = toc.classList.contains("collapsed") ? "»" : "«";
-          btn.setAttribute(
-            "aria-expanded",
-            !toc.classList.contains("collapsed")
-          );
-        }
-      });
-    }
-  }
-
   function setupHamburgerMenu() {
     const menuToggle = document.getElementById("menu-toggle");
     const menuOverlay = document.getElementById("menu-overlay");
     const toc = getToc();
-    if (!menuToggle || !menuOverlay || !toc) return;
+    if (!menuToggle || !toc) return;
 
     function openMenu() {
-      toc.classList.add("nav-open");
-      menuOverlay.style.display = "block";
+      if (window.innerWidth <= 900) {
+        toc.classList.add("nav-open");
+        if (menuOverlay) {
+          menuOverlay.style.display = "block";
+        }
+        document.body.style.overflow = "hidden";
+      } else {
+        toc.classList.toggle("collapsed");
+        menuToggle.textContent = toc.classList.contains("collapsed")
+          ? "»"
+          : "☰";
+      }
       menuToggle.setAttribute("aria-expanded", "true");
-      document.body.style.overflow = "hidden";
     }
 
     function closeMenu() {
       toc.classList.remove("nav-open");
-      menuOverlay.style.display = "none";
+      if (menuOverlay) {
+        menuOverlay.style.display = "none";
+      }
       menuToggle.setAttribute("aria-expanded", "false");
       document.body.style.overflow = "";
     }
 
     menuToggle.addEventListener("click", openMenu);
-    menuOverlay.addEventListener("click", closeMenu);
+
+    if (menuOverlay) {
+      menuOverlay.addEventListener("click", closeMenu);
+    }
 
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") closeMenu();
@@ -87,6 +92,18 @@
         }
       });
     });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) {
+        closeMenu();
+        menuToggle.textContent = toc.classList.contains("collapsed")
+          ? "»"
+          : "☰";
+      } else {
+        menuToggle.textContent = "☰";
+        toc.classList.remove("collapsed");
+      }
+    });
   }
 
   function handleResize() {
@@ -94,44 +111,92 @@
     const menuOverlay = document.getElementById("menu-overlay");
     const menuToggle = document.getElementById("menu-toggle");
 
-    if (toc && window.innerWidth <= 900) {
-      toc.classList.remove("collapsed");
-    }
-
     if (window.innerWidth > 900) {
       if (menuOverlay) menuOverlay.style.display = "none";
       if (toc) toc.classList.remove("nav-open");
       if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
       document.body.style.overflow = "";
+      if (menuToggle && toc) {
+        menuToggle.textContent = toc.classList.contains("collapsed")
+          ? "»"
+          : "☰";
+      }
+    } else {
+      if (toc) toc.classList.remove("collapsed");
+      if (menuToggle) menuToggle.textContent = "☰";
     }
   }
 
   function tryInit() {
     ensureHamburgerMenu();
-    ensureSidebarToggle();
+
     const toc = getToc();
+    const header = document.querySelector("header");
+
     if (toc) {
+      const menuToggle = document.getElementById("menu-toggle");
+      if (menuToggle && header && menuToggle.parentNode !== header) {
+        header.appendChild(menuToggle);
+      }
+
       setupHamburgerMenu();
-      window.addEventListener("resize", handleResize);
+
+      if (!window.catalogResizeHandlerAdded) {
+        window.addEventListener("resize", handleResize);
+        window.catalogResizeHandlerAdded = true;
+      }
+
       handleResize();
       return true;
     }
     return false;
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function () {
-      if (tryInit()) return;
-      const observer = new MutationObserver(() => {
-        if (tryInit()) observer.disconnect();
-      });
-      observer.observe(document.body, { childList: true, subtree: true });
-    });
-  } else {
+  function initWithObserver() {
     if (tryInit()) return;
-    const observer = new MutationObserver(() => {
-      if (tryInit()) observer.disconnect();
+
+    const observer = new MutationObserver((mutations) => {
+      let shouldReinit = false;
+
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            if (
+              node.matches &&
+              (node.matches("header") || node.matches("nav#toc, nav.toc, .toc"))
+            ) {
+              shouldReinit = true;
+            } else if (
+              node.querySelector &&
+              (node.querySelector("header") ||
+                node.querySelector("nav#toc, nav.toc, .toc"))
+            ) {
+              shouldReinit = true;
+            }
+          }
+        });
+      });
+
+      if (shouldReinit && tryInit()) {
+        observer.disconnect();
+      }
     });
-    observer.observe(document.body, { childList: true, subtree: true });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    setTimeout(() => {
+      if (tryInit()) {
+        observer.disconnect();
+      }
+    }, 1000);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initWithObserver);
+  } else {
+    initWithObserver();
   }
 })();
