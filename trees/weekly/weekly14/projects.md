@@ -3,7 +3,7 @@ title: 本周社区新增优质项目
 ---
 
 - [echozyr2001 Yiran Zeng](https://github.com/echozyr2001) 开发了一个基于 MoonBit 的项目 [moonbitlang-spectrum](https://github.com/echozyr2001/moonbitlang-spectrum)，项目采用 MoonBit 语言开发，包含 GLSL 着色器代码，适合图形渲染和视觉效果开发。该项目展示了 MoonBit 在图形编程领域的应用潜力。
-- [CAIMEOX](https://github.com/CAIMEOX) 开发了一个基于 MoonBit 的序贯演算项目 [sequent-calculus](https://github.com/CAIMEOX/sequent-calculus)，专注于数学逻辑在编程中的应用。该项目使用 MoonBit 语言实现序贯演算的形式化系统，为理解数学逻辑和形式化推理提供了实用的代码实现。
+- [CAIMEOX](https://github.com/CAIMEOX) 开发了一个基于 MoonBit 的矢列演算项目 [sequent-calculus](https://github.com/CAIMEOX/sequent-calculus)，专注于数学逻辑在编程中的应用。该项目使用 MoonBit 语言实现矢列演算的形式化系统，为理解数学逻辑和形式化推理提供了实用的代码实现。
 - [fgeygfe Jue Wang](https://github.com/fgeygfe) 开发了一个基于 MoonBit 的 Web 组件框架 [web_component](https://github.com/fgeygfe/web_component)，提供响应式组件和状态管理功能。该框架支持多目标编译（WebAssembly、JavaScript、Native），包含计数器、卡片、文本输入等示例组件，展示了 MoonBit 在 Web 前端开发中的应用潜力。
 - [BIYUEHU 有村ロミ](https://github.com/BIYUEHU) 开发了一个基于 MoonBit 的响应式编程框架 [moonbot](https://github.com/BIYUEHU/moonbot)，实现了完整的状态管理、事件系统和流式编程功能。该框架包含 State、Computed、Observable、Subject 等核心组件，支持依赖追踪、副作用管理和订阅模式，为构建响应式应用提供了强大的基础架构。
 - [meguruli LI](https://github.com/meguruli) 开发了一个基于 MoonBit 的 ERIS 实现 [ERIS](https://github.com/meguruli/ERIS)，用于去中心化与抗审查的数据存储与共享。该项目实现了 ERIS（Encoding for Robust Immutable Storage）规范，支持将任意内容编码为大小统一、经过加密和内容寻址的块，包含 Blake2b-256 加密、流式编解码、块存储抽象等核心功能。项目目前正在完善测试覆盖和错误处理机制。
