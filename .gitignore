@@ -12,3 +12,7 @@ package-lock.json
 .translation_cache
 
 .moonagent
+
+# Weekly Bot 生成文件
+tools/weekly_bot/output/*.md
+!tools/weekly_bot/output/.gitkeep
