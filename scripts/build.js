@@ -8,6 +8,7 @@ function build() {
   cp.execSync("node scripts/index.js highlight __trees");
   fs.rmSync("publish", { recursive: true, force: true });
   fs.cpSync("__trees/publish", "publish", { recursive: true });
+  cp.execSync("npm run build");
   fs.rmSync("__trees", { recursive: true, force: true });
 }
 
