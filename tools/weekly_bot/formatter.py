@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 输出格式化模块
-生成分区Markdown输出
+生成分区 Markdown 输出
 """
 
 from datetime import datetime
@@ -9,11 +9,11 @@ from typing import Dict, List
 from config import README_MAX_CHARS_FOR_OUTPUT
 
 class MarkdownFormatter:
-    """Markdown格式化器"""
+    """Markdown 格式化器"""
     
     def format_output(self, classified: Dict, since_date: str, weekly_num: int) -> str:
         """
-        生成最终的Markdown输出
+        生成最终的 Markdown 输出
         
         Args:
             classified: 分类结果
@@ -21,7 +21,7 @@ class MarkdownFormatter:
             weekly_num: 周报编号
         
         Returns:
-            完整的Markdown内容
+            完整的 Markdown 内容
         """
         projects = classified.get('project', [])
         packages = classified.get('package', [])
@@ -32,10 +32,10 @@ class MarkdownFormatter:
         
         # 开始构建
         output = f"# MoonBit 新仓库 ({since_date} 之后)\n\n"
-        output += f"共 {total} 个仓库 | 生成时间: {now}\n\n"
+        output += f"共 {total} 个仓库 | 生成时间：{now}\n\n"
         output += "---\n\n"
         
-        # Package区
+        # Package 区
         output += f"## 📦 Package ({len(packages)}个)\n\n"
         if packages:
             for idx, pkg in enumerate(packages, 1):
@@ -45,7 +45,7 @@ class MarkdownFormatter:
         
         output += "---\n\n"
         
-        # Project区
+        # Project 区
         output += f"## 🚀 Project ({len(projects)}个)\n\n"
         if projects:
             for idx, proj in enumerate(projects, 1):
@@ -55,8 +55,8 @@ class MarkdownFormatter:
         
         output += "---\n\n"
         
-        # Review区
-        output += f"## ⚠️ 需要Review ({len(reviews)}个)\n\n"
+        # Review 区
+        output += f"## ⚠️ 需要 Review ({len(reviews)}个)\n\n"
         
         if reviews:
             # 按类型分组
@@ -86,7 +86,7 @@ class MarkdownFormatter:
                 output += "\n"
             
             if fork_repos:
-                output += f"### 🔀 Fork仓库 ({len(fork_repos)}个)\n\n"
+                output += f"### 🔀 Fork 仓库 ({len(fork_repos)}个)\n\n"
                 for idx, repo in enumerate(fork_repos, 1):
                     output += self._format_repo_simple(repo, idx)
                 output += "\n"
@@ -108,7 +108,7 @@ class MarkdownFormatter:
         return output
     
     def _format_repo_detail(self, repo: Dict, idx: int) -> str:
-        """详细格式（带README）"""
+        """详细格式（带 README）"""
         
         # 作者信息
         author_info = repo.get('author_info', {})
@@ -128,7 +128,7 @@ class MarkdownFormatter:
         
         output = f"### {idx}. [{repo['full_name']}]({repo['url']})\n"
         
-        # 作者（只在有display时显示）
+        # 作者（只在有 display 时显示）
         if author_info.get('display'):
             output += f"**作者**: {author_info['display']}\n"
         

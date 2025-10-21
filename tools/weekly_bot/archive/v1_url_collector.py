@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-周报URL收集器
-功能：收集上次周报之后新创建的MoonBit仓库URL
+周报 URL 收集器
+功能：收集上次周报之后新创建的 MoonBit 仓库 URL
 """
 
 import requests
@@ -18,7 +18,7 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "output")  # 输出目录
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 class WeeklyURLCollector:
-    """周报URL收集器"""
+    """周报 URL 收集器"""
     
     def __init__(self, github_token: Optional[str] = None):
         """初始化"""
@@ -41,7 +41,7 @@ class WeeklyURLCollector:
                 weekly_files.append(filename)
         
         if not weekly_files:
-            print("⚠️  未找到周报文件，使用30天前作为默认时间")
+            print("⚠️  未找到周报文件，使用 30 天前作为默认时间")
             return datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
         
         # 按数字排序，获取最新的周报
@@ -52,7 +52,7 @@ class WeeklyURLCollector:
         latest_weekly = sorted(weekly_files, key=extract_number)[-1]
         latest_path = os.path.join(weekly_dir, latest_weekly)
         
-        print(f"📄 读取最新周报: {latest_weekly}")
+        print(f"📄 读取最新周报：{latest_weekly}")
         
         with open(latest_path, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -64,18 +64,18 @@ class WeeklyURLCollector:
         if match:
             end_date_str = match.group(2)  # 获取结束时间
             end_date = datetime.strptime(end_date_str, '%Y/%m/%d')
-            print(f"⏰ 上次周报结束时间: {end_date.date()}")
+            print(f"⏰ 上次周报结束时间：{end_date.date()}")
             return end_date
         else:
-            print("⚠️  无法提取时间，使用7天前作为默认时间")
+            print("⚠️  无法提取时间，使用 7 天前作为默认时间")
             return datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
     
     def search_with_update_filter(self, query: str, since_date: datetime) -> List[Dict]:
         """搜索并按更新时间过滤"""
-        print(f"\n🔍 搜索: {query}")
+        print(f"\n🔍 搜索：{query}")
         results = []
         page = 1
-        max_pages = 10  # 最多10页
+        max_pages = 10  # 最多 10 页
         
         while page <= max_pages:
             url = "https://api.github.com/search/repositories"
@@ -110,18 +110,18 @@ class WeeklyURLCollector:
                     
                     results.append(repo)
                 
-                print(f"   📄 第{page}页: {len(items)}个仓库")
+                print(f"   📄 第{page}页：{len(items)}个仓库")
                 page += 1
                 
             except requests.exceptions.RequestException as e:
-                print(f"   ❌ API请求失败: {e}")
+                print(f"   ❌ API 请求失败：{e}")
                 break
         
-        print(f"   ✅ 第一次过滤完成: {len(results)}个仓库")
+        print(f"   ✅ 第一次过滤完成：{len(results)}个仓库")
         return results
     
     def deduplicate(self, repos: List[Dict]) -> List[Dict]:
-        """按仓库ID去重"""
+        """按仓库 ID 去重"""
         seen = set()
         unique_repos = []
         
@@ -135,7 +135,7 @@ class WeeklyURLCollector:
     
     def filter_by_created_date(self, repos: List[Dict], since_date: datetime) -> List[Dict]:
         """按创建时间过滤（第二次过滤）"""
-        print(f"\n🔍 第二次过滤: created_at > {since_date.date()}")
+        print(f"\n🔍 第二次过滤：created_at > {since_date.date()}")
         filtered = []
         
         for repo in repos:
@@ -147,7 +147,7 @@ class WeeklyURLCollector:
             if created_at > since_date.date():
                 filtered.append(repo)
         
-        print(f"   ✅ 第二次过滤完成: {len(filtered)}个仓库")
+        print(f"   ✅ 第二次过滤完成：{len(filtered)}个仓库")
         return filtered
     
     
@@ -155,34 +155,34 @@ class WeeklyURLCollector:
         """保存结果到文件"""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         
-        # 保存所有URL到单个文件
+        # 保存所有 URL 到单个文件
         urls_filename = os.path.join(OUTPUT_DIR, f"new_repos_urls_{timestamp}.txt")
         with open(urls_filename, 'w', encoding='utf-8') as f:
             for repo in repos:
                 f.write(f"{repo['html_url']}\n")
-        print(f"\n📝 所有仓库URL已保存: {urls_filename}")
+        print(f"\n📝 所有仓库 URL 已保存：{urls_filename}")
         
         # 保存详细信息
         detail_filename = os.path.join(OUTPUT_DIR, f"new_repos_detail_{timestamp}.md")
         with open(detail_filename, 'w', encoding='utf-8') as f:
             f.write(f"# 新仓库收集结果\n\n")
-            f.write(f"收集时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-            f.write(f"总计: {len(repos)}个新仓库\n\n")
+            f.write(f"收集时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write(f"总计：{len(repos)}个新仓库\n\n")
             
             for i, repo in enumerate(repos, 1):
                 f.write(f"{i}. **{repo['full_name']}**\n")
                 f.write(f"   - URL: {repo['html_url']}\n")
-                f.write(f"   - 描述: {repo.get('description', '无')}\n")
-                f.write(f"   - 语言: {repo.get('language', '未知')}\n")
-                f.write(f"   - 创建: {repo['created_at'][:10]}\n")
+                f.write(f"   - 描述：{repo.get('description', '无')}\n")
+                f.write(f"   - 语言：{repo.get('language', '未知')}\n")
+                f.write(f"   - 创建：{repo['created_at'][:10]}\n")
                 f.write(f"   - Stars: {repo['stargazers_count']}, Forks: {repo['forks_count']}\n\n")
         
-        print(f"📝 详细信息已保存: {detail_filename}")
+        print(f"📝 详细信息已保存：{detail_filename}")
     
     def run(self):
         """主流程"""
         print("=" * 60)
-        print("周报URL收集器")
+        print("周报 URL 收集器")
         print("=" * 60)
         
         # 1. 获取上次周报时间
@@ -197,7 +197,7 @@ class WeeklyURLCollector:
         # 4. 合并去重
         print(f"\n🔄 合并去重...")
         all_repos = self.deduplicate(repos1 + repos2)
-        print(f"   ✅ 合并后: {len(all_repos)}个仓库")
+        print(f"   ✅ 合并后：{len(all_repos)}个仓库")
         
         # 5. 第二次过滤：按创建时间
         new_repos = self.filter_by_created_date(all_repos, since_date)
@@ -208,13 +208,13 @@ class WeeklyURLCollector:
         print("\n" + "=" * 60)
         print("✅ 收集完成！")
         print("=" * 60)
-        print(f"\n📊 统计:")
-        print(f"   新仓库总计: {len(new_repos)}个")
-        print(f"\n💡 下一步:")
+        print(f"\n📊 统计：")
+        print(f"   新仓库总计：{len(new_repos)}个")
+        print(f"\n💡 下一步：")
         print(f"   1. 打开生成的 new_repos_urls_*.txt 文件")
-        print(f"   2. 在Cursor Chat中让AI分类为'项目'和'包'")
-        print(f"   3. 分别让AI生成项目和包的周报条目")
-        print(f"\n📋 Cursor分类提示词:")
+        print(f"   2. 在 Cursor Chat 中让 AI 分类为'项目'和'包'")
+        print(f"   3. 分别让 AI 生成项目和包的周报条目")
+        print(f"\n📋 Cursor 分类提示词：")
         print(f"   '请将以下仓库分类为'项目'和'包'两类。")
         print(f"    分类标准：")
         print(f"    - 项目：完整应用、游戏、工具、框架实现、演示")
@@ -225,8 +225,8 @@ def main():
     """主函数"""
     github_token = os.getenv('GITHUB_TOKEN')
     if not github_token:
-        print("⚠️  未设置GITHUB_TOKEN，API调用可能受限")
-        print("   建议: export GITHUB_TOKEN=your_token\n")
+        print("⚠️  未设置 GITHUB_TOKEN，API 调用可能受限")
+        print("   建议：export GITHUB_TOKEN=your_token\n")
     
     collector = WeeklyURLCollector(github_token)
     collector.run()

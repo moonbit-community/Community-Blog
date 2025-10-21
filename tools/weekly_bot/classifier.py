@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-AI分类模块
-使用DeepSeek-V3对仓库进行智能分类
+AI 分类模块
+使用 DeepSeek-V3 对仓库进行智能分类
 """
 
 import json
@@ -23,7 +23,7 @@ from config import (
 )
 
 class RepoClassifier:
-    """仓库分类器（基于DeepSeek-V3）"""
+    """仓库分类器（基于 DeepSeek-V3）"""
     
     def __init__(self):
         self.headers = {
@@ -62,10 +62,10 @@ class RepoClassifier:
                 results['review'].append(repo)
                 continue
                 
-            # 组织/Fork（依赖bot中的author_info）
+            # 组织/Fork（依赖 bot 中的 author_info）
             author_type = (repo.get('author_info') or {}).get('type')
             if author_type in ['organization', 'fork'] or repo.get('is_fork'):
-                repo['review_reason'] = '组织/或Fork仓库'
+                repo['review_reason'] = '组织/或 Fork 仓库'
                 results['review'].append(repo)
                 continue
                 
@@ -74,7 +74,7 @@ class RepoClassifier:
         if not to_classify:
             return results
         
-        # 单仓库并发调用AI
+        # 单仓库并发调用 AI
         def worker(args):
             repo, full = args
             prompt = self._build_single_prompt(repo, full)
@@ -90,7 +90,7 @@ class RepoClassifier:
                     if attempt < AI_RETRIES:
                         time.sleep(1)  # 简单延迟
                         
-            return repo, {'label': 'review', 'reason': f'API调用失败: {str(last_err)[:50]}'}
+            return repo, {'label': 'review', 'reason': f'API 调用失败：{str(last_err)[:50]}'}
         
         # 并发执行
         with ThreadPoolExecutor(max_workers=MAX_CONCURRENCY) as executor:
@@ -99,7 +99,7 @@ class RepoClassifier:
             for i, future in enumerate(as_completed(futures), 1):
                 repo, result = future.result()
                 label = (result.get('label') or '').lower()
-                reason = result.get('reason') or 'AI未分类（模型不确定）'
+                reason = result.get('reason') or 'AI 未分类（模型不确定）'
                 
                 if label in ['project', 'package']:
                     results[label].append(repo)
@@ -110,7 +110,7 @@ class RepoClassifier:
         return results
     
     def _build_single_prompt(self, repo: Dict, full_data: Dict) -> str:
-        """构建单仓库AI提示词"""
+        """构建单仓库 AI 提示词"""
         
         # 组装结构信号
         cf = full_data.get('code_files') or []
@@ -132,19 +132,19 @@ class RepoClassifier:
             'readme_snippet': (full_data.get('readme') or '')[:2000]  # 限制长度
         }
         
-        prompt = f"""你是MoonBit周报的分类专家。请判断下面这个GitHub仓库是 project、package，或者 review（不确定时）：
+        prompt = f"""你是 MoonBit 周报的分类专家。请判断下面这个 GitHub 仓库是 project、package，或者 review（不确定时）：
 
 定义：
 - package: 面向其他项目复用的库/框架/绑定/工具集
 - project: 面向用户使用的应用/游戏/CLI/工具/示例成品
 
 规则：
-- 不确定时，一定返回 review，并简要说明原因（1句话）
+- 不确定时，一定返回 review，并简要说明原因（1 句话）
 
 仓库数据：
 {json.dumps(data, ensure_ascii=False, indent=2)}
 
-只返回一个JSON对象，不要markdown代码块，也不要多余文本：
+只返回一个 JSON 对象，不要 markdown 代码块，也不要多余文本：
 {{
   "url": "{repo['url']}",
   "label": "project|package|review",
@@ -154,10 +154,10 @@ class RepoClassifier:
         return prompt
     
     def _parse_single_response(self, response: Dict) -> Dict:
-        """解析单仓库AI响应"""
+        """解析单仓库 AI 响应"""
         content = response['choices'][0]['message']['content'].strip()
         
-        # 去除可能的```包裹或json前缀
+        # 去除可能的 ``` 包裹或 json 前缀
         if '```json' in content:
             content = content.split('```json')[1].split('```')[0].strip()
         elif '```' in content:
@@ -168,20 +168,20 @@ class RepoClassifier:
         try:
             obj = json.loads(content)
             label = (obj.get('label') or '').lower()
-            reason = obj.get('reason') or 'AI未分类（模型不确定）'
+            reason = obj.get('reason') or 'AI 未分类（模型不确定）'
             return {'label': label, 'reason': reason}
         except Exception as e:
-            return {'label': 'review', 'reason': 'AI未分类（解析失败）'}
+            return {'label': 'review', 'reason': 'AI 未分类（解析失败）'}
     
     
     def _call_api(self, prompt: str) -> Dict:
-        """调用DeepSeek-V3 API"""
+        """调用 DeepSeek-V3 API"""
         payload = {
             'model': MODEL_NAME,
             'messages': [
                 {
                     'role': 'system',
-                    'content': '你是一个专业的代码分类专家，擅长分析GitHub仓库的类型。只返回JSON格式的分类结果。'
+                    'content': '你是一个专业的代码分类专家，擅长分析 GitHub 仓库的类型。只返回 JSON 格式的分类结果。'
                 },
                 {
                     'role': 'user',
@@ -205,7 +205,7 @@ class RepoClassifier:
         response.raise_for_status()
         result = response.json()
         
-        # 统计token使用
+        # 统计 token 使用
         if 'usage' in result:
             self.total_input_tokens += result['usage'].get('prompt_tokens', 0)
             self.total_output_tokens += result['usage'].get('completion_tokens', 0)
@@ -214,7 +214,7 @@ class RepoClassifier:
     
     
     def get_usage_stats(self) -> Dict:
-        """获取token使用统计"""
+        """获取 token 使用统计"""
         from config import estimate_cost
         
         cost = estimate_cost(self.total_input_tokens, self.total_output_tokens)
@@ -251,6 +251,6 @@ if __name__ == "__main__":
     
     print("测试分类...")
     result = classifier.classify_repos(test_data)
-    print(f"结果: {result}")
-    print(f"Token统计: {classifier.get_usage_stats()}")
+    print(f"结果：{result}")
+    print(f"Token 统计：{classifier.get_usage_stats()}")
 

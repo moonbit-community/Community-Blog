@@ -1,0 +1,17 @@
+[kodama]
+trees = "__trees" 
+assets = "./styles"
+
+[build]
+typst-root = "./"
+short-slug = false
+pretty-urls = false
+footer-mode = "link"
+inline-css = false
+output = "./__trees/publish"
+
+[toc]
+placement = "left"
+sticky = true
+mobile-sticky = true
+max-width = "max-content"

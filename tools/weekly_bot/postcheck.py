@@ -32,8 +32,8 @@ def has_anchor_markers(text: str) -> bool:
     return bool(re.search(r'<!--\s*(BEGIN|END):?\s*\w*\s*-->', text))
 
 def has_empty_document_format(text: str) -> bool:
-    """检查空文档格式是否正确（只有frontmatter）"""
-    # 移除frontmatter后应该只有空白
+    """检查空文档格式是否正确（只有 frontmatter）"""
+    # 移除 frontmatter 后应该只有空白
     content_without_frontmatter = re.sub(r'^---\n.*?\n---\n', '', text, flags=re.DOTALL)
     return not content_without_frontmatter.strip()
 
@@ -50,7 +50,7 @@ def ends_with_single_nl(text: str) -> bool:
 
 def main():
     if len(sys.argv) < 2:
-        print('用法: python postcheck.py trees/weekly/weekly15')
+        print('用法：python postcheck.py trees/weekly/weekly15')
         sys.exit(1)
     base = Path(sys.argv[1])
     weekly_num = re.search(r'weekly(\d+)$', base.name)
@@ -72,7 +72,7 @@ def main():
     # 存在性
     for p in [main_md, pkg, proj, off, com, idx]:
         if not p.exists():
-            problems.append(f'缺失文件: {p}')
+            problems.append(f'缺失文件：{p}')
 
     # 内容检查
     for p in [pkg, proj, off, com, main_md]:
@@ -80,39 +80,39 @@ def main():
         if has_dup_frontmatter(t):
             problems.append(f'重复 frontmatter: {p}')
         if has_dup_template(t):
-            problems.append(f'重复模板块/标题: {p}')
+            problems.append(f'重复模板块/标题：{p}')
         if has_unprintable(t):
-            problems.append(f'包含不可打印字符: {p}')
+            problems.append(f'包含不可打印字符：{p}')
         if p in [pkg, proj] and has_extra_blank_between_items(t):
-            problems.append(f'条目之间存在空行: {p}')
+            problems.append(f'条目之间存在空行：{p}')
         if not ends_with_single_nl(t):
             problems.append(f'结尾换行不规范（应恰好一个）: {p}')
     # 检查是否包含锚点标记（应该没有）
     for p in [pkg, proj, off, com]:
         t = read(p)
         if has_anchor_markers(t):
-            problems.append(f'包含锚点标记: {p}')
+            problems.append(f'包含锚点标记：{p}')
     
     # 检查空文档格式（official.md 和 community.md）
     for p, name in [(off, 'official'), (com, 'community')]:
         if p.exists():
             t = read(p)
             if not has_empty_document_format(t):
-                problems.append(f'{name}.md 格式错误：应只包含frontmatter，无其他内容')
+                problems.append(f'{name}.md 格式错误：应只包含 frontmatter，无其他内容')
 
     # 索引 embed 格式检查
     idx_t = read(idx)
     if f'[+](/weekly/weekly{n}.md#:embed)' not in idx_t:
         problems.append('索引未追加 weeklyN 的 embed 行')
     
-    # 检查embed格式是否正确（当前周报应该使用 [+] 格式）
+    # 检查 embed 格式是否正确（当前周报应该使用 [+] 格式）
     if f'[+-](/weekly/weekly{n}.md#:embed)' in idx_t:
-        problems.append(f'索引embed格式错误：当前周报应使用 [+] 格式，不是 [+-]')
+        problems.append(f'索引 embed 格式错误：当前周报应使用 [+] 格式，不是 [+-]')
     
-    # 检查主文档embed格式
+    # 检查主文档 embed 格式
     main_t = read(main_md)
     if '[+-]' in main_t:
-        problems.append(f'主文档embed格式错误：应使用 [+] 格式，不是 [+-]')
+        problems.append(f'主文档 embed 格式错误：应使用 [+] 格式，不是 [+-]')
     
     # 检查子文档标题格式
     for p, expected_title in [(off, '本周官方重要动态'), (com, '本周社区动态')]:
