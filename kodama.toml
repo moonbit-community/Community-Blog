@@ -4,14 +4,14 @@ assets = "./styles"
 
 [build]
 typst-root = "./"
-short-slug = false
+short-slug = true
 pretty-urls = false
 footer-mode = "link"
 inline-css = false
 output = "./__trees/publish"
+edit = "https://github.com/moonbit-community/Community-Blog/tree/main/trees/"
 
 [toc]
 placement = "left"
 sticky = true
 mobile-sticky = true
-max-width = "max-content"
