@@ -1,5 +1,6 @@
 ---
 title: Weekly
+collect: true
 ---
 
 [+-](/weekly/weekly1.md#:embed)

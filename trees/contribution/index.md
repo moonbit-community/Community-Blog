@@ -12,4 +12,3 @@ title: Contribution Guide
 
 [+-](/contribution/weekly.md#:embed)
 
-[+-](/contribution/knowledge.md#:embed)
