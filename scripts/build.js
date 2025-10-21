@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import cp from "node:child_process";
+import generateRSS from "./rss.js";
 
 function build() {
   fs.cpSync("trees", "__trees", { recursive: true });
@@ -9,6 +10,7 @@ function build() {
   fs.rmSync("publish", { recursive: true, force: true });
   fs.cpSync("__trees/publish", "publish", { recursive: true });
   cp.execSync("npm run build");
+  generateRSS();
   fs.rmSync("__trees", { recursive: true, force: true });
 }
 
