@@ -2,7 +2,7 @@
 title: 本周官方重要动态
 ---
 
-- MoonBit 官方开源了官网 [moonbitlang.cn](moonbitlang.cn) 的源代码 [website](https://github.com/moonbitlang/website)，未来社区成员可以参与 MoonBit 官网的建设了。
+- MoonBit 官方开源了官网 [moonbitlang.cn](https://www.moonbitlang.cn) 的源代码 [website](https://github.com/moonbitlang/website)，未来社区成员可以参与 MoonBit 官网的建设了。
 
 - MoonBit 官方创建了一个新仓库 [moonbit-evolution](https://github.com/moonbitlang/moonbit-evolution)，后续 MoonBit 所有用户可见的改动，都会在仓库中说明，使得 MoonBit 的发展更加透明，用户可追踪。用户也可以在仓库中讨论和提出提案，象征着 MoonBit 的社区写作文进入新阶段。
 
