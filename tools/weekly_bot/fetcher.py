@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-GraphQL重量级数据抓取模块
-抓取仓库的README、代码结构、作者昵称等完整信息
+GraphQL 重量级数据抓取模块
+抓取仓库的 README、代码结构、作者昵称等完整信息
 """
 
 import requests
@@ -18,7 +18,7 @@ from config import (
 )
 
 class GitHubFetcher:
-    """GitHub数据抓取器"""
+    """GitHub 数据抓取器"""
     
     def __init__(self):
         self.headers = {
@@ -51,7 +51,7 @@ class GitHubFetcher:
         return list(all_repos.values())
     
     def _graphql_search(self, search_query: str) -> List[Dict]:
-        """GraphQL搜索查询"""
+        """GraphQL 搜索查询"""
         query = """
         query($searchQuery: String!, $cursor: String) {
           search(query: $searchQuery, type: REPOSITORY, first: 100, after: $cursor) {
@@ -109,7 +109,7 @@ class GitHubFetcher:
                 data = response.json()
                 
                 if 'errors' in data:
-                    print(f"\n⚠️ GraphQL错误: {data['errors']}")
+                    print(f"\n⚠️ GraphQL 错误：{data['errors']}")
                     break
                 
                 for edge in data['data']['search']['edges']:
@@ -134,7 +134,7 @@ class GitHubFetcher:
                 cursor = page_info['endCursor']
                 
             except requests.exceptions.RequestException as e:
-                print(f"\n❌ 搜索错误: {e}")
+                print(f"\n❌ 搜索错误：{e}")
                 break
         
         return repos
@@ -143,15 +143,15 @@ class GitHubFetcher:
         """
         抓取单个仓库的完整数据（重量级）
         
-        包含: README全文、moon.mod.json、.mbt代码片段、文件结构
+        包含：README 全文、moon.mod.json、.mbt 代码片段、文件结构
         
         Args:
-            repo_url: 仓库URL
+            repo_url: 仓库 URL
         
         Returns:
-            完整的仓库数据，失败返回None
+            完整的仓库数据，失败返回 None
         """
-        # 解析owner和repo名
+        # 解析 owner 和 repo 名
         match = re.search(r'github\.com/([^/]+)/([^/]+)', repo_url)
         if not match:
             return None
@@ -168,7 +168,7 @@ class GitHubFetcher:
               }
             }
             
-            # README.mbt.md (MoonBit优先)
+            # README.mbt.md (MoonBit 优先)
             readmeMbt: object(expression: "HEAD:README.mbt.md") {
               ... on Blob {
                 text
@@ -197,7 +197,7 @@ class GitHubFetcher:
               }
             }
             
-            # src目录
+            # src 目录
             srcTree: object(expression: "HEAD:src") {
               ... on Tree {
                 entries {
@@ -212,7 +212,7 @@ class GitHubFetcher:
               }
             }
             
-            # lib目录
+            # lib 目录
             libTree: object(expression: "HEAD:lib") {
               ... on Tree {
                 entries {
@@ -222,7 +222,7 @@ class GitHubFetcher:
               }
             }
             
-            # cmd目录 (新架构)
+            # cmd 目录 (新架构)
             cmdTree: object(expression: "HEAD:cmd/main") {
               ... on Tree {
                 entries {
@@ -274,18 +274,18 @@ class GitHubFetcher:
             return None
     
     def _extract_readme(self, repo_data: Dict) -> str:
-        """提取README内容（智能匹配优先级）"""
-        # 1. 优先: README.mbt.md (MoonBit新架构)
+        """提取 README 内容（智能匹配优先级）"""
+        # 1. 优先：README.mbt.md (MoonBit 新架构)
         readme_mbt = repo_data.get('readmeMbt')
         if readme_mbt and readme_mbt.get('text'):
             return readme_mbt['text'][:README_MAX_CHARS_FOR_AI]
         
-        # 2. 其次: README.md (通用)
+        # 2. 其次：README.md (通用)
         readme_md = repo_data.get('readme')
         if readme_md and readme_md.get('text'):
             return readme_md['text'][:README_MAX_CHARS_FOR_AI]
         
-        # 3. 回退: 从rootTree查找任何README文件
+        # 3. 回退：从 rootTree 查找任何 README 文件
         root_tree = repo_data.get('rootTree') or {}
         for entry in root_tree.get('entries', []):
             if entry['name'].upper().startswith('README'):
@@ -296,7 +296,7 @@ class GitHubFetcher:
         return ''
     
     def _extract_moon_mod(self, repo_data: Dict) -> str:
-        """提取moon.mod.json内容"""
+        """提取 moon.mod.json 内容"""
         moon_mod_obj = repo_data.get('moonMod')
         if not moon_mod_obj:
             return ''
@@ -304,10 +304,10 @@ class GitHubFetcher:
         return moon_mod_obj.get('text', '')
     
     def _extract_code_files(self, repo_data: Dict) -> List[Dict]:
-        """提取.mbt代码文件片段（统一500字符）"""
+        """提取.mbt 代码文件片段（统一 500 字符）"""
         code_files = []
         
-        # 根目录.mbt文件
+        # 根目录.mbt 文件
         root_tree = repo_data.get('rootTree') or {}
         for entry in root_tree.get('entries', []):
             if entry['name'].endswith('.mbt') and entry['type'] == 'blob':
@@ -317,7 +317,7 @@ class GitHubFetcher:
                     'content': text[:500] if text else ''
                 })
         
-        # src目录.mbt文件
+        # src 目录.mbt 文件
         src_tree = repo_data.get('srcTree') or {}
         for entry in src_tree.get('entries', []):
             if entry['name'].endswith('.mbt') and entry['type'] == 'blob':
@@ -327,7 +327,7 @@ class GitHubFetcher:
                     'content': text[:500] if text else ''
                 })
         
-        # cmd目录.mbt文件 (新架构)
+        # cmd 目录.mbt 文件 (新架构)
         cmd_tree = repo_data.get('cmdTree') or {}
         for entry in cmd_tree.get('entries', []):
             if entry['name'].endswith('.mbt') and entry['type'] == 'blob':
@@ -356,7 +356,7 @@ class GitHubFetcher:
         owner_type = repo.get('owner_type', 'User')
         is_fork = repo['is_fork']
         
-        # 情况1: 组织仓库（优先判断）
+        # 情况 1: 组织仓库（优先判断）
         if owner_type == 'Organization':
             return {
                 'type': 'organization',
@@ -367,7 +367,7 @@ class GitHubFetcher:
                 'review_reason': '组织仓库'
             }
         
-        # 情况2: Fork仓库
+        # 情况 2: Fork 仓库
         if is_fork:
             return {
                 'type': 'fork',
@@ -375,10 +375,10 @@ class GitHubFetcher:
                 'nickname': owner_name,
                 'display': None,
                 'confidence': 'low',
-                'review_reason': 'Fork仓库'
+                'review_reason': 'Fork 仓库'
             }
         
-        # 情况3: 个人仓库（有昵称）
+        # 情况 3: 个人仓库（有昵称）
         if owner_name:
             return {
                 'type': 'individual',
@@ -388,7 +388,7 @@ class GitHubFetcher:
                 'confidence': 'high'
             }
         
-        # 情况4: 个人仓库（无昵称）
+        # 情况 4: 个人仓库（无昵称）
         return {
             'type': 'individual',
             'username': owner_login,
@@ -410,7 +410,7 @@ if __name__ == "__main__":
         print("\n测试抓取第一个仓库详情...")
         full_data = fetcher.fetch_full_repo_data(repos[0]['url'])
         if full_data:
-            print(f"README长度: {len(full_data['readme'])}")
-            print(f"代码文件: {len(full_data['code_files'])}")
-            print(f"有moon.mod.json: {bool(full_data['moon_mod'])}")
+            print(f"README 长度：{len(full_data['readme'])}")
+            print(f"代码文件：{len(full_data['code_files'])}")
+            print(f"有 moon.mod.json: {bool(full_data['moon_mod'])}")
 
