@@ -5,15 +5,19 @@
   "scripts": {
     "dev": "vite & node watch.js",
     "watch": "node watch.js",
-    "compile": "node compile.js"
+    "compile": "node compile.js",
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/moonbit-community/community-blog.git"
   },
   "devDependencies": {
+    "chokidar": "^4.0.3",
     "shiki": "^3.2.1",
-    "vite": "^6.2.2",
-    "chokidar": "^4.0.3"
+    "vite": "^6.2.2"
+  },
+  "dependencies": {
+    "ninja-keys": "^1.2.2"
   }
 }

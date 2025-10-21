@@ -85,7 +85,7 @@ async function processHtmlFile(filePath) {
   const codeBlockRegex =
     /<pre><code class="language-([\w-]+)">([\s\S]*?)<\/code><\/pre>/g;
   if (content.match(codeBlockRegex)) {
-    content += "<link rel='stylesheet' href='/shiki.css'>";
+    content += "<link rel='stylesheet' href='/styles/style.css'>";
 
     const matches = Array.from(content.matchAll(codeBlockRegex));
     for (const match of matches) {
@@ -117,7 +117,10 @@ async function processHtmlFile(filePath) {
 function injectClicky(content) {
   return content.replace(
     /<\/body>/,
-    `<script async data-id="101490373" src="//static.getclicky.com/js"></script></body>`
+    `<ninja-keys placeholder="Search in Blog"></ninja-keys> 
+    <script async data-id="101490373" src="//static.getclicky.com/js"></script>
+     <script type="module" src="/ninja.js"></script> 
+    </body>`
   );
 }
 
@@ -131,7 +134,6 @@ async function main(dirname) {
     console.error(`Highlight error: ${error.message}`);
     console.error("Error stack:", error.stack);
   }
-  fs.copyFileSync("styles/shiki.css", `${dirname}/publish/shiki.css`);
 }
 
 export default main;
