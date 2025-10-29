@@ -40,7 +40,7 @@ impl[R : Semiring] HasNil for Mat2x2[R] with nil() {
 
 $$ 0 \in {\small 半环} ~ R \spaces\implies 0_{\Mat_{2 \times 2}} \spaces= \begin{pmatrix} 0 & 0 \\ 0 &  0 \end{pmatrix} \spaces\in \Mat_{2 \times 2}(R) $$
 
-```
+```mbt
 impl[R : Semiring] HasOne for Mat2x2[R] with one() {
   Mat2x2::mk(R::one(), R::nil(), R::nil(), R::one())
 }
