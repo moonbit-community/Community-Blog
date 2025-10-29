@@ -6,7 +6,7 @@ author: [kokic](https://kokic.github.io)
 date: 2025-10-29
 ---
 
-为了方便进行符号微分, 我们先定义一个表达式类型 `Expr`, 其数据显然是树状的, 所以我们使用 `enum` 刻画此归纳结构.
+为了方便进行符号微分，我们先定义一个表达式类型 `Expr`, 其数据显然是树状的，所以我们使用 `enum` 刻画此归纳结构。
 
 ```mbt
 enum Expr {
@@ -19,7 +19,7 @@ enum Expr {
 } derive(Eq, Show)
 ```
 
-然后为了打印和借助其他工具简化结果, 我们为 `Expr` 定义一个 `to_sexp` 方法. 
+然后为了打印和借助其他工具简化结果，我们为 `Expr` 定义一个 `to_sexp` 方法。
 
 ```mbt
 fn Expr::to_sexp(e : Expr) -> String {
@@ -34,7 +34,7 @@ fn Expr::to_sexp(e : Expr) -> String {
 }
 ```
 
-与例子 [`Mat2x2[Float]`](./float.md) 类似, 可以为 `Expr` 实现 [星半环](./traits.md) 特质. 
+与例子 [`Mat2x2[Float]`](./float.md) 类似，可以为 `Expr` 实现 [星半环](./traits.md) 特质。
 
 ```mbt
 impl HasNil for Expr with nil() {
@@ -68,7 +68,7 @@ impl StarSemiring for Expr with star(x : Expr) {
 }
 ```
 
-到这一步, 进行符号微分所需的全部定义就结束了. 以下只是一些简化调用的函数. 
+到这一步，进行符号微分所需的全部定义就结束了。以下只是一些简化调用的函数。
 
 ```mbt
 fn shear(a : Expr, b : Expr) -> Mat2x2[Expr] {
@@ -84,7 +84,7 @@ fn function(name : String) -> Mat2x2[Expr] {
 let extract : (Mat2x2[Expr]) -> String = u => u.b.to_sexp()
 ```
 
-现在, 微分的线性性和 Leibniz 律将自然地被 `Mat2x2[Expr]` 上的加法和乘法导出. 
+现在，微分的线性性和 Leibniz 律将自然地被 `Mat2x2[Expr]` 上的加法和乘法导出。
 
 ```mbt
 test "leibniz rule" {
@@ -93,7 +93,7 @@ test "leibniz rule" {
 }
 ```
 
-而 $(f/g)'$ 按 $(f g^{-1})'$ 计算即可. 再次强调, 此处 `f` 和 `g` 的类型是 `Mat2x2[Expr]`, 换言之 $f,g$ 实际上是两个矩阵, $g^{-1}$ 按 [前文实现的矩阵逆](./kira.md) 计算. 
+而 $(f/g)'$ 按 $(f g^{-1})'$ 计算即可。再次强调，此处 `f` 和 `g` 的类型是 `Mat2x2[Expr]`, 换言之 $f,g$ 实际上是两个矩阵，$g^{-1}$ 按 [前文实现的矩阵逆](./kira.md) 计算。
 
 ```mbt
 impl[R : StarSemiring + Neg] Div for Mat2x2[R] with div(
@@ -113,13 +113,13 @@ test "leibniz rule" {
 }
 ```
 
-读者可以用 [egg][egg] 或其他符号化简工具简化此处 `extract(f * g.inverse())` 的结果, 一个可能的形式是: 
+读者可以用 [egg][egg] 或其他符号化简工具简化此处 `extract(f * g.inverse())` 的结果，一个可能的形式是：
 
 ```
 (+ (* f (* (- g') (pow g -2))) (* (pow g -1) f'))
 ```
 
-这当然就是 $(f'g - fg')/g^2 = (f/g)'$. 此方法对多变量情形也完全适用. 
+这当然就是 $(f'g - fg')/g^2 = (f/g)'$. 此方法对多变量情形也完全适用。
 
 ```mbt
 test "differentiation" {
@@ -134,7 +134,7 @@ test "differentiation" {
 }
 ```
 
-最后的 `extract(x / y)` 可以简化为 `(+ (pow y -1) (* x (* -1 (pow y -2))))`, 即 $\frac{1}{y}-\frac{x}{y^2}$. 读者可以通过为 `Expr` 类型添加诸如 `Cos`, `Sin`, `Exp`, `Log` 此类其他构造器从而使本程序支持带有其他函数的微分运算, 这点与 [经典自动微分程序][ad-haskell] 的做法是一致的. 完整的 MoonBit 源代码可以在 [此处](https://github.com/kokic/moonbit-pearls/blob/main/trees/leibniz-amnesia/amnesia.mbt) 查看. 
+最后的 `extract(x / y)` 可以简化为 `(+ (pow y -1) (* x (* -1 (pow y -2))))`, 即 $\frac{1}{y}-\frac{x}{y^2}$. 读者可以通过为 `Expr` 类型添加诸如 `Cos`, `Sin`, `Exp`, `Log` 此类其他构造器从而使本程序支持带有其他函数的微分运算，这点与 [经典自动微分程序][ad-haskell] 的做法是一致的。完整的 MoonBit 源代码可以在 [此处](https://github.com/kokic/moonbit-pearls/blob/main/trees/leibniz-amnesia/amnesia.mbt) 查看。
 
 [egg]: https://github.com/egraphs-good/egg
 [ad-haskell]: https://www.danielbrice.net/blog/automatic-differentiation-is-trivial-in-haskell/

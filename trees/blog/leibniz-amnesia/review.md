@@ -15,7 +15,7 @@ $$
 M \spaces= \begin{pmatrix} a & b \\ c & d \end{pmatrix}, \quad ad - bc \spaces\neq 0
 $$
 
-为了储存 $(a,b,c,d) \in R^4$ 的信息, 我们可以准备一个如下形式的结构体以及一个简化的构造器 `Mat2x2::mk` $: R^4 \to \Mat_{2 \times 2}(R)$
+为了储存 $(a,b,c,d) \in R^4$ 的信息，我们可以准备一个如下形式的结构体以及一个简化的构造器 `Mat2x2::mk` $: R^4 \to \Mat_{2 \times 2}(R)$
 
 ```mbt
 struct Mat2x2[R] {
@@ -30,7 +30,7 @@ fn[R] Mat2x2::mk(a : R, b : R, c : R, d : R) -> Mat2x2[R] {
 }
 ```
 
-我们知道, 为了保证 `Mat2x2[R]` 能有与我们印象中的矩阵相符的性质, 此处矩阵元素类型至少是一个 [半环](./traits.md). 随后可得 $0_{\Mat_{2 \times 2}}$, $1_{\Mat_{2 \times 2}}$ 和 `Mat2x2[R]` 上典范的加法与乘法. 
+我们知道，为了保证 `Mat2x2[R]` 能有与我们印象中的矩阵相符的性质，此处矩阵元素类型至少是一个 [半环](./traits.md). 随后可得 $0_{\Mat_{2 \times 2}}$, $1_{\Mat_{2 \times 2}}$ 和 `Mat2x2[R]` 上典范的加法与乘法。
 
 ```mbt
 impl[R : Semiring] HasNil for Mat2x2[R] with nil() {
@@ -69,7 +69,7 @@ impl[R : Add + Mul] Mul for Mat2x2[R] with mul(u : Mat2x2[R], v : Mat2x2[R]) {
 ```
 $$ \times: R^2 \to R \spaces\implies \times_{\Mat_{2 \times 2}}: \Mat_{2 \times 2}(R)^2 \to \Mat_{2 \times 2}(R) $$
 
-于是我们得到了一个确实可计算 $+, \times$ 的 $\Mat_{2 \times 2}(R)$ 结构, 且立刻可以写下: 
+于是我们得到了一个确实可计算 $+, \times$ 的 $\Mat_{2 \times 2}(R)$ 结构，且立刻可以写下：
 
 ```mbt
 impl[R : Semiring] Semiring for Mat2x2[R]
