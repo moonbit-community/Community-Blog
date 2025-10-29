@@ -24,3 +24,5 @@ collect: true
 [+-](/blog/data-structure/morris.md#:embed)
 
 [+-](/blog/gausskronrod/index.md#:embed)
+
+[+-用矩阵来计算符号微分](/blog/leibniz-amnesia/index.md#:embed)
