@@ -1,23 +1,23 @@
 ---
-title: 对Moonbit Midi进行Reference Test
+title: 对 Moonbit Midi 进行 Reference Test
 collect: true
 author: [Elevonic611](https://github.com/HarryLiGameTech)
 taxon: Blog
 date: 2025-10-31
 ---
 
-目前Moonbit语言的Midi编解码工具已逐步实现基本功能，为确保其解码测试样例正确有效，我们编写了这套逻辑，以验证Moonbit解码结果（测试样例）与现有的midi解码工具（mido）的输出是否等价。
+目前 Moonbit 语言的 Midi 编解码工具已逐步实现基本功能，为确保其解码测试样例正确有效，我们编写了这套逻辑，以验证 Moonbit 解码结果（测试样例）与现有的 midi 解码工具（mido）的输出是否等价。
 
-毕竟，只有确保测试集可信，才能指导Moonbit Midi的继续开发。
+毕竟，只有确保测试集可信，才能指导 Moonbit Midi 的继续开发。
 
-(Moonbit Midi具体实现详见：https://github.com/CAIMEOX/midi，
+(Moonbit Midi 具体实现详见：https://github.com/CAIMEOX/midi，
 此文不做额外赘述)
 
 ## 基本思路/流程
-1. 选择一首复杂度合适的mid文件（此次以star_wars作为样例，详见Moonbit Midi库）
-2. 使用Python mido以及Moonbit midi分别进行解码，获取mid文件中的所有event内容
+1. 选择一首复杂度合适的 mid 文件（此次以 star_wars 作为样例，详见 Moonbit Midi 库）
+2. 使用 Python mido 以及 Moonbit midi 分别进行解码，获取 mid 文件中的所有 event 内容
 3. 对两边解码出的内容整理成统一格式（确保无信息丢失）
-4. 对整理后的内容进行比较，如果完全相等（忽略system-specific的event，仅关注标准协议明确定义的内容），则代表解码正确
+4. 对整理后的内容进行比较，如果完全相等（忽略 system-specific 的 event，仅关注标准协议明确定义的内容），则代表解码正确
 
 这是整个过程的代码：
 
@@ -35,7 +35,7 @@ def ref_test(mbt_parsed_text, file_name):
 
 ## 具体实现
 
-首先使用python mido建立一个**可信的 (trusted)** 解码器。全部使用mido库提供的API，不自定义解析逻辑：
+首先使用 python mido 建立一个**可信的 (trusted)** 解码器。全部使用 mido 库提供的 API，不自定义解析逻辑：
 
 ```python
 def read_midi_file(filename):
@@ -77,7 +77,7 @@ def read_midi_file(filename):
         return None, []
 ```
 
-由于mido和Moonbit Midi解码后的文字格式不完全一样，需要在compare之前，将Moonbit解码后得到的文字进行如下操作：
+由于 mido 和 Moonbit Midi 解码后的文字格式不完全一样，需要在 compare 之前，将 Moonbit 解码后得到的文字进行如下操作：
 
 ```python
 def to_mido_format(mbt_parsed_text):
@@ -152,7 +152,7 @@ def to_mido_format(mbt_parsed_text):
     return '\n'.join(processed_lines)
 ```
 
-最后使用compare()函数比较格式统一后的解码文本，如返回True，则代表moonbit midi解码出的内容正确：
+最后使用 compare() 函数比较格式统一后的解码文本，如返回 True，则代表 moonbit midi 解码出的内容正确：
 
 ```python
 def compare(from_py, from_mbt):
@@ -185,11 +185,11 @@ def compare(from_py, from_mbt):
 
 ## 后期目标
 
-目前reference test仍需要大量手动操作，需要额外存储Moonbit解码文本。当Moonbit方测试样例变更时，重新确认其有效性会变得比较麻烦。
+目前 reference test 仍需要大量手动操作，需要额外存储 Moonbit 解码文本。当 Moonbit 方测试样例变更时，重新确认其有效性会变得比较麻烦。
 
-因此我们设想：可否让Moonbit自动执行我编写的Python代码，并进行跨语言数据通信？
+因此我们设想：可否让 Moonbit 自动执行我编写的 Python 代码，并进行跨语言数据通信？
 
-目前看来，Kaida-Amethyst主导开发的python.mbt库 (https://github.com/moonbitlang/python.mbt) 或许可以帮助我们实现目标。根据其给出的技术文档，写出如下Moonbit代码：
+目前看来，Kaida-Amethyst 主导开发的 python.mbt 库 (https://github.com/moonbitlang/python.mbt) 或许可以帮助我们实现目标。根据其给出的技术文档，写出如下 Moonbit 代码：
 
 ```moonbit
 typealias @python.(PyString, PyTuple)
@@ -237,6 +237,6 @@ test "reference_test" {
 }
 ```
 
-不过，这份代码**还无法正常运行**，因为python.mbt貌似没有识别我编写的python文件。目前Kaida-Amethyst还未在文档中提及Moonbit引入自定义python文件的方法，我已在对应repo中的issue提出修改documentation的建议和请求。
+不过，这份代码**还无法正常运行**，因为 python.mbt 貌似没有识别我编写的 python 文件。目前 Kaida-Amethyst 还未在文档中提及 Moonbit 引入自定义 python 文件的方法，我已在对应 repo 中的 issue 提出修改 documentation 的建议和请求。
 
 待作者完善技术文档后，我将会更新此篇文章，提供可运行的方案。
