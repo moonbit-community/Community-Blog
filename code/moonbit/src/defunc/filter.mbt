@@ -1,6 +1,3 @@
-///|
-typealias MyList as List
-
 // section start original_filter
 
 ///|
@@ -25,7 +22,7 @@ enum Filter {
 }
 
 ///|
-fn run(self : Filter, data : Int) -> Bool {
+fn Filter::run(self : Filter, data : Int) -> Bool {
   match self {
     IsEven => data % 2 == 0
     IsOdd => data % 2 != 0
@@ -57,7 +54,7 @@ enum FilterExtend {
 }
 
 ///|
-fn run_extend(self : FilterExtend, data : Int) -> Bool {
+fn FilterExtend::run_extend(self : FilterExtend, data : Int) -> Bool {
   match self {
     IsLessThan(n) => data < n
     //...
@@ -74,7 +71,10 @@ enum FilterExtendCompose {
 }
 
 ///|
-fn run_extend_compose(self : FilterExtendCompose, data : Int) -> Bool {
+fn FilterExtendCompose::run_extend_compose(
+  self : FilterExtendCompose,
+  data : Int,
+) -> Bool {
   match self {
     And(f1, f2) => f1.run_extend(data) && f2.run_extend(data)
     //...

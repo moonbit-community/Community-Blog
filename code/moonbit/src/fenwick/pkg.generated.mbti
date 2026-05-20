@@ -1,0 +1,17 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "community-blog/moonbit-code/fenwick"
+
+// Values
+
+// Errors
+
+// Types and methods
+type Bit derive(Eq)
+pub fn Bit::from_enum(Self) -> Int
+pub fn Bit::not(Self) -> Self
+pub fn Bit::to_enum(Int) -> Self
+
+// Type aliases
+
+// Traits
+

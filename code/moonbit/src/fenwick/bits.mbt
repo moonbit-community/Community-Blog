@@ -11,7 +11,7 @@ priv enum Bits {
 // section start pattern
 
 ///|
-fn to_snoc(self : Bits) -> Bits {
+fn Bits::to_snoc(self : Bits) -> Bits {
   match self {
     Rep(a) => Snoc(Rep(a), a)
     self => self
@@ -114,7 +114,7 @@ test "from . to == id" {
 // section start inc_dec
 
 ///|
-fn inc(self : Bits) -> Bits {
+fn Bits::inc(self : Bits) -> Bits {
   match self {
     Rep(I) => Rep(O)
     s =>
@@ -126,7 +126,7 @@ fn inc(self : Bits) -> Bits {
 }
 
 ///|
-fn dec(self : Bits) -> Bits {
+fn Bits::dec(self : Bits) -> Bits {
   match self {
     Rep(O) => Rep(I)
     s =>
@@ -142,7 +142,7 @@ fn dec(self : Bits) -> Bits {
 // section start lsb
 
 ///|
-fn lsb(self : Bits) -> Bits {
+fn Bits::lsb(self : Bits) -> Bits {
   match self {
     Rep(O) => Rep(O)
     s =>
@@ -238,7 +238,7 @@ test "add" {
 // section start helpers
 
 ///|
-fn set_to(self : Bits, idx : Int, b1 : Bit) -> Bits {
+fn Bits::set_to(self : Bits, idx : Int, b1 : Bit) -> Bits {
   match (idx, self.pat_match()) {
     (0, (bs, _)) => Bits::make(bs, b1)
     (k, (bs, b)) => Bits::make(bs.set_to(k - 1, b1), b)
@@ -256,21 +256,23 @@ fn Bits::clear(self : Bits, idx : Int) -> Bits {
 }
 
 ///|
-fn test_helper(self : Bits, i : Int) -> Bool {
-  loop (i, self.pat_match()) {
-    (0, (_bs, b)) => b == I
-    (k, (bs, _b)) => continue (k - 1, bs.pat_match())
+fn Bits::test_helper(self : Bits, i : Int) -> Bool {
+  for i = i, pat = self.pat_match() {
+    match (i, pat) {
+      (0, (_bs, b)) => break b == I
+      (k, (bs, _b)) => continue k - 1, bs.pat_match()
+    }
   }
 }
 
 ///|
-fn odd(self : Bits) -> Bool {
+fn Bits::odd(self : Bits) -> Bool {
   self.test_helper(0)
 }
 
 ///|
-fn even(self : Bits) -> Bool {
-  not(self.odd())
+fn Bits::even(self : Bits) -> Bool {
+  !self.odd()
 }
 
 // section end helpers
@@ -278,19 +280,23 @@ fn even(self : Bits) -> Bool {
 // section start shift
 
 ///|
-fn shr(self : Bits) -> Bits {
+fn Bits::shr(self : Bits) -> Bits {
   self.pat_match().0
 }
 
 ///|
-fn shl(self : Bits) -> Bits {
+fn Bits::shl(self : Bits) -> Bits {
   Bits::make(self, O)
 }
 
 ///|
 fn[A] while_(p : (A) -> Bool, f : (A) -> A, x : A) -> A {
-  loop x {
-    x => if p(x) { continue f(x) } else { x }
+  for state = x {
+    if p(state) {
+      continue f(state)
+    } else {
+      break state
+    }
   }
 }
 

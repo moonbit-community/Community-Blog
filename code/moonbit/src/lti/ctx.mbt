@@ -17,7 +17,7 @@ pub fn Context::op_get(self : Context, vr : Var) -> Type raise NotFound {
 
 ///|
 pub fn Context::append_vars(self : Context, vars : Array[Var]) -> Context {
-  vars.iter().fold(init=self, CtxTyVar(_, _))
+  vars.iter().fold(init=self, (ctx, ty_var) => CtxTyVar(ctx, ty_var))
 }
 
 ///|

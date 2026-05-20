@@ -32,7 +32,7 @@ struct Subtype {
 }
 
 ///|
-pub fn subtype(self : Subtype) -> Bool {
+pub fn Subtype::subtype(self : Subtype) -> Bool {
   match (self.l, self.r) {
     (TyVar(v1), TyVar(v2)) => v1 == v2
     (_, TyTop) => true
@@ -89,11 +89,11 @@ pub fn subtypes(t1 : Array[Type], t2 : Array[Type]) -> Bool {
 // section start promotion_demotion
 
 ///|
-pub fn promotion(self : Type, v : Set[Var]) -> Type {
+pub fn Type::promotion(self : Type, v : Set[Var]) -> Type {
   match self {
     TyFun(xs, ss, t) => {
       let vP = v.iter().filter(x => !xs.contains(x)) |> Set::from_iter
-      let us = ss.map(_.demotion(vP))
+      let us = ss.map(s => s.demotion(vP))
       let r = t.promotion(vP)
       guard xs.iter().all(x => !v.contains(x))
       TyFun(xs, us, r)
@@ -104,11 +104,11 @@ pub fn promotion(self : Type, v : Set[Var]) -> Type {
 }
 
 ///|
-pub fn demotion(self : Type, v : Set[Var]) -> Type {
+pub fn Type::demotion(self : Type, v : Set[Var]) -> Type {
   match self {
     TyFun(xs, ss, t) => {
       let vP = v.iter().filter(x => !xs.contains(x)) |> Set::from_iter
-      let us = ss.map(_.demotion(vP))
+      let us = ss.map(s => s.demotion(vP))
       let r = t.demotion(vP)
       TyFun(xs, us, r)
     }
@@ -126,16 +126,27 @@ struct Constraints(Map[Var, Subtype])
 
 ///|
 pub fn Constraints::empty() -> Constraints {
-  Constraints(Map::new())
+  Constraints(Map([]))
 }
 
 ///|
-pub fn meet(self : Constraints, other : Constraints) -> Constraints {
-  union_with(self.inner(), other.inner(), (l, r) => {
-    let { l: l1, r: r1 } = l
-    let { l: l2, r: r2 } = r
-    { l: l1 & l2, r: r1 | r2 }
-  })
+fn Constraints::items(self : Constraints) -> Map[Var, Subtype] {
+  let Constraints(items) = self
+  items
+}
+
+///|
+pub fn Constraints::meet(
+  self : Constraints,
+  other : Constraints,
+) -> Constraints {
+  Constraints(
+    union_with(self.items(), other.items(), (l, r) => {
+      let { l: l1, r: r1 } = l
+      let { l: l2, r: r2 } = r
+      { l: l1 & l2, r: r1 | r2 }
+    }),
+  )
 }
 
 ///|
@@ -164,7 +175,7 @@ pub suberror TypeError {
 
 ///|
 /// Pre-condition: xs and v are disjoint sets of variables.
-pub fn generate(
+pub fn Subtype::generate(
   self : Subtype,
   xs : Array[Var],
   v : Set[Var],
@@ -175,11 +186,11 @@ pub fn generate(
       Constraints::empty()
     (TyVar(y), s) if xs.contains(y) => {
       let t = s.demotion(v)
-      Map::from_array([(y, { l: TyBot, r: t })])
+      Constraints(Map::from_array([(y, { l: TyBot, r: t })]))
     }
     (s, TyVar(y)) if xs.contains(y) => {
       let t = s.promotion(v)
-      Map::from_array([(y, { l: t, r: TyTop })])
+      Constraints(Map::from_array([(y, { l: t, r: TyTop })]))
     }
     (TyFun(ys1, r, s), TyFun(ys2, t, u)) if ys1 == ys2 => {
       let vy = v.union(Set::from_array(ys1))
@@ -199,12 +210,24 @@ enum Variance {
   Contravariant
   Constant
   Invariant
-} derive(Show)
+} derive(Debug)
+
+///|
+impl Show for Variance with output(self, logger) {
+  logger.write_string(
+    match self {
+      Covariant => "Covariant"
+      Contravariant => "Contravariant"
+      Constant => "Constant"
+      Invariant => "Invariant"
+    },
+  )
+}
 
 // section start solve
 
 ///|
-pub fn solve(self : Constraints, ty : Type) -> Map[Var, Type]? {
+pub fn Constraints::solve(self : Constraints, ty : Type) -> Map[Var, Type]? {
   let f = (vs : (Var, Subtype)) => {
     let { l, r } = vs.1
     let v = match ty.variance(vs.0) {
@@ -214,37 +237,42 @@ pub fn solve(self : Constraints, ty : Type) -> Map[Var, Type]? {
     }
     v.map(v => (vs.0, v))
   }
-  let i = self.inner().iter().filter_map(f)
-  guard i.count() == self.inner().size() else { None }
-  Some(Map::from_iter(i))
+  let constraints = self.items()
+  let solved = constraints.iter().filter_map(f).to_array()
+  guard solved.length() == constraints.length() else { None }
+  Some(Map::from_array(solved))
 }
 
 // section end solve
 
 ///|
-pub fn satisfiable(self : Constraints) -> Bool {
-  self.inner().iter().all(kv => kv.1.subtype())
+pub fn Constraints::satisfiable(self : Constraints) -> Bool {
+  self.items().iter().all(kv => kv.1.subtype())
 }
 
 // section start variance
 
 ///|
-pub fn variance(self : Type, va : Var) -> Variance {
-  letrec go = (ty : Type, polarity : Bool) => match ty {
-    TyVar(v) if v == va => if polarity { Covariant } else { Contravariant }
-    TyVar(_) | TyTop | TyBot => Constant
-    TyFun(_, params, ret) => {
-      let param_variance = params
-        .map(p => go(p, !polarity))
-        .fold(init=Constant, combine_variance)
-      combine_variance(param_variance, go(ret, polarity))
+pub fn Type::variance(self : Type, va : Var) -> Variance {
+  letrec go = (ty : Type, polarity : Bool) => {
+    match ty {
+      TyVar(v) if v == va => if polarity { Covariant } else { Contravariant }
+      TyVar(_) | TyTop | TyBot => Constant
+      TyFun(_, params, ret) => {
+        let param_variance = params
+          .map(p => go(p, !polarity))
+          .fold(init=Constant, combine_variance)
+        combine_variance(param_variance, go(ret, polarity))
+      }
     }
   }
-  and combine_variance = (v1 : Variance, v2 : Variance) => match (v1, v2) {
-    (Constant, v) | (v, Constant) => v
-    (Covariant, Covariant) | (Contravariant, Contravariant) => v1
-    (Covariant, Contravariant) | (Contravariant, Covariant) => Invariant
-    (Invariant, _) | (_, Invariant) => Invariant
+  and combine_variance = (v1 : Variance, v2 : Variance) => {
+    match (v1, v2) {
+      (Constant, v) | (v, Constant) => v
+      (Covariant, Covariant) | (Contravariant, Contravariant) => v1
+      (Covariant, Contravariant) | (Contravariant, Covariant) => Invariant
+      (Invariant, _) | (_, Invariant) => Invariant
+    }
   }
 
   go(self, true)
@@ -261,7 +289,7 @@ pub fn mk_subst(vars : Array[Var], tys : Array[Type]) -> Map[Var, Type] raise {
 }
 
 ///|
-pub fn apply_subst(self : Type, subst : Map[Var, Type]) -> Type {
+pub fn Type::apply_subst(self : Type, subst : Map[Var, Type]) -> Type {
   match self {
     TyVar(v) => subst.get(v).unwrap_or(self)
     TyTop | TyBot => self

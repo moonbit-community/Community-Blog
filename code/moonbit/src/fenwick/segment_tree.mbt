@@ -1,16 +1,13 @@
-///|
-typealias MyList as List
-
 // section start seg_tree
 
 ///|
 priv enum SegTree {
   Empty
   Branch(Int, Range, SegTree, SegTree)
-} derive(Eq, Show)
+} derive(Eq, Debug)
 
 ///|
-fn SegTree::update(self : SegTree, i : Index, v : Int) -> SegTree {
+fn SegTree::update(self : SegTree, i : Int, v : Int) -> SegTree {
   match self {
     Empty => Empty
     Branch(a, rng, l, r) if rng.contains(i) =>
@@ -20,7 +17,7 @@ fn SegTree::update(self : SegTree, i : Index, v : Int) -> SegTree {
 }
 
 ///|
-fn rq(self : SegTree, q : Range) -> Int {
+fn SegTree::rq(self : SegTree, q : Range) -> Int {
   match self {
     Empty => 0
     Branch(a, rng, l, r) =>
@@ -35,12 +32,12 @@ fn rq(self : SegTree, q : Range) -> Int {
 }
 
 ///|
-fn SegTree::get(self : SegTree, i : Index) -> Int {
+fn SegTree::get(self : SegTree, i : Int) -> Int {
   self.rq((i, i))
 }
 
 ///|
-fn SegTree::set(self : SegTree, i : Index, v : Int) -> SegTree {
+fn SegTree::set(self : SegTree, i : Int, v : Int) -> SegTree {
   self.update(i, v - self.get(i))
 }
 
@@ -99,7 +96,7 @@ fn f2b(n : Int, se : Bits) -> Bits {
 
 ///|
 fn unshift(n : Int, se : Bits) -> Bits {
-  while_(x => not(x.test_helper(n)), Bits::shl, se) |> Bits::clear(_, n)
+  while_((x : Bits) => !x.test_helper(n), Bits::shl, se).clear(n)
 }
 
 ///|
@@ -113,10 +110,11 @@ fn b2f(n : Int, se : Bits) -> Bits {
 
 ///|
 test "id" {
-  let f = size => Int::until(1, 1 << size)
-    .map(x => (f2b(size, x |> Bits::to_bits) |> b2f(size, _) |> Bits::from_bits) ==
-      x)
+  let f = size => {
+    Int::until(1, 1 << size)
+    .map(x => Bits::from_bits(b2f(size, f2b(size, Bits::to_bits(x)))) == x)
     .all(x => x)
+  }
   assert_true(f(4))
   assert_true(f(5))
 }
@@ -126,7 +124,7 @@ test "id" {
 // section start active_parent_binary
 
 ///|
-fn active_parent_binary(self : Bits) -> Bits {
+fn Bits::active_parent_binary(self : Bits) -> Bits {
   while_(Bits::odd, Bits::shr, self.shr())
 }
 
@@ -135,7 +133,7 @@ fn active_parent_binary(self : Bits) -> Bits {
 // section start at_lsb
 
 ///|
-fn at_lsb(self : Bits, f : (Bits) -> Bits) -> Bits {
+fn Bits::at_lsb(self : Bits, f : (Bits) -> Bits) -> Bits {
   match self {
     Rep(O) => Rep(O)
     s =>
@@ -151,7 +149,7 @@ fn at_lsb(self : Bits, f : (Bits) -> Bits) -> Bits {
 // section start prev_segment_binary
 
 ///|
-fn prev_segment_binary(self : Bits) -> Bits {
+fn Bits::prev_segment_binary(self : Bits) -> Bits {
   while_(Bits::even, Bits::shr, self).dec()
 }
 
@@ -165,11 +163,13 @@ test "x - lsb x" {
 
 ///|
 test {
-  let for_n = n => fn(x) {
-    guard x == 0 else { true }
-    let x = x + 1
-    let x = x |> Bits::to_bits
-    (f2b(n, x) |> Bits::prev_segment_binary |> b2f(n, _)) == x.at_lsb(Bits::dec)
+  let for_n = n => {
+    fn(x) {
+      guard x == 0 else { true }
+      let x = x + 1
+      let x = x |> Bits::to_bits
+      b2f(n, f2b(n, x).prev_segment_binary()) == x.at_lsb(Bits::dec)
+    }
   }
   @qc.quick_check_fn(for_n(4))
   // +++ [100/0/100] Ok, passed!
