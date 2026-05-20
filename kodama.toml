@@ -4,7 +4,7 @@ assets = "./styles"
 
 [build]
 typst-root = "./"
-short-slug = true
+short-slug = false
 pretty-urls = false
 footer-mode = "link"
 inline-css = false

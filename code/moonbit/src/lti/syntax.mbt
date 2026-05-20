@@ -95,7 +95,6 @@ pub fn Type::promotion(self : Type, v : Set[Var]) -> Type {
       let vP = v.iter().filter(x => !xs.contains(x)) |> Set::from_iter
       let us = ss.map(s => s.demotion(vP))
       let r = t.promotion(vP)
-      guard xs.iter().all(x => !v.contains(x))
       TyFun(xs, us, r)
     }
     TyVar(vr) if v.contains(vr) => TyTop
@@ -108,7 +107,7 @@ pub fn Type::demotion(self : Type, v : Set[Var]) -> Type {
   match self {
     TyFun(xs, ss, t) => {
       let vP = v.iter().filter(x => !xs.contains(x)) |> Set::from_iter
-      let us = ss.map(s => s.demotion(vP))
+      let us = ss.map(s => s.promotion(vP))
       let r = t.demotion(vP)
       TyFun(xs, us, r)
     }

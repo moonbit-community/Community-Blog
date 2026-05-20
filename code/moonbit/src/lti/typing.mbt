@@ -13,6 +13,7 @@ pub fn Expr::synthesis(self : Expr, gamma : Context) -> Type raise {
       let t = f.synthesis(gamma)
       guard !(t is TyBot) else { TyBot }
       guard t is TyFun(xs, t, r) else { raise SynthesisError }
+      guard e.length() == t.length() else { raise ArgumentLengthMismatch }
       // guard !xs.is_empty() else { raise NotFound }
       let es = e.map(expr => expr.synthesis(gamma))
       let cs = es.zip(t).map(z => { l: z.0, r: z.1 }.generate(xs, Set([])))
@@ -24,6 +25,7 @@ pub fn Expr::synthesis(self : Expr, gamma : Context) -> Type raise {
       guard !(t is TyBot) else { TyBot }
       guard t is TyFun(xs, ss, r) else { raise SynthesisError }
       let subst = mk_subst(xs, ty)
+      guard e.length() == ss.length() else { raise ArgumentLengthMismatch }
       e.zip(ss).each(es => es.0.check(es.1.apply_subst(subst), gamma))
       r.apply_subst(subst)
     }
@@ -41,6 +43,7 @@ pub fn Expr::check(self : Expr, ty : Type, gamma : Context) -> Unit raise {
     }
     (EAbs(xs, vs, body), TyFun(xsP, t, r)) if xs == xsP => {
       let ctx = gamma.append_vars(xs)
+      guard t.length() == vs.length() else { raise CheckError }
       guard t.zip(vs.map(xS => xS.1)).iter().all(z => z.0.subtype(z.1)) else {
         raise CheckError
       }
@@ -51,8 +54,9 @@ pub fn Expr::check(self : Expr, ty : Type, gamma : Context) -> Unit raise {
       body.check(t, gamma.append_vars(xs).append_binds(vs.zip(ss)))
     (EAppI(f, e), u) => {
       let t = f.synthesis(gamma)
-      guard !(t is TyBot && u is TyBot) else { () }
+      guard !(t is TyBot) else { () }
       guard f.synthesis(gamma) is TyFun(xs, t, r) else { raise CheckError }
+      guard e.length() == t.length() else { raise ArgumentLengthMismatch }
       guard !xs.is_empty() else { () }
       let es = e.map(expr => expr.synthesis(gamma))
       let cs = es.zip(t).map(z => { l: z.0, r: z.1 }.generate(xs, Set([])))
@@ -61,9 +65,10 @@ pub fn Expr::check(self : Expr, ty : Type, gamma : Context) -> Unit raise {
     }
     (EApp(f, ty, e), u) => {
       let t = f.synthesis(gamma)
-      guard !(t is TyBot && u is TyBot) else { () }
+      guard !(t is TyBot) else { () }
       guard t is TyFun(xs, ss, r)
       let subst = mk_subst(xs, ty)
+      guard e.length() == ss.length() else { raise ArgumentLengthMismatch }
       e.zip(ss).each(es => es.0.check(es.1.apply_subst(subst), gamma))
       guard r.apply_subst(subst).subtype(u) else { raise CheckError }
     }
