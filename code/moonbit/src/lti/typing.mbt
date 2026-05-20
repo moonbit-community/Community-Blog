@@ -1,7 +1,7 @@
 // section start bidirectional
 
 ///|
-pub fn synthesis(self : Expr, gamma : Context) -> Type raise {
+pub fn Expr::synthesis(self : Expr, gamma : Context) -> Type raise {
   match self {
     EVar(v) => gamma[v]
     EAbs(xs, vs, body) => {
@@ -14,10 +14,10 @@ pub fn synthesis(self : Expr, gamma : Context) -> Type raise {
       guard !(t is TyBot) else { TyBot }
       guard t is TyFun(xs, t, r) else { raise SynthesisError }
       // guard !xs.is_empty() else { raise NotFound }
-      let es = e.map(_.synthesis(gamma))
-      let cs = es.zip(t).map(z => { l: z.0, r: z.1 }.generate(xs, Set::new()))
+      let es = e.map(expr => expr.synthesis(gamma))
+      let cs = es.zip(t).map(z => { l: z.0, r: z.1 }.generate(xs, Set([])))
       let sigma = meets(cs).solve(r)
-      sigma.map(s => r.apply_subst(s)).or_error(SynthesisError)
+      sigma.map(s => r.apply_subst(s)).unwrap_or_error(SynthesisError)
     }
     EApp(f, ty, e) => {
       let t = f.synthesis(gamma)
@@ -32,7 +32,7 @@ pub fn synthesis(self : Expr, gamma : Context) -> Type raise {
 }
 
 ///|
-pub fn check(self : Expr, ty : Type, gamma : Context) -> Unit raise {
+pub fn Expr::check(self : Expr, ty : Type, gamma : Context) -> Unit raise {
   match (self, ty) {
     (_, TyTop) => ()
     (EVar(v), t) => {
@@ -54,9 +54,9 @@ pub fn check(self : Expr, ty : Type, gamma : Context) -> Unit raise {
       guard !(t is TyBot && u is TyBot) else { () }
       guard f.synthesis(gamma) is TyFun(xs, t, r) else { raise CheckError }
       guard !xs.is_empty() else { () }
-      let es = e.map(_.synthesis(gamma))
-      let cs = es.zip(t).map(z => { l: z.0, r: z.1 }.generate(xs, Set::new()))
-      let d = { l: r, r: u }.generate(xs, Set::new())
+      let es = e.map(expr => expr.synthesis(gamma))
+      let cs = es.zip(t).map(z => { l: z.0, r: z.1 }.generate(xs, Set([])))
+      let d = { l: r, r: u }.generate(xs, Set([]))
       guard meets(cs).meet(d).satisfiable() else { raise CheckError }
     }
     (EApp(f, ty, e), u) => {

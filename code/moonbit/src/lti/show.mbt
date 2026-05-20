@@ -1,6 +1,7 @@
 ///|
 impl Show for Var with to_string(self) {
-  self.inner()
+  let Var(name) = self
+  name
 }
 
 ///|
@@ -16,7 +17,7 @@ impl Show for Type with to_string(self) {
     TyBot => "⊥"
     TyFun(xs, ss, t) => {
       let xs_str = xs.map(Var::to_string).join(", ")
-      let ss_str = ss.map(_.to_string()).join(", ")
+      let ss_str = ss.map(s => s.to_string()).join(", ")
       let prefix = if xs.is_empty() { "" } else { "∀ [" + xs_str + "]" }
       "\{prefix}(\{ss_str}) -> \{t}"
     }
@@ -36,7 +37,7 @@ impl Show for Constraints with output(self, logger) {
 ///|
 impl Show for Constraints with to_string(self) {
   let cons = self
-    .inner()
+    .items()
     .iter()
     .map(kv => {
       let { l, r } = kv.1

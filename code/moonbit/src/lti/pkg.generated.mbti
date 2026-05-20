@@ -1,0 +1,79 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "community-blog/moonbit-code/lti"
+
+import {
+  "moonbitlang/core/debug",
+  "moonbitlang/core/set",
+}
+
+// Values
+pub fn meets(Array[Constraints]) -> Constraints
+
+pub fn mk_subst(Array[Var], Array[Type]) -> Map[Var, Type] raise
+
+pub fn subtypes(Array[Type], Array[Type]) -> Bool
+
+// Errors
+pub suberror ArgumentLengthMismatch
+
+pub suberror ConstraintGenerationError
+
+pub suberror NotFound
+
+pub suberror TypeError {
+  SynthesisError
+  CheckError
+}
+
+// Types and methods
+type Constraints
+pub fn Constraints::empty() -> Self
+pub fn Constraints::meet(Self, Self) -> Self
+pub fn Constraints::satisfiable(Self) -> Bool
+pub fn Constraints::solve(Self, Type) -> Map[Var, Type]?
+
+pub(all) enum Context {
+  CtxEmpty
+  CtxBinding(Context, Var, Type)
+  CtxTyVar(Context, Var)
+}
+pub fn Context::append_binds(Self, Array[(Var, Type)]) -> Self
+pub fn Context::append_vars(Self, Array[Var]) -> Self
+pub fn Context::bind(Self, Var, Type) -> Self
+pub fn Context::empty() -> Self
+pub fn Context::op_get(Self, Var) -> Type raise NotFound
+
+pub(all) enum Expr {
+  EVar(Var)
+  EAppI(Expr, Array[Expr])
+  EApp(Expr, Array[Type], Array[Expr])
+  EAbs(Array[Var], Array[(Var, Type)], Expr)
+  EAbsI(Array[Var], Array[Var], Expr)
+}
+pub fn Expr::check(Self, Type, Context) -> Unit raise
+pub fn Expr::synthesis(Self, Context) -> Type raise
+
+type Subtype
+pub fn Subtype::generate(Self, Array[Var], @set.Set[Var]) -> Constraints raise
+pub fn Subtype::subtype(Self) -> Bool
+
+pub(all) enum Type {
+  TyVar(Var)
+  TyTop
+  TyBot
+  TyFun(Array[Var], Array[Type], Type)
+} derive(Eq)
+pub fn Type::apply_subst(Self, Map[Var, Self]) -> Self
+pub fn Type::demotion(Self, @set.Set[Var]) -> Self
+pub fn Type::promotion(Self, @set.Set[Var]) -> Self
+pub fn Type::subtype(Self, Self) -> Bool
+pub fn Type::variance(Self, Var) -> Variance
+
+pub(all) struct Var(String) derive(Eq, Hash)
+
+type Variance derive(@debug.Debug)
+
+// Type aliases
+
+// Traits
+

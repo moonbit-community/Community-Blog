@@ -1,7 +1,7 @@
 // section start pre_order_cps
 
 ///|
-fn[T] pre_order_cps(self : Tree[T], f : (T) -> Unit) -> Unit {
+fn[T] Tree::pre_order_cps(self : Tree[T], f : (T) -> Unit) -> Unit {
   fn go(t, g) {
     match (t, g) {
       (Leaf(x), k) => k(f(x))
@@ -30,7 +30,7 @@ enum TreeCont[T] {
 // section start pre_order_cps_defunct
 
 ///|
-fn[T] pre_order_cps_defunct(self : Tree[T], f : (T) -> Unit) -> Unit {
+fn[T] Tree::pre_order_cps_defunct(self : Tree[T], f : (T) -> Unit) -> Unit {
   letrec run_cont = fn(k) {
     match k {
       Next(tree, k) => go(tree, k)
@@ -58,18 +58,20 @@ fn[T] pre_order_cps_defunct(self : Tree[T], f : (T) -> Unit) -> Unit {
 // section start pre_order_cps_defunct_loop
 
 ///|
-fn[T] pre_order_cps_defunct_loop(self : Tree[T], f : (T) -> Unit) -> Unit {
-  loop (self, Return) {
-    (Leaf(x), k) => {
-      f(x)
-      match k {
-        Next(tree, k) => continue (tree, k)
-        Return => ()
+fn[T] Tree::pre_order_cps_defunct_loop(self : Tree[T], f : (T) -> Unit) -> Unit {
+  for t = self, k = Return {
+    match (t, k) {
+      (Leaf(x), k) => {
+        f(x)
+        match k {
+          Next(tree, k) => continue tree, k
+          Return => break
+        }
       }
-    }
-    (Node(x, left, right), k) => {
-      f(x)
-      continue (left, Next(right, k))
+      (Node(x, left, right), k) => {
+        f(x)
+        continue left, Next(right, k)
+      }
     }
   }
 }
@@ -79,7 +81,7 @@ fn[T] pre_order_cps_defunct_loop(self : Tree[T], f : (T) -> Unit) -> Unit {
 // section start pre_order_loop
 
 ///|
-fn[T] pre_order_loop(self : Tree[T], f : (T) -> Unit) -> Unit {
+fn[T] Tree::pre_order_loop(self : Tree[T], f : (T) -> Unit) -> Unit {
   let mut k = Return
   let mut t = self
   while true {
@@ -108,7 +110,7 @@ fn[T] pre_order_loop(self : Tree[T], f : (T) -> Unit) -> Unit {
 // section start pre_order_loop_stack
 
 ///|
-fn[T] pre_order_loop_stack(self : Tree[T], f : (T) -> Unit) -> Unit {
+fn[T] Tree::pre_order_loop_stack(self : Tree[T], f : (T) -> Unit) -> Unit {
   let k = []
   let mut t = self
   while true {

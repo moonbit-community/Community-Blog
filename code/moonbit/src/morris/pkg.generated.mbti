@@ -1,0 +1,42 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "community-blog/moonbit-code/morris"
+
+import {
+  "illusory0x0/graphviz",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn build_BST(Int, Int) -> Node[Int]?
+
+pub fn[A] clone(Node[A]?) -> Node[A]?
+
+pub fn dump(Node[Int]?) -> @graphviz.Digraph
+
+pub fn dump_without_nil(Node[Int]?) -> @graphviz.Digraph
+
+pub fn[A] inorder_iterative(Node[A]?, (A) -> Unit) -> Unit
+
+pub fn[A] inorder_recursive(Node[A]?, (A) -> Unit) -> Unit
+
+pub fn[A] left_most_node(Node[A]?) -> Node[A]?
+
+pub fn[A] morris_tree_traversal(Node[A]?, (A) -> Unit) -> Unit
+
+pub fn[A] morris_tree_traversal_pattern_match(Node[A]?, (A) -> Unit) -> Unit
+
+pub fn[A] right_most_node(Node[A]?) -> Node[A]?
+
+// Errors
+
+// Types and methods
+pub(all) struct Node[A] {
+  mut data : A
+  mut left : Node[A]?
+  mut right : Node[A]?
+} derive(@debug.Debug)
+
+// Type aliases
+
+// Traits
+

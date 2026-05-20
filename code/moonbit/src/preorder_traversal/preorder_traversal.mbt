@@ -34,7 +34,7 @@ fn[A] Tree::preorder(self : Tree[A], f : (A) -> Unit) -> Unit {
 fn[A] Tree::preorder_stack(self : Tree[A], f : (A) -> Unit) -> Unit {
   let stack = Array::new(capacity=4096)
   stack.push(self)
-  while not(stack.is_empty()) {
+  while !stack.is_empty() {
     let root = stack.unsafe_pop()
     match root {
       Nil => ()

@@ -1,9 +1,0 @@
-{
-    "warn-list": "-1",
-    "import": [
-        {
-            "alias": "qc",
-            "path": "moonbitlang/quickcheck"
-        }
-    ]
-}

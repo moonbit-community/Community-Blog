@@ -16,19 +16,19 @@ test "type inference" {
   let e = EAbs(
     ["x"],
     [("f", TyFun(["z"], [TyVar("z")], TyVar("z"))), ("x", TyVar("x"))],
-    EApp(EVar("f"), [], [EVar("x")]),
+    EAppI(EVar("f"), [EVar("x")]),
   )
   inspect(e.synthesis(gamma), content="∀ [x](∀ [z](z) -> z, x) -> x")
   let e = EAbs(
     ["x"],
     [("f", TyFun(["z"], [TyVar("z")], TyVar("z"))), ("x", TyVar("x"))],
-    EApp(EApp(EVar("f"), [], [EVar("f")]), [], [EVar("x")]),
+    EAppI(EAppI(EVar("f"), [EVar("f")]), [EVar("x")]),
   )
   inspect(e.synthesis(gamma), content="∀ [x](∀ [z](z) -> z, x) -> x")
   let e = EAbs(
     [],
     [("f", TyFun(["z"], [TyVar("z")], TyVar("z")))],
-    EApp(EVar("f"), [], [EVar("f")]),
+    EAppI(EVar("f"), [EVar("f")]),
   )
   inspect(e.synthesis(gamma), content="(∀ [z](z) -> z) -> ∀ [z](z) -> z")
 }

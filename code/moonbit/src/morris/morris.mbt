@@ -3,7 +3,7 @@ pub(all) struct Node[A] {
   mut data : A
   mut left : Node[A]?
   mut right : Node[A]?
-} derive(Show)
+} derive(Debug)
 
 ///|
 pub fn[A] clone(root : Node[A]?) -> Node[A]? {
@@ -29,19 +29,16 @@ pub fn build_BST(start : Int, end : Int) -> Node[Int]? {
 }
 
 ///|
-typealias @graphviz.Digraph
-
-///|
-typealias Int as Id
+using @graphviz {type Digraph}
 
 ///|
 pub fn dump(root : Node[Int]?) -> Digraph {
   let edges = []
   let nodes = []
   let mut cnt = 0
-  fn dfs(self : Node[Int]?) -> Id {
+  fn dfs(root : Node[Int]?) -> Int {
     cnt += 1
-    match self {
+    match root {
       None => {
         let label = "nil"
         nodes.push(@graphviz.Node::new(id=cnt, label~))
@@ -69,9 +66,9 @@ pub fn dump_without_nil(root : Node[Int]?) -> Digraph {
   let edges = []
   let nodes = []
   let mut cnt = 0
-  fn dfs(self : Node[Int]?) -> Id? {
+  fn dfs(root : Node[Int]?) -> Int? {
     cnt += 1
-    match self {
+    match root {
       None => None
       Some({ data, left, right }) => {
         let from = cnt
@@ -94,19 +91,23 @@ pub fn dump_without_nil(root : Node[Int]?) -> Digraph {
 
 ///|
 pub fn[A] right_most_node(root : Node[A]?) -> Node[A]? {
-  loop root {
-    None => None
-    Some({ right, .. }) as prev if right.is_empty() => prev
-    Some({ right, .. }) => continue right
+  for root = root {
+    match root {
+      None => break None
+      Some({ right, .. }) as prev if right is None => break prev
+      Some({ right, .. }) => continue right
+    }
   }
 }
 
 ///|
 pub fn[A] left_most_node(root : Node[A]?) -> Node[A]? {
-  loop root {
-    None => None
-    Some({ left, .. }) as prev if left.is_empty() => prev
-    Some({ left, .. }) => continue left
+  for root = root {
+    match root {
+      None => break None
+      Some({ left, .. }) as prev if left is None => break prev
+      Some({ left, .. }) => continue left
+    }
   }
 }
 
@@ -117,8 +118,8 @@ pub fn[A] left_most_node(root : Node[A]?) -> Node[A]? {
 pub fn[A] morris_tree_traversal(root : Node[A]?, f : (A) -> Unit) -> Unit {
   let mut cur = root
   // let mut prev = None 
-  while not(cur.is_empty()) {
-    if not(cur.unwrap().left.is_empty()) {
+  while cur is Some(_) {
+    if cur.unwrap().left is Some(_) {
       let prev = right_most_node(cur.unwrap().left)
       prev.unwrap().right = cur
       let cur_left = cur.unwrap().left
@@ -132,6 +133,7 @@ pub fn[A] morris_tree_traversal(root : Node[A]?, f : (A) -> Unit) -> Unit {
 }
 
 // section start inorder_recursive
+
 ///|
 /// Traditional recursive inorder traversal
 pub fn[A] inorder_recursive(root : Node[A]?, f : (A) -> Unit) -> Unit {
@@ -147,18 +149,19 @@ pub fn[A] inorder_recursive(root : Node[A]?, f : (A) -> Unit) -> Unit {
 // section end inorder_recursive
 
 // section start inorder_iterative
+
 ///|
 /// Traditional iterative inorder traversal using stack
 pub fn[A] inorder_iterative(root : Node[A]?, f : (A) -> Unit) -> Unit {
   let stack : Array[Node[A]] = []
   let mut current = root
-  
-  while not(stack.is_empty()) || current is Some(_) {
+
+  while !stack.is_empty() || current is Some(_) {
     while current is Some(_) {
       stack.push(current.unwrap())
       current = current.unwrap().left
     }
-    
+
     let node = stack.unsafe_pop()
     f(node.data)
     current = node.right
@@ -167,45 +170,48 @@ pub fn[A] inorder_iterative(root : Node[A]?, f : (A) -> Unit) -> Unit {
 // section end inorder_iterative
 
 // section start morris
+
 ///|
 pub fn[A] morris_tree_traversal_pattern_match(
   root : Node[A]?,
   f : (A) -> Unit,
 ) -> Unit {
-  loop root {
-    None => break
-    // This part of the code is responsible for transforming the tree into a right-skewed tree
-    Some({ left: Some(_) as left, .. } as cur_) as cur => {
-      // The rightmost node of the left subtree is the predecessor of the last node visited in the left subtree during inorder traversal, where the last node is the root of the left subtree
-      guard right_most_node(left) is Some(left_subtree_last_visited_node)
-      // Create a back edge here so that after visiting the left subtree, we can return to the root of the left subtree
-      left_subtree_last_visited_node.right = cur
-      let cur_left = cur_.left
+  for root = root {
+    match root {
+      None => break
+      // This part of the code is responsible for transforming the tree into a right-skewed tree
+      Some({ left: Some(_) as left, .. } as cur_) as cur => {
+        // The rightmost node of the left subtree is the predecessor of the last node visited in the left subtree during inorder traversal, where the last node is the root of the left subtree
+        guard right_most_node(left) is Some(left_subtree_last_visited_node)
+        // Create a back edge here so that after visiting the left subtree, we can return to the root of the left subtree
+        left_subtree_last_visited_node.right = cur
+        let cur_left = cur_.left
 
-      // This step prevents infinite loops when traversing through the previously created back edge
-      cur_.left = None
+        // This step prevents infinite loops when traversing through the previously created back edge
+        cur_.left = None
 
-      // Continue visiting the left subtree
-      continue cur_left
-    }
-    Some(cur_) => {
-      // At this point the tree has become a right-skewed tree, with no more left subtrees
-      f(cur_.data)
-      // Simply continue visiting the right subtree
-      continue cur_.right
+        // Continue visiting the left subtree
+        continue cur_left
+      }
+      Some(cur_) => {
+        // At this point the tree has become a right-skewed tree, with no more left subtrees
+        f(cur_.data)
+        // Simply continue visiting the right subtree
+        continue cur_.right
+      }
     }
   }
 }
 // section end morris
-  
+
 ///|
-test "BST structure visualization" (t : @test.T) {
+test "BST structure visualization" (t : @test.Test) {
   t.writeln(dump_without_nil(build_BST(0, 8)))
   t.snapshot(filename="bst_structure_visualization.dot")
 }
 
 ///|
-test "C style" (t : @test.T) {
+test "C style" (t : @test.Test) {
   let tree = build_BST(0, 8)
   let xs = []
   morris_tree_traversal(tree, fn(x) { xs.push(x) })
@@ -215,7 +221,7 @@ test "C style" (t : @test.T) {
 }
 
 ///|
-test "Moonbit style" (t : @test.T) {
+test "Moonbit style" (t : @test.Test) {
   let tree = build_BST(0, 8)
   let xs = []
   morris_tree_traversal_pattern_match(tree, fn(x) { xs.push(x) })

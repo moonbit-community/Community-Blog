@@ -1,0 +1,5 @@
+warnings = "-1"
+
+import {
+  "moonbitlang/quickcheck" @qc,
+}
